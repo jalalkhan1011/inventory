@@ -21,28 +21,23 @@
     </li>
 
     <li class="sidenav-divider mb-1"></li>
-    <li class="sidenav-header small font-weight-semibold">UI Components</li>
-    <li class="sidenav-item">
-        <a href="typography.html" class="sidenav-link">
-            <i class="sidenav-icon feather icon-type"></i>
-            <div>Typography</div>
-        </a>
-    </li>
+    <li class="sidenav-header small font-weight-semibold">User & Role</li>
+
 
     <li class="sidenav-item">
         <a href="javascript:" class="sidenav-link sidenav-toggle">
             <i class="sidenav-icon feather icon-box"></i>
-            <div>UI components</div>
+            <div>User Setting</div>
         </a>
         <ul class="sidenav-menu">
             <li class="sidenav-item">
-                <a href="bui_alert.html" class="sidenav-link">
-                    <div>Alerts</div>
+                <a href="{{ url('admin/users') }}" class="sidenav-link">
+                    <div>Manage Users</div>
                 </a>
             </li>
             <li class="sidenav-item">
-                <a href="bui_badges.html" class="sidenav-link">
-                    <div>Badges</div>
+                <a href="{{ url('admin/roles') }}" class="sidenav-link">
+                    <div>Manage Roles</div>
                 </a>
             </li>
             <li class="sidenav-item">
