@@ -11,3 +11,4 @@
 
 <link rel="stylesheet" href="{{ asset('back-end/assets/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
 <link rel="stylesheet" href="{{ asset('back-end/assets/libs/flot/flot.css') }}" />
+<link rel="stylesheet" href="{{ asset('css/customcss.css') }}">

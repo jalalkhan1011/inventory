@@ -129,10 +129,10 @@
             <div class="nav-item d-none d-lg-block text-big font-weight-light line-height-1 opacity-25 mr-3 ml-1">|</div>
             <div class="demo-navbar-user nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
-                                <span class="d-inline-flex flex-lg-row-reverse align-items-center align-middle">
-                                    <img src="{{ asset('back-end/assets/img/avatars/1.png') }}" alt class="d-block ui-w-30 rounded-circle" />
-                                    <span class="px-1 mr-lg-2 ml-2 ml-lg-0">Cindy Deitch</span>
-                                </span>
+                    <span class="d-inline-flex flex-lg-row-reverse align-items-center align-middle">
+                        <img src="{{ asset('back-end/assets/img/avatars/1.png') }}" alt class="d-block ui-w-30 rounded-circle" />
+                        <span class="px-1 mr-lg-2 ml-2 ml-lg-0">{{ Auth::user()->name }}</span>
+                    </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
                     <a href="javascript:" class="dropdown-item"> <i class="feather icon-user text-muted"></i> &nbsp; My profile</a>

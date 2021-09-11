@@ -1,0 +1,17 @@
+.image-preview{
+    width: 100px;
+    height: 100px;
+    border-width: 4px 4px 4px 4px;
+    border-style: solid;
+    border-color: #ff4a00;
+    border-radius: 9px;
+}
+
+.image-round{
+    border-radius: 50%;
+}
+
+.my-error-class {
+    color:red;
+    font-size: 12px;
+}

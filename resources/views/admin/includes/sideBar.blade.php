@@ -21,13 +21,14 @@
     </li>
 
     <li class="sidenav-divider mb-1"></li>
-    <li class="sidenav-header small font-weight-semibold">User & Role</li>
+    <li class="sidenav-header small font-weight-semibold">User Setting</li>
 
 
     <li class="sidenav-item">
+{{--        @if(Auth::user()->hasRole('Admin'))--}}
         <a href="javascript:" class="sidenav-link sidenav-toggle">
             <i class="sidenav-icon feather icon-box"></i>
-            <div>User Setting</div>
+            <div>User & role</div>
         </a>
         <ul class="sidenav-menu">
             <li class="sidenav-item">
@@ -41,8 +42,8 @@
                 </a>
             </li>
             <li class="sidenav-item">
-                <a href="bui_button.html" class="sidenav-link">
-                    <div>Buttons</div>
+                <a href="{{ url('admin/profiles') }}" class="sidenav-link">
+                    <div>Profiles</div>
                 </a>
             </li>
             <li class="sidenav-item">
@@ -66,7 +67,9 @@
                 </a>
             </li>
         </ul>
+{{--        @endif--}}
     </li>
+
 
     <li class="sidenav-divider mb-1"></li>
     <li class="sidenav-header small font-weight-semibold">Forms & Tables</li>
