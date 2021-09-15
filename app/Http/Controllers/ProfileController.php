@@ -12,6 +12,13 @@ use Illuminate\Testing\Fluent\Concerns\Has;
 
 class ProfileController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:profile-list|profile-create|profile-edit|profile-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:profile-create', ['only' => ['create','store']]);
+        $this->middleware('permission:profile-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:profile-delete', ['only' => ['destroy']]);
+    }
     use ImageTraits;
     const UPLOAD_DIR = '/uploads/profileImage/';
     /**

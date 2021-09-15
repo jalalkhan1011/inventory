@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Employee;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
@@ -44,6 +45,15 @@ class EmployeeUserSeeder extends Seeder
         $user->assignRole([$role->id]);
         $adminUser = Role::findByName('Admin');
         $adminUser->givePermissionTo(['customer-list','customer-create','customer-edit','customer-delete']);
+
+        $data = [
+            'name' => $user->name,
+            'email' => $user->email,
+            'employee_id' => $user->id,
+            'user_id' => 1
+        ];
+
+        Employee::create($data);
 
     }
 }

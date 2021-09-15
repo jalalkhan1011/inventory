@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use App\Models\User;
@@ -11,6 +12,13 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:user-list|user-create|user-edit|user-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:user-create', ['only' => ['create','store']]);
+        $this->middleware('permission:user-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:user-delete', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -41,6 +49,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+//        dd($request->all());
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
@@ -51,8 +60,40 @@ class UserController extends Controller
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
 
+
         $user = User::create($input);
         $user->assignRole($request->input('roles'));
+
+        if($request->has('roles') == 'Employee'){
+            $employee = Employee::where('user_id',$user->id)->first();
+            if($employee){
+                $request->validate([
+                    'name' => 'nullable',
+                    'email' => 'sometimes|nullable|unique:employees,email,'.$employee->id,
+                ]);
+                $data = [
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'employee_id' => $user->id,
+                    'user_id' => auth()->user()->id
+                ];
+
+                $employee->update($data);
+            }else{
+                $request->validate([
+                    'name' => 'nullable',
+                    'email' => 'nullable|unique:employees,email',
+                ]);
+                $data = [
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'employee_id' => $user->id,
+                    'user_id' => auth()->user()->id
+                ];
+
+                Employee::create($data);
+            }
+        }
 
         return redirect()->route('users.index')->with('success','User created successfully');
     }

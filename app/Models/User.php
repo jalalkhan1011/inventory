@@ -45,4 +45,8 @@ class User extends Authenticatable
     public function profile(){
         return $this->hasOne(Profile::class);
     }
+
+    public function employees(){
+        return $this->hasMany(Employee::class);
+    }
 }
