@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Employee;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class EmployeeController extends Controller
 {
@@ -21,7 +23,8 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        //
+        $employees = Employee::all();
+        return view('admin.employees.index',compact('employees'));
     }
 
     /**
@@ -31,7 +34,7 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.employees.create');
     }
 
     /**
@@ -42,7 +45,31 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'nullable|email|unique:employees,email',
+            'address' => 'required'
+        ]);
+
+        $data = $request->all();
+        $data['user_id'] = auth()->user()->id;
+
+        $employee = Employee::create($data);
+
+        $user = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make('123456789')
+        ];
+
+        $userId = User::create($user);
+        $userId->assignRole('Employee');
+
+        $employee->update([
+            'employee_id' => $userId->id
+        ]);
+
+        return redirect('admin/employees');
     }
 
     /**

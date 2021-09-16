@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\EmployeeController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -28,4 +30,5 @@ Route::middleware('auth')->group(function (){
     Route::resource('/admin/roles', RoleController::class);
     Route::resource('/admin/users', UserController::class);
     Route::resource('/admin/profiles',ProfileController::class);
+    Route::resource('/admin/employees', EmployeeController::class);
 });

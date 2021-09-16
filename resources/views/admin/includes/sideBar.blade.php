@@ -43,12 +43,12 @@
             </li>
             <li class="sidenav-item">
                 <a href="{{ url('admin/profiles') }}" class="sidenav-link">
-                    <div>Profiles</div>
+                    <div>Manage Profiles</div>
                 </a>
             </li>
             <li class="sidenav-item">
-                <a href="charts_morrisjs.html" class="sidenav-link">
-                    <div>Charts</div>
+                <a href="{{ url('admin/employees') }}" class="sidenav-link">
+                    <div>Manage Employees</div>
                 </a>
             </li>
             <li class="sidenav-item">
