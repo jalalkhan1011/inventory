@@ -23,7 +23,7 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employees = Employee::all();
+        $employees = Employee::latest()->paginate(10);
         return view('admin.employees.index',compact('employees'));
     }
 
@@ -91,7 +91,7 @@ class EmployeeController extends Controller
      */
     public function edit(Employee $employee)
     {
-        //
+        return view('admin.employees.edit',compact('employee'));
     }
 
     /**
@@ -103,7 +103,25 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, Employee $employee)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'nullable|email|unique:employees,email,'.$employee->id,
+            'address' => 'required'
+        ]);
+
+        $data = $request->all();
+        $data['user_id'] = auth()->user()->id;
+
+        $employee->update($data);
+
+        $userId = [
+            'name' => $request->name,
+            'email' => $request->email,
+        ];
+        $user = User::where('id',$employee->employee_id)->first();
+        $user->update($userId);
+
+        return back();
     }
 
     /**
@@ -114,6 +132,8 @@ class EmployeeController extends Controller
      */
     public function destroy(Employee $employee)
     {
-        //
+        $employee->delete();
+
+        return back();
     }
 }

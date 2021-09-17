@@ -54,6 +54,7 @@
                     @endif
                 </div>
                 <button type="submit" class="btn btn-primary">Save</button>
+                <a href="{{ url('admin/employees') }}" class="btn btn-primary" title="Back">Back</a>
             </form>
         </div>
     </div>
