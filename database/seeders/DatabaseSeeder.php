@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Suppliers;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -23,9 +24,11 @@ class DatabaseSeeder extends Seeder
             PermissionTableSeeder::class,
             CreateAdminUserSeeder::class,
             UserTableSeeder::class,
+            ManagerUserSeeder::class,
             EmployeeUserSeeder::class,
             ProfileTableSeeder::class,
             EmployeeTableSeeder::class,
+            SupplierTableSeeder::class,
         ]);
     }
 }

@@ -52,8 +52,8 @@
                 </a>
             </li>
             <li class="sidenav-item">
-                <a href="bui_dropdowns.html" class="sidenav-link">
-                    <div>Dropdowns</div>
+                <a href="{{ url('admin/suppliers') }}" class="sidenav-link">
+                    <div>Manage Supplier</div>
                 </a>
             </li>
             <li class="sidenav-item">
