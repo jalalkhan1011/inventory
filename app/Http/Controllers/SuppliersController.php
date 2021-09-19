@@ -76,9 +76,10 @@ class SuppliersController extends Controller
      * @param  \App\Models\Suppliers  $suppliers
      * @return \Illuminate\Http\Response
      */
-    public function edit(Suppliers $suppliers)
+    public function edit(Suppliers $suppliers,$id)
     {
-        //
+        $suppliers = Suppliers::findOrFail($id);
+        return view('admin.suppliers.edit',compact('suppliers'));
     }
 
     /**
@@ -88,9 +89,23 @@ class SuppliersController extends Controller
      * @param  \App\Models\Suppliers  $suppliers
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Suppliers $suppliers)
+    public function update(Request $request, Suppliers $suppliers,$id)
     {
-        //
+        $suppliers = Suppliers::findOrFail($id);
+        $request->validate([
+            'name' => 'required',
+            'shop_name' => 'required',
+            'mobile' => 'required|min:11|max:11|unique:suppliers,mobile,'.$suppliers->id,
+            'email' => 'nullable|email|unique:suppliers,email,'.$suppliers->id,
+            'address' => 'required'
+        ]);
+
+        $data = $request->all();
+        $data['user_id'] = auth()->user()->id;
+
+        $suppliers->update($data);
+
+        return back();
     }
 
     /**
@@ -99,8 +114,11 @@ class SuppliersController extends Controller
      * @param  \App\Models\Suppliers  $suppliers
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Suppliers $suppliers)
+    public function destroy(Suppliers $suppliers,$id)
     {
-        //
+        $suppliers = Suppliers::findOrfail($id);
+        $suppliers->delete();
+
+        return redirect('admin/suppliers');
     }
 }
