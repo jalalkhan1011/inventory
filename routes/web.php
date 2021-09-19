@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\SuppliersController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\BrandController;
 
 
 /*
@@ -35,4 +36,5 @@ Route::middleware('auth')->group(function (){
     Route::resource('/admin/employees', EmployeeController::class);
     Route::resource('/admin/suppliers', SuppliersController::class);
     Route::resource('/admin/categories', CategoryController::class);
+    Route::resource('/admin/brands', BrandController::class);
 });

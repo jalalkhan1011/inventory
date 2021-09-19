@@ -75,8 +75,8 @@
                 </a>
             </li>
             <li class="sidenav-item">
-                <a href="forms_input-groups.html" class="sidenav-link">
-                    <div>Input groups</div>
+                <a href="{{ route('brands.index') }}" class="sidenav-link">
+                    <div>Brand</div>
                 </a>
             </li>
         </ul>
