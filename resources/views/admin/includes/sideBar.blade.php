@@ -79,6 +79,11 @@
                     <div>Brand</div>
                 </a>
             </li>
+            <li class="sidenav-item">
+                <a href="{{ route('products.index') }}" class="sidenav-link">
+                    <div>Products</div>
+                </a>
+            </li>
         </ul>
     </li>
     <li class="sidenav-item">

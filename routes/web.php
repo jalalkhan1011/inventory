@@ -8,6 +8,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\SuppliersController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\ProductController;
 
 
 /*
@@ -37,4 +38,5 @@ Route::middleware('auth')->group(function (){
     Route::resource('/admin/suppliers', SuppliersController::class);
     Route::resource('/admin/categories', CategoryController::class);
     Route::resource('/admin/brands', BrandController::class);
+    Route::resource('/admin/products', ProductController::class);
 });
