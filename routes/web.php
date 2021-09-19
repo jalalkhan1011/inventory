@@ -6,6 +6,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\SuppliersController;
+use App\Http\Controllers\CategoryController;
 
 
 /*
@@ -33,4 +34,5 @@ Route::middleware('auth')->group(function (){
     Route::resource('/admin/profiles',ProfileController::class);
     Route::resource('/admin/employees', EmployeeController::class);
     Route::resource('/admin/suppliers', SuppliersController::class);
+    Route::resource('/admin/categories', CategoryController::class);
 });

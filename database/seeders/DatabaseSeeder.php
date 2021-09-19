@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
             ProfileTableSeeder::class,
             EmployeeTableSeeder::class,
             SupplierTableSeeder::class,
+            CategoryTableSeeder::class,
         ]);
     }
 }

@@ -53,4 +53,8 @@ class User extends Authenticatable
     public function suppliers(){
         return $this->hasMany(Suppliers::class);
     }
+
+    public function categories(){
+        return $this->hasMany(Category::class);
+    }
 }

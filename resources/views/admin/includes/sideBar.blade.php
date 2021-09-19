@@ -56,32 +56,22 @@
                     <div>Manage Supplier</div>
                 </a>
             </li>
-            <li class="sidenav-item">
-                <a href="bui_pagination.html" class="sidenav-link">
-                    <div>Pagination and breadcrumbs</div>
-                </a>
-            </li>
-            <li class="sidenav-item">
-                <a href="bui_progress.html" class="sidenav-link">
-                    <div>Progress bars</div>
-                </a>
-            </li>
         </ul>
 {{--        @endif--}}
     </li>
 
 
     <li class="sidenav-divider mb-1"></li>
-    <li class="sidenav-header small font-weight-semibold">Forms & Tables</li>
+    <li class="sidenav-header small font-weight-semibold">Product</li>
     <li class="sidenav-item">
         <a href="javascript:" class="sidenav-link sidenav-toggle">
             <i class="sidenav-icon feather icon-clipboard"></i>
-            <div>Forms</div>
+            <div>Product Management</div>
         </a>
         <ul class="sidenav-menu">
             <li class="sidenav-item">
-                <a href="forms_layouts.html" class="sidenav-link">
-                    <div>Layouts and elements</div>
+                <a href="{{ url('admin/categories') }}" class="sidenav-link">
+                    <div>Category</div>
                 </a>
             </li>
             <li class="sidenav-item">
