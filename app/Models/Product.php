@@ -16,6 +16,8 @@ class Product extends Model
         'category_id',
         'brand_id',
         'qty',
+        'purchase_date',
+        'expire_date',
         'status',
         'description',
         'user_id'

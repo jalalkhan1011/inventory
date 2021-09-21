@@ -42,6 +42,20 @@
                             </span>
                         @endif
                     </div>
+                    <div class="form-group col-md-12">
+                        <label class="form-label">Status <span class="text-danger"> *</span></label>
+                        <select class="custom-select" name="status">
+                            <option>Select state</option>
+                            <option value="Active">Active</option>
+                            <option value="Inactive">Inactive</option>
+                        </select>
+                        <div class="clearfix"></div>
+                        @if($errors->has('Status'))
+                            <span class="form-text">
+                                <strong class="text-danger form-control-sm">{{ $errors->first('Status') }}</strong>
+                            </span>
+                        @endif
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Save</button>
                 <a href="{{ url('admin/categories') }}" class="btn btn-primary" title="Back">Back</a>
