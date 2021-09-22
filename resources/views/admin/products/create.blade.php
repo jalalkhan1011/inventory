@@ -8,8 +8,8 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-lg-12 text-left">
-                    <h6>Employee</h6>
-                    <p class="text-info">Create employee</p>
+                    <h6>Product</h6>
+                    <p class="text-info">Create Product</p>
                 </div>
             </div>
             <hr>
@@ -22,7 +22,7 @@
             <form action="{{ route('products.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-row">
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-12">
                         <label class="form-label">Name <span class="text-danger"> *</span></label>
                         <input type="text" name="name" value="{{ old('name') }}" class="form-control" placeholder="Name" required/>
                         <div class="clearfix"></div>
@@ -34,27 +34,91 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label class="form-label">Category <span class="text-danger"> *</span></label>
-                        <select></select>
+                        <select class="custom-select" name="category_id" required>
+                            <option value="">Select one</option>
+                            @foreach($categories as $key => $category)
+                                <option value="{{ $key }}">{{ $category }}</option>
+                            @endforeach
+                        </select>
                         <div class="clearfix"></div>
-                        @if($errors->has('email'))
+                        @if($errors->has('category_id'))
                             <span class="form-text">
-                                <strong class="text-danger form-control-sm">{{ $errors->first('email') }}</strong>
+                                <strong class="text-danger form-control-sm">{{ $errors->first('category_id') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="form-label">Brand <span class="text-danger"> *</span></label>
+                        <select class="custom-select" name="brand_id" required>
+                            <option value="">Select one</option>
+                        </select>
+                        <div class="clearfix"></div>
+                        @if($errors->has('brand_id'))
+                            <span class="form-text">
+                                <strong class="text-danger form-control-sm">{{ $errors->first('brand_id') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="form-label">Purchase Date <span class="text-danger"> *</span></label>
+                        <input type="date" name="purchase_date" class="form-control" value="{{ date('Y-m-d') }}" required>
+                        <div class="clearfix">
+                            @if($errors->has('purchase_date'))
+                                <span class="form-text">
+                                    <strong class="text-danger form-control-sm">{{ $errors->first('purchase_date') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="form-label">Purchase Date <span class="text-danger"> *</span></label>
+                        <input type="date" name="expire_date" class="form-control" value="{{ date('Y-m-d') }}" required>
+                        <div class="clearfix">
+                            @if($errors->has('expire_date'))
+                                <span class="form-text">
+                                    <strong class="text-danger form-control-sm">{{ $errors->first('expire_date') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="form-label">Quantity <span class="text-danger"> *</span></label>
+                        <input type="number" name="qty" class="form-control" value="{{ old('qty') }}" required>
+                        <div class="clearfix">
+                            @if($errors->has('qty'))
+                                <span class="form-text">
+                                    <strong class="text-danger form-control-sm">{{ $errors->first('qty') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="form-label">Status <span class="text-danger"> *</span></label>
+                        <select class="custom-select" name="Status" required>
+                            <option value="">Select one</option>
+                            <option value="Active" selected>Active</option>
+                            <option value="Active">Inactive</option>
+                        </select>
+                        <div class="clearfix"></div>
+                        @if($errors->has('Status'))
+                            <span class="form-text">
+                                <strong class="text-danger form-control-sm">{{ $errors->first('Status') }}</strong>
                             </span>
                         @endif
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-label">Address <span class="text-danger"> *</span></label>
-                    <input type="text" name="address" class="form-control" placeholder="1234 Main St" required/>
+                    <label class="form-label">Description <span class="text-danger"> </span></label>
+                    <textarea  name="description" class="form-control" placeholder="Write here">{{ old(('description')) }}</textarea>
                     <div class="clearfix"></div>
-                    @if($errors->has('address'))
+                    @if($errors->has('description'))
                         <span class="form-text">
-                            <strong class="text-danger form-control-sm">{{ $errors->first('address') }}</strong>
+                            <strong class="text-danger form-control-sm">{{ $errors->first('description') }}</strong>
                         </span>
                     @endif
                 </div>
                 <button type="submit" class="btn btn-primary">Save</button>
-                <a href="{{ url('admin/employees') }}" class="btn btn-primary" title="Back">Back</a>
+                <a href="{{ url('admin/products') }}" class="btn btn-primary" title="Back">Back</a>
             </form>
         </div>
     </div>

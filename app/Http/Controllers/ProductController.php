@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -32,7 +33,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.products.create');
+        $categories = Category::where('status','Active')->pluck('name','id');
+        return view('admin.products.create',compact('categories'));
     }
 
     /**
@@ -43,7 +45,23 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'category_id' => 'required',
+            'brand_id' => 'required',
+            'qty' => 'required|numeric',
+            'status' => 'required',
+            'description' => 'nullable',
+            'purchase_date' => 'required',
+            'expire_date' => 'required'
+        ]);
+
+        $data = $request->all();
+        $data['user_id'] = auth()->user()->id;
+
+        Product::create($data);
+
+        return redirect('admin/products');
     }
 
     /**

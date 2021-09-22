@@ -43,6 +43,20 @@
                             </span>
                         @endif
                     </div>
+                    <div class="form-group col-md-12">
+                        <label class="form-label">Status <span class="text-danger"> *</span></label>
+                        <select class="custom-select" name="status">
+                            <option>Select state</option>
+                            <option value="Active" {{ $brand->status == 'Active' ? 'selected' : '' }}>Active</option>
+                            <option value="Inactive" {{ $brand->status == 'Inactive' ? 'selected' : '' }}>Inactive</option>
+                        </select>
+                        <div class="clearfix"></div>
+                        @if($errors->has('Status'))
+                            <span class="form-text">
+                                <strong class="text-danger form-control-sm">{{ $errors->first('Status') }}</strong>
+                            </span>
+                        @endif
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Update</button>
                 <a href="{{ url('admin/brands') }}" class="btn btn-primary" title="Back">Back</a>
