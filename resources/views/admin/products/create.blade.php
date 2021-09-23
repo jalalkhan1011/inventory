@@ -22,13 +22,23 @@
             <form action="{{ route('products.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-row">
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-md-6">
                         <label class="form-label">Name <span class="text-danger"> *</span></label>
                         <input type="text" name="name" value="{{ old('name') }}" class="form-control" placeholder="Name" required/>
                         <div class="clearfix"></div>
                         @if($errors->has('name'))
                             <span class="form-text">
                                 <strong class="text-danger form-control-sm">{{ $errors->first('name') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="form-label">Code <span class="text-danger"> *</span></label>
+                        <input type="text" name="code" value="{{ $code }}" class="form-control" placeholder="#p-1011" required readonly/>
+                        <div class="clearfix"></div>
+                        @if($errors->has('code'))
+                            <span class="form-text">
+                                <strong class="text-danger form-control-sm">{{ $errors->first('code') }}</strong>
                             </span>
                         @endif
                     </div>
@@ -51,6 +61,9 @@
                         <label class="form-label">Brand <span class="text-danger"> *</span></label>
                         <select class="custom-select" name="brand_id" required>
                             <option value="">Select one</option>
+                            @foreach($brands as $key => $brand)
+                                <option value="{{ $key }}">{{ $brand }}</option>
+                            @endforeach
                         </select>
                         <div class="clearfix"></div>
                         @if($errors->has('brand_id'))
@@ -83,7 +96,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label class="form-label">Quantity <span class="text-danger"> *</span></label>
-                        <input type="number" name="qty" class="form-control" value="{{ old('qty') }}" required>
+                        <input type="number" name="qty" class="form-control" step="0.01" min = "1" onkeypress="return isNumeric()"  oninput="maxLengthCheck(this)" maxlength="5" value="{{ old('qty') }}" required>
                         <div class="clearfix">
                             @if($errors->has('qty'))
                                 <span class="form-text">
@@ -94,7 +107,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label class="form-label">Status <span class="text-danger"> *</span></label>
-                        <select class="custom-select" name="Status" required>
+                        <select class="custom-select" name="status" required>
                             <option value="">Select one</option>
                             <option value="Active" selected>Active</option>
                             <option value="Active">Inactive</option>
@@ -109,7 +122,7 @@
                 </div>
                 <div class="form-group">
                     <label class="form-label">Description <span class="text-danger"> </span></label>
-                    <textarea  name="description" class="form-control" placeholder="Write here">{{ old(('description')) }}</textarea>
+                    <textarea  name="description" class="form-control" placeholder="Write here" rows="10">{{ old('description') }}</textarea>
                     <div class="clearfix"></div>
                     @if($errors->has('description'))
                         <span class="form-text">
@@ -123,4 +136,12 @@
         </div>
     </div>
 @endsection
+@push('js')
+    <script>
+        function maxLengthCheck(object) {
+            if (object.value.length > object.maxLength)
+                object.value = object.value.slice(0, object.maxLength)
+        }
+    </script>
+@endpush
 

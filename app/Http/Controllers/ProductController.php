@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -21,7 +22,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::where('status','Active')->latest()->paginate(10);
+        $products = Product::latest()->paginate(10);
 
         return view('admin.products.index',compact('products'));
     }
@@ -34,7 +35,10 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::where('status','Active')->pluck('name','id');
-        return view('admin.products.create',compact('categories'));
+        $brands = Brand::where('status','Active')->pluck('name','id');
+        $code = '#p'.' '.'-'.' '.mt_rand(1000000,9999999);
+
+        return view('admin.products.create',compact('categories','brands','code'));
     }
 
     /**
@@ -46,11 +50,10 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:products,name',
             'category_id' => 'required',
             'brand_id' => 'required',
             'qty' => 'required|numeric',
-            'status' => 'required',
             'description' => 'nullable',
             'purchase_date' => 'required',
             'expire_date' => 'required'
@@ -83,7 +86,12 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        $categories = Category::where('status','Active')->pluck('name','id');
+        $selected_categories = $product->category->id;
+        $brands = Brand::where('status','Active')->pluck('name','id');
+        $selected_brand = $product->brand->id;
+
+        return view('admin.products.edit',compact('product','categories','brands','selected_categories','selected_brand'));
     }
 
     /**
@@ -95,7 +103,43 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $request->validate([
+            'name' => 'sometimes|required|unique:products,name,'.$product->id,
+            'category_id' => 'required',
+            'brand_id' => 'required',
+            'qty' => 'required|numeric',
+            'description' => 'nullable',
+            'purchase_date' => 'required',
+            'expire_date' => 'required'
+        ]);
+
+        $productQty = $product->qty;
+        $requestQty = $request->qty;
+
+        if($requestQty >= $productQty){
+            $qty = $requestQty - $productQty;
+            $totalQty = $productQty + $qty;
+        }else{
+            $qty = $productQty - $requestQty;
+            $totalQty = $productQty - $qty;
+        }
+
+        $data = [
+            'name' => $request->name,
+            'code' => $product->code,
+            'category_id' => $request->category_id,
+            'brand_id' => $request->brand_id,
+            'purchase_date' => date('Y-m-d',strtotime($request->purchase_date)),
+            'expire_date' => date('Y-m-d',strtotime($request->expire_date)),
+            'qty' => $totalQty,
+            'status' => $request->status,
+            'description' => $request->description,
+            'user_id' => auth()->user()->id
+        ];
+
+        $product->update($data);
+
+        return redirect()->back();
     }
 
     /**
@@ -106,6 +150,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+
+        return redirect('admin/products');
     }
 }

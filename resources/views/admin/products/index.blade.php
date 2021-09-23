@@ -30,7 +30,10 @@
                 <tr>
                     <th>No</th>
                     <th>Name</th>
-                    <th>Description</th>
+                    <th>Code</th>
+                    <th>Category</th>
+                    <th>Brand</th>
+                    <th>Qty</th>
                     <th width="280px">Action</th>
                 </tr>
                 </thead>
@@ -40,19 +43,22 @@
                     <tr>
                         <td>{{ sprintf('%02d',++$i) }}</td>
                         <td>{{ $product->name }}</td>
-                        <td>{{ $product->description }}</td>
+                        <td>{{ $product->code ? $product->code : 'NUll' }}</td>
+                        <td>{{ $product->category->name }}</td>
+                        <td>{{ $product->brand->name }}</td>
+                        <td>{{ $product->qty }}</td>
                         <td>
-{{--                            <ul class="list-inline">--}}
-{{--                                <li class="list-inline-item"><a href="" class="btn btn-sm btn-info" title="Show"><i class="fa fa-eye"></i> </a></li>--}}
-{{--                                <li class="list-inline-item"><a href="{{ route('brands.edit',$brand->id) }}" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil-alt"></i> </a> </li>--}}
-{{--                                <li class="list-inline-item">--}}
-{{--                                    <form class="" action="{{ route('brands.destroy',$brand->id) }}" method="post">--}}
-{{--                                        @csrf--}}
-{{--                                        @method('delete')--}}
-{{--                                        <button type="submit" class="btn btn-sm btn-danger" title="Delete" onclick="return confirm('Are you want to delete {{$brand->name}} ?')"><i class="fa fa-trash-alt"></i> </button>--}}
-{{--                                    </form>--}}
-{{--                                </li>--}}
-{{--                            </ul>--}}
+                            <ul class="list-inline">
+                                <li class="list-inline-item"><a href="" class="btn btn-sm btn-info" title="Show"><i class="fa fa-eye"></i> </a></li>
+                                <li class="list-inline-item"><a href="{{ route('products.edit',$product->id) }}" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil-alt"></i> </a> </li>
+                                <li class="list-inline-item">
+                                    <form class="" action="{{ route('products.destroy',$product->id) }}" method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="btn btn-sm btn-danger" title="Delete" onclick="return confirm('Are you want to delete {{$product->name}} ?')"><i class="fa fa-trash-alt"></i> </button>
+                                    </form>
+                                </li>
+                            </ul>
                         </td>
                     </tr>
                 @endforeach
