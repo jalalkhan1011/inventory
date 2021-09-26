@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Suppliers;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -36,9 +37,10 @@ class ProductController extends Controller
     {
         $categories = Category::where('status','Active')->pluck('name','id');
         $brands = Brand::where('status','Active')->pluck('name','id');
+        $suppliers = Suppliers::pluck('name','id');
         $code = '#p'.' '.'-'.' '.mt_rand(1000000,9999999);
 
-        return view('admin.products.create',compact('categories','brands','code'));
+        return view('admin.products.create',compact('categories','brands','suppliers','code'));
     }
 
     /**
@@ -50,10 +52,14 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|unique:products,name,NULL,id,deleted_at,NULL',
+            'name' => 'required|unique:products,name,NULL,id,deleted_at,NULL',//validation for unique value
             'category_id' => 'required',
             'brand_id' => 'required',
             'qty' => 'required|numeric',
+            'unit_price' => 'required|numeric',
+            'sale_price' => 'required|numeric',
+            'total_price' => 'required|numeric',
+            'supplier_id' => 'required',
             'description' => 'nullable',
             'purchase_date' => 'required',
             'expire_date' => 'required'
@@ -90,28 +96,13 @@ class ProductController extends Controller
         $selected_categories = $product->category->id;
         $brands = Brand::where('status','Active')->pluck('name','id');
         $selected_brand = $product->brand->id;
+        $suppliers = Suppliers::pluck('name','id');
+        $selected_supplier = $product->supplier->id;
 
-        return view('admin.products.edit',compact('product','categories','brands','selected_categories','selected_brand'));
+        return view('admin.products.edit',compact('product','categories','brands','suppliers','selected_categories','selected_brand','selected_supplier'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Product $product)
-    {
-        $request->validate([
-            'name' => 'sometimes|required|unique:products,name,'.$product->id,
-            'category_id' => 'required',
-            'brand_id' => 'required',
-            'qty' => 'required|numeric',
-            'description' => 'nullable',
-            'purchase_date' => 'required',
-            'expire_date' => 'required'
-        ]);
+    private function productQty(Request $request,Product $product){
 
         $productQty = $product->qty;
         $requestQty = $request->qty;
@@ -124,6 +115,66 @@ class ProductController extends Controller
             $totalQty = $productQty - $qty;
         }
 
+        return $totalQty;
+    }
+
+    private function unitPrice(Request $request,Product $product){
+        $unitPrice = $product->unit_price;
+        $requestUnitPrice = $request->unit_price;
+
+        if($requestUnitPrice >= $unitPrice){
+            $price = $requestUnitPrice - $unitPrice;
+            $totalUnitPrice = $unitPrice + $price;
+        }else{
+            $price = $unitPrice - $requestUnitPrice;
+            $totalUnitPrice = $unitPrice - $price;
+        }
+
+        return $totalUnitPrice;
+    }
+
+    private function salePrice(Request $request,Product $product){
+        $salePrice = $product->sale_price;
+        $requestSalePrice = $request->sale_price;
+
+        if($requestSalePrice >= $salePrice){
+           $sale = $requestSalePrice - $salePrice;
+           $totalSalePrice = $salePrice + $sale;
+        }else{
+            $sale = $salePrice - $requestSalePrice;
+            $totalSalePrice = $salePrice - $sale;
+        }
+
+        return $totalSalePrice;
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Product  $product
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Product $product)
+    {
+        $request->validate([
+            'name' => 'required|unique:products,name,'.$product->id.',id,deleted_at,NULL',//validation for unique value
+            'category_id' => 'required',
+            'brand_id' => 'required',
+            'qty' => 'required|numeric',
+            'unit_price' => 'required|numeric',
+            'sale_price' => 'required|numeric',
+            'total_price' => 'required|numeric',
+            'supplier_id' => 'required',
+            'description' => 'nullable',
+            'purchase_date' => 'required',
+            'expire_date' => 'required'
+        ]);
+
+        $totalQty = $this->productQty($request,$product);
+        $totalUnitPrice = $this->unitPrice($request,$product);
+        $totalSalePrice = $this->salePrice($request,$product);
+
         $data = [
             'name' => $request->name,
             'code' => $product->code,
@@ -132,6 +183,10 @@ class ProductController extends Controller
             'purchase_date' => date('Y-m-d',strtotime($request->purchase_date)),
             'expire_date' => date('Y-m-d',strtotime($request->expire_date)),
             'qty' => $totalQty,
+            'unit_price' => $totalUnitPrice,
+            'sale_price' => $totalSalePrice,
+            'total_price' => $request->total_price,
+            'supplier_id' => $request->supplier_id,
             'status' => $request->status,
             'description' => $request->description,
             'user_id' => auth()->user()->id

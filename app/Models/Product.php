@@ -16,7 +16,11 @@ class Product extends Model
         'code',
         'category_id',
         'brand_id',
+        'supplier_id',
         'qty',
+        'unit_price',
+        'sale_price',
+        'total_price',
         'purchase_date',
         'expire_date',
         'status',
@@ -34,5 +38,9 @@ class Product extends Model
 
     public function brand(){
         return $this->belongsTo(Brand::class,'brand_id');
+    }
+
+    public function supplier(){
+        return $this->belongsTo(Suppliers::class,'supplier_id');
     }
 }

@@ -97,7 +97,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label class="form-label">Quantity <span class="text-danger"> *</span></label>
-                        <input type="number" name="qty" class="form-control" step="0.01" min = "1" onkeypress="return isNumeric()"  oninput="maxLengthCheck(this)" maxlength="5" value="{{ old('qty',$product->qty) }}" required>
+                        <input type="number" name="qty" id="qty" class="form-control" step="0.01" min = "1"   oninput="maxLengthCheck(this)" maxlength="5" value="{{ old('qty',$product->qty) }}" required>
                         <div class="clearfix">
                             @if($errors->has('qty'))
                                 <span class="form-text">
@@ -105,6 +105,54 @@
                                 </span>
                             @endif
                         </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="form-label">Unit price <span class="text-danger"> *</span></label>
+                        <input type="number" name="unit_price" id="unit_price" class="form-control" step="0.01" min = "1"   oninput="maxLengthCheck(this)" maxlength="5" value="{{ old('unit_price',$product->unit_price) }}" required>
+                        <div class="clearfix">
+                            @if($errors->has('unit_price'))
+                                <span class="form-text">
+                                    <strong class="text-danger form-control-sm">{{ $errors->first('unit_price') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="form-label">Sale price <span class="text-danger"> *</span></label>
+                        <input type="number" name="sale_price" id="sale_price" class="form-control" step="0.01" min = "1"   oninput="maxLengthCheck(this)" maxlength="5" value="{{ old('sale_price',$product->sale_price) }}" required>
+                        <div class="clearfix">
+                            @if($errors->has('sale_price'))
+                                <span class="form-text">
+                                    <strong class="text-danger form-control-sm">{{ $errors->first('sale_price') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="form-label">Total price <span class="text-danger"> *</span></label>
+                        <input type="number" name="total_price" id="total_price" class="form-control" step="0.01" min = "1"   oninput="maxLengthCheck(this)" maxlength="5" value="{{ $product->total_price }}" placeholder="0.00" required readonly>
+                        <div class="clearfix">
+                            @if($errors->has('total_price'))
+                                <span class="form-text">
+                                    <strong class="text-danger form-control-sm">{{ $errors->first('total_price') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="form-label">Supplier <span class="text-danger"> *</span></label>
+                        <select class="custom-select" name="supplier_id" required>
+                            <option value="">Select one</option>
+                            @foreach($suppliers as $key => $supplier)
+                                <option value="{{ $key }}" {{ $key == $selected_supplier ? 'selected' : '' }}>{{ $supplier }}</option>
+                            @endforeach
+                        </select>
+                        <div class="clearfix"></div>
+                        @if($errors->has('supplier_id'))
+                            <span class="form-text">
+                                <strong class="text-danger form-control-sm">{{ $errors->first('supplier_id') }}</strong>
+                            </span>
+                        @endif
                     </div>
                     <div class="form-group col-md-6">
                         <label class="form-label">Status <span class="text-danger"> *</span></label>
@@ -138,6 +186,24 @@
     </div>
 @endsection
 @push('js')
+    <script>
+        $('#qty').on('keyup chang',function (){
+            var qty = parseFloat($('#qty').val())||0;
+            var unitPrice = parseFloat($('#unit_price').val())||0;
+
+            var Price = parseFloat(qty * unitPrice);
+
+            $('#total_price').val(parseFloat(Price).toFixed(2));
+        });
+        $('#unit_price').on('keyup chang',function (){
+            var qty = parseFloat($('#qty').val())||0;
+            var unitPrice = parseFloat($('#unit_price').val())||0;
+
+            var Price = parseFloat(qty * unitPrice);
+
+            $('#total_price').val(parseFloat(Price).toFixed(2));
+        })
+    </script>
     <script>
         function maxLengthCheck(object) {
             if (object.value.length > object.maxLength)
