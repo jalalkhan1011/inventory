@@ -56,6 +56,11 @@
                     <div>Manage Supplier</div>
                 </a>
             </li>
+            <li class="sidenav-item">
+                <a href="{{ route('customers.index') }}" class="sidenav-link">
+                    <div>Manage Customer</div>
+                </a>
+            </li>
         </ul>
 {{--        @endif--}}
     </li>
