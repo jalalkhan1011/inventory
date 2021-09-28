@@ -42,13 +42,13 @@
                     <tr>
                         <td>{{ sprintf('%02d',++$i) }}</td>
                         <td>{{ $customer->name }}</td>
-                        <td>{{ $customer->email }}</td>
+                        <td>{{ $customer->email ? $customer->email : 'Null' }}</td>
                         <td>{{ $customer->mobile }}</td>
                         <td>{{ $customer->address }}</td>
                         <td>
                             <ul class="list-inline">
                                 <li class="list-inline-item"><a href="" class="btn btn-sm btn-info" title="Show"><i class="fa fa-eye"></i> </a></li>
-                                <li class="list-inline-item"><a href="{{ route('categories.edit',$customer->id) }}" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil-alt"></i> </a> </li>
+                                <li class="list-inline-item"><a href="{{ route('customers.edit',$customer->id) }}" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil-alt"></i> </a> </li>
                                 <li class="list-inline-item">
                                     <form class="" action="{{ route('customers.destroy',$customer->id) }}" method="post">
                                         @csrf

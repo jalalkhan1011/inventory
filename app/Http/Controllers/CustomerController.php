@@ -34,7 +34,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.customers.create');
     }
 
     /**
@@ -45,7 +45,19 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'mobile' => 'required|unique:customers,mobile',
+            'email' => 'nullable|unique:customers,email',
+            'zip_code' => 'nullable'
+        ]);
+
+        $data = $request->all();
+        $data['user_id'] = auth()->user()->id;
+
+        Customer::create($data);
+
+        return redirect('admin/index');
     }
 
     /**
@@ -67,7 +79,7 @@ class CustomerController extends Controller
      */
     public function edit(Customer $customer)
     {
-        //
+        return view('admin.customers.edit',compact('customer'));
     }
 
     /**
@@ -79,7 +91,19 @@ class CustomerController extends Controller
      */
     public function update(Request $request, Customer $customer)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'mobile' => 'sometimes|required|unique:customers,mobile,'.$customer->id,
+            'email' => 'sometimes|nullable|unique:customers,email,'.$customer->id,
+            'zip_code' => 'nullable'
+        ]);
+
+        $data = $request->all();
+        $data['user_id'] = auth()->user()->id;
+
+       $customer->update($data);
+
+        return redirect()->back();
     }
 
     /**
@@ -90,6 +114,8 @@ class CustomerController extends Controller
      */
     public function destroy(Customer $customer)
     {
-        //
+        $customer->delete();
+
+        return redirect()->back();
     }
 }
