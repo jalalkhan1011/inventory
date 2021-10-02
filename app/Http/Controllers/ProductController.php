@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\ProductTransaction;
 use App\Models\Suppliers;
 use Illuminate\Http\Request;
 
@@ -68,7 +69,24 @@ class ProductController extends Controller
         $data = $request->all();
         $data['user_id'] = auth()->user()->id;
 
-        Product::create($data);
+        $product = Product::create($data);
+
+        $data = [
+            'product_id' => $product->id,
+            'category_id' => $product->category_id,
+            'brand_id' => $product->brand_id,
+            'supplier_id' => $product->supplier_id,
+            'p_qty' => $product->qty,
+            'p_unit_amount' => $product->unit_price,
+            's_unit_amount' => $product->sale_price,
+            'p_total_amount' => $product->total_price,
+            'employee_id' => auth()->user()->id,
+            'status' => 'p',
+            'user_id' => auth()->user()->id,
+            'created_at' => now()
+        ];
+
+        $productTransaction = ProductTransaction::create($data);
 
         return redirect('admin/products');
     }

@@ -22,4 +22,8 @@ class Employee extends Model
     public function user(){
         return $this->belongsTo(User::class,'user_id');
     }
+
+    public function productTransaction(){
+        return $this->hasMany(ProductTransaction::class);
+    }
 }
