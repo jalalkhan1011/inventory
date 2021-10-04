@@ -11,12 +11,11 @@
                     <h6>Product category</h6>
                     <p class="text-info">See all category</p>
                 </div>
-                @if(Auth::user()->hasRole('Admin'))
-                    <div class="col-lg-6 text-right">
-                        @can('employee-create')
-                            <a class="btn btn-success" href="{{ route('categories.create') }}"> Create New Category</a>
-                        @endcan
-                    </div>
+                <div class="col-lg-6 text-right">
+                    @can('employee-create')
+                        <a class="btn btn-success" href="{{ route('categories.create') }}"> Create New Category</a>
+                    @endcan
+                </div>
             </div>
             <hr>
             @if(session('message'))
@@ -56,7 +55,6 @@
                         </td>
                     </tr>
                 @endforeach
-                @endif
                 </tbody>
             </table>
             {{ $categories->links() }}

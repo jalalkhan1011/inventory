@@ -13,7 +13,7 @@ class RoleController extends Controller
 {
     function __construct()
     {
-        $this->middleware('permission:role-list|role-create|role-edit|role-delete', ['only' => ['index','store']]);
+        $this->middleware('permission:role-list|role-create|role-edit|role-delete', ['only' => ['index','show']]);
         $this->middleware('permission:role-create', ['only' => ['create','store']]);
         $this->middleware('permission:role-edit', ['only' => ['edit','update']]);
         $this->middleware('permission:role-delete', ['only' => ['destroy']]);
@@ -28,9 +28,9 @@ class RoleController extends Controller
      */
     public function index(Request $request)
     {
-        if(Auth::user()->hasRole('Admin')) {
+
             $roles = Role::orderBy('id', 'DESC')->paginate(5);
-        }
+
         return view('admin.roles.index',compact('roles'))->with('i', ($request->input('page', 1) - 1) * 5);
     }
 

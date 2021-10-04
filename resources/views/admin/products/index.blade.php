@@ -9,14 +9,13 @@
             <div class="row">
                 <div class="col-lg-6 text-left">
                     <h6>Products</h6>
-                    <p class="text-info">See all brand</p>
+                    <p class="text-info">See all products</p>
                 </div>
-                @if(Auth::user()->hasRole('Admin'))
-                    <div class="col-lg-6 text-right">
-                        @can('employee-create')
-                            <a class="btn btn-success" href="{{ route('products.create') }}"> Create New Product</a>
-                        @endcan
-                    </div>
+                <div class="col-lg-6 text-right">
+                    @can('product-create')
+                        <a class="btn btn-success" href="{{ route('products.create') }}"> Create New Product</a>
+                    @endcan
+                </div>
             </div>
             <hr>
             @if(session('message'))
@@ -62,7 +61,6 @@
                         </td>
                     </tr>
                 @endforeach
-                @endif
                 </tbody>
             </table>
             {{ $products->links() }}

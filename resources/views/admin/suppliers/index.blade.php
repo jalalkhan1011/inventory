@@ -11,12 +11,11 @@
                     <h6>Supplier Management</h6>
                     <p class="text-info">See all supplier</p>
                 </div>
-                @if(Auth::user()->hasRole('Admin'))
-                    <div class="col-lg-6 text-right">
-                        @can('employee-create')
-                            <a class="btn btn-success" href="{{ route('suppliers.create') }}"> Create New Supplier</a>
-                        @endcan
-                    </div>
+                <div class="col-lg-6 text-right">
+                    @can('supplier-create')
+                        <a class="btn btn-success" href="{{ route('suppliers.create') }}"> Create New Supplier</a>
+                    @endcan
+                </div>
             </div>
             <hr>
             @if(session('message'))
@@ -62,7 +61,6 @@
                         </td>
                     </tr>
                 @endforeach
-                @endif
                 </tbody>
             </table>
             {{ $suppliers->links() }}

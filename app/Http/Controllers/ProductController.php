@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Employee;
 use App\Models\Product;
 use App\Models\ProductTransaction;
 use App\Models\Suppliers;
@@ -12,9 +13,9 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     function __construct(){
-        $this->middleware('permission:product-list|product-create|product-edit|product-delete', ['only' => ['index,show']]);
-        $this->middleware('permission:product-create', ['only' => ['create,store']]);
-        $this->middleware('permission:product-edit', ['only' => ['edit,update']]);
+        $this->middleware('permission:product-list|product-create|product-edit|product-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:product-create', ['only' => ['create','store']]);
+        $this->middleware('permission:product-edit', ['only' => ['edit','update']]);
         $this->middleware('permission:product-delete', ['only' => ['destroy']]);
     }
     /**
@@ -71,16 +72,27 @@ class ProductController extends Controller
 
         $product = Product::create($data);
 
+
+        $this->productTransaction($product);
+
+        return redirect('admin/products');
+    }
+
+    private function productTransaction($product)
+    {
+        $employeeId = Employee::where('employee_id',auth()->user()->id)->first();
+
         $data = [
             'product_id' => $product->id,
             'category_id' => $product->category_id,
             'brand_id' => $product->brand_id,
             'supplier_id' => $product->supplier_id,
             'p_qty' => $product->qty,
+            'stock_qty' => $product->qty,
             'p_unit_amount' => $product->unit_price,
             's_unit_amount' => $product->sale_price,
             'p_total_amount' => $product->total_price,
-            'employee_id' => auth()->user()->id,
+            'employee_id' => $employeeId->id,
             'status' => 'p',
             'user_id' => auth()->user()->id,
             'created_at' => now()
@@ -88,7 +100,7 @@ class ProductController extends Controller
 
         $productTransaction = ProductTransaction::create($data);
 
-        return redirect('admin/products');
+        return $productTransaction;
     }
 
     /**
@@ -120,7 +132,8 @@ class ProductController extends Controller
         return view('admin.products.edit',compact('product','categories','brands','suppliers','selected_categories','selected_brand','selected_supplier'));
     }
 
-    private function productQty(Request $request,Product $product){
+    private function productQty(Request $request,Product $product)
+    {
 
         $productQty = $product->qty;
         $requestQty = $request->qty;
@@ -136,7 +149,8 @@ class ProductController extends Controller
         return $totalQty;
     }
 
-    private function unitPrice(Request $request,Product $product){
+    private function unitPrice(Request $request,Product $product)
+    {
         $unitPrice = $product->unit_price;
         $requestUnitPrice = $request->unit_price;
 
@@ -151,7 +165,8 @@ class ProductController extends Controller
         return $totalUnitPrice;
     }
 
-    private function salePrice(Request $request,Product $product){
+    private function salePrice(Request $request,Product $product)
+    {
         $salePrice = $product->sale_price;
         $requestSalePrice = $request->sale_price;
 
@@ -164,6 +179,27 @@ class ProductController extends Controller
         }
 
         return $totalSalePrice;
+    }
+
+    private function stockQty(Request $request,Product $product)
+    {
+        $productId = Product::findOrFail($product->id);
+        $productTransaction = ProductTransaction::where('product_id',$productId->id)->first();
+
+        $productQty = $product->qty;
+        $requestQty = $request->qty;
+
+        if($requestQty >= $productQty){
+            $qty = $requestQty - $productQty;
+            $totalQty = $productQty + $qty;
+            $productTransaction->update(['stock_qty' => $totalQty]);
+        }else{
+            $qty = $productQty - $requestQty;
+            $totalQty = $productQty - $qty;
+            $productTransaction->update(['stock_qty' => $totalQty]);
+        }
+
+        return  $productTransaction ;
     }
 
     /**
@@ -186,7 +222,7 @@ class ProductController extends Controller
             'supplier_id' => 'required',
             'description' => 'nullable',
             'purchase_date' => 'required',
-            'expire_date' => 'required'
+            'expire_date' => 'required',
         ]);
 
         $totalQty = $this->productQty($request,$product);
@@ -207,10 +243,13 @@ class ProductController extends Controller
             'supplier_id' => $request->supplier_id,
             'status' => $request->status,
             'description' => $request->description,
-            'user_id' => auth()->user()->id
+            'user_id' => auth()->user()->id,
+            'updated_at' => now()
         ];
 
         $product->update($data);
+
+        $this->stockQty($request,$product);
 
         return redirect()->back();
     }

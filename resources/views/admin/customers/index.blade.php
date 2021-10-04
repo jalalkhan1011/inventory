@@ -11,12 +11,11 @@
                     <h6>Customer Management</h6>
                     <p class="text-info">See all customer</p>
                 </div>
-                @if(Auth::user()->hasRole('Admin'))
-                    <div class="col-lg-6 text-right">
-                        @can('employee-create')
-                            <a class="btn btn-success" href="{{ route('customers.create') }}"> Create New Employee</a>
-                        @endcan
-                    </div>
+                <div class="col-lg-6 text-right">
+                    @can('employee-create')
+                        <a class="btn btn-success" href="{{ route('customers.create') }}"> Create New Employee</a>
+                    @endcan
+                </div>
             </div>
             <hr>
             @if(session('message'))
@@ -60,7 +59,6 @@
                         </td>
                     </tr>
                 @endforeach
-                @endif
                 </tbody>
             </table>
             {{ $customers->links() }}

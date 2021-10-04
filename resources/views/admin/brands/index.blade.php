@@ -11,12 +11,11 @@
                     <h6>Product brand</h6>
                     <p class="text-info">See all brand</p>
                 </div>
-                @if(Auth::user()->hasRole('Admin'))
-                    <div class="col-lg-6 text-right">
-                        @can('employee-create')
-                            <a class="btn btn-success" href="{{ route('brands.create') }}"> Create New Brand</a>
-                        @endcan
-                    </div>
+                <div class="col-lg-6 text-right">
+                    @can('employee-create')
+                        <a class="btn btn-success" href="{{ route('brands.create') }}"> Create New Brand</a>
+                    @endcan
+                </div>
             </div>
             <hr>
             @if(session('message'))
@@ -56,7 +55,6 @@
                         </td>
                     </tr>
                 @endforeach
-                @endif
                 </tbody>
             </table>
             {{ $brands->links() }}

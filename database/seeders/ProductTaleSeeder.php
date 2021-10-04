@@ -34,7 +34,7 @@ class ProductTaleSeeder extends Seeder
         $adminUser = Role::findByName('Manager');
         $adminUser->givePermissionTo(['product-list','product-create','product-edit']);
 
-        $adminUser = Role::findByName('Manager');
+        $adminUser = Role::findByName('Employee');
         $adminUser->givePermissionTo(['product-list','product-create']);
     }
 }

@@ -11,7 +11,7 @@
                     <h6>Role Management</h6>
                     <p class="text-info">See all roles</p>
                 </div>
-                @if(Auth::user()->hasRole('Admin'))
+
                 <div class="col-lg-6 text-right">
                     @can('role-create')
                         <a class="btn btn-success" href="{{ route('roles.create') }}"> Create New Role</a>
@@ -52,7 +52,6 @@
                     </tr>
                 @endforeach
                  {!! $roles->render() !!}
-                @endif
                 </tbody>
             </table>
         </div>

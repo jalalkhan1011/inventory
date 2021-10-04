@@ -10,9 +10,9 @@ class CategoryController extends Controller
 {
     function __construct()
     {
-        $this->middleware('permission:category-list|category-create|category-edit|category-delete', ['only' => ['index,show']]);
-        $this->middleware('permission:category-create', ['only' => ['create,store']]);
-        $this->middleware('permission:category-edit', ['only' => ['edit,update']]);
+        $this->middleware('permission:category-list|category-create|category-edit|category-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:category-create', ['only' => ['create','store']]);
+        $this->middleware('permission:category-edit', ['only' => ['edit','update']]);
         $this->middleware('permission:category-delete', ['only' => ['destroy']]);
     }
     /**
