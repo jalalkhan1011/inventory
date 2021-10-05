@@ -14,7 +14,7 @@ class AddCustomerIdToProductTransactionsTable extends Migration
     public function up()
     {
         Schema::table('product_transactions', function (Blueprint $table) {
-            //
+            $table->unsignedBigInteger('customer_id')->after('employee_id')->nullable();
         });
     }
 
@@ -26,7 +26,8 @@ class AddCustomerIdToProductTransactionsTable extends Migration
     public function down()
     {
         Schema::table('product_transactions', function (Blueprint $table) {
-            //
+            $table->dropForeign('product_transactions_customer_id_foreign');
+            $table->dropColumn('customer_id');
         });
     }
 }
