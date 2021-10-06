@@ -3,37 +3,61 @@
 namespace App\Http\Traits;
 
 
+use App\Models\Employee;
 use App\Models\Product;
 use App\Models\ProductTransaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 
 trait ProductTransactionTraits
 {
-    private function productTransaction($product)
+    private function productTransaction($product)//This function use for add product details into production_transactions table
     {
-        $data = [
-            'product_id' => $product->id,
-            'category_id' => $product->category_id,
-            'brand_id' => $product->brand_id,
-            'supplier_id' => $product->supplier_id,
-            'p_qty' => $product->qty,
-            'stock_qty' => $product->qty,
-            'p_unit_amount' => $product->unit_price,
-            's_unit_amount' => $product->sale_price,
-            'p_total_amount' => $product->total_price,
-            'employee_id' => auth()->user()->id,
-            'status' => 'p',
-            'user_id' => auth()->user()->id,
-            'created_at' => now()
-        ];
+        $employeeId = Employee::where('employee_id',auth()->user()->id)->first();
 
-        $productTransaction = ProductTransaction::create($data);
+        if(Auth::user()->hasRole('Admin')){
+            $data = [
+                'product_id' => $product->id,
+                'category_id' => $product->category_id,
+                'brand_id' => $product->brand_id,
+                'supplier_id' => $product->supplier_id,
+                'p_qty' => $product->qty,
+                'stock_qty' => $product->qty,
+                'p_unit_amount' => $product->unit_price,
+                's_unit_amount' => $product->sale_price,
+                'p_total_amount' => $product->total_price,
+                'status' => 'p',
+                'user_id' => auth()->user()->id,
+                'created_at' => now()
+            ];
+
+            $productTransaction = ProductTransaction::create($data);
+        }else{
+            $data = [
+                'product_id' => $product->id,
+                'category_id' => $product->category_id,
+                'brand_id' => $product->brand_id,
+                'supplier_id' => $product->supplier_id,
+                'p_qty' => $product->qty,
+                'stock_qty' => $product->qty,
+                'p_unit_amount' => $product->unit_price,
+                's_unit_amount' => $product->sale_price,
+                'p_total_amount' => $product->total_price,
+                'employee_id' =>  $employeeId->id,
+                'status' => 'p',
+                'user_id' => auth()->user()->id,
+                'created_at' => now()
+            ];
+
+            $productTransaction = ProductTransaction::create($data);
+        }
+
 
         return $productTransaction;
     }
 
-    private function productQty(Request $request,Product $product)
+    private function productQty(Request $request,Product $product)//user for calculation product quantity
     {
 
         $productQty = $product->qty;
@@ -50,7 +74,7 @@ trait ProductTransactionTraits
         return $totalQty;
     }
 
-    private function unitPrice(Request $request,Product $product)
+    private function unitPrice(Request $request,Product $product)//user for calculation product unit price
     {
         $unitPrice = $product->unit_price;
         $requestUnitPrice = $request->unit_price;
@@ -66,7 +90,7 @@ trait ProductTransactionTraits
         return $totalUnitPrice;
     }
 
-    private function salePrice(Request $request,Product $product)
+    private function salePrice(Request $request,Product $product)//user for calculation product sale price
     {
         $salePrice = $product->sale_price;
         $requestSalePrice = $request->sale_price;
@@ -82,7 +106,7 @@ trait ProductTransactionTraits
         return $totalSalePrice;
     }
 
-    private function stockQty(Request $request,Product $product)
+    private function stockQty(Request $request,Product $product)//user for calculating product stock quantity on production_transaction table
     {
         $productId = Product::findOrFail($product->id);
         $productTransaction = ProductTransaction::where('product_id',$productId->id)->first();
@@ -111,7 +135,7 @@ trait ProductTransactionTraits
         return  $productTransaction ;
     }
 
-    private function purchaseUnitPrice(Request $request,Product $product)
+    private function purchaseUnitPrice(Request $request,Product $product)//user for calculating product purchase unit price on production_transaction table
     {
         $productId = Product::findOrFail($product->id);
         $productTransaction = ProductTransaction::where('product_id',$productId->id)->first();
@@ -140,7 +164,7 @@ trait ProductTransactionTraits
         return $productTransaction;
     }
 
-    private function saleUnitPrice(Request $request,Product $product)
+    private function saleUnitPrice(Request $request,Product $product)//user for calculating product sale unit price on production_transaction table
     {
         $productId = Product::findOrFail($product->id);
         $productTransaction = ProductTransaction::where('product_id',$productId->id)->first();
@@ -161,7 +185,7 @@ trait ProductTransactionTraits
         return $productTransaction;
     }
 
-    private function productCategoryId(Request $request,Product $product)
+    private function productCategoryId(Request $request,Product $product)//user for calculating product category_id on production_transaction table
     {
         $productId = Product::findOrFail($product->id);
         $productTransaction = ProductTransaction::where('product_id',$productId->id)->first();
@@ -171,7 +195,7 @@ trait ProductTransactionTraits
         return $productTransaction;
     }
 
-    private function productBrandId(Request $request,Product $product)
+    private function productBrandId(Request $request,Product $product)//user for calculating product brand_id on production_transaction table
     {
         $productId = Product::findOrFail($product->id);
         $productTransaction = ProductTransaction::where('product_id',$productId->id)->first();

@@ -6,6 +6,7 @@ use App\Http\Traits\ProductTransactionTraits;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\ProductTransaction;
 use App\Models\Suppliers;
 use Illuminate\Http\Request;
 
@@ -187,6 +188,7 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
+       ProductTransaction::where('product_id',$product->id)->delete();
 
         return redirect('admin/products');
     }
