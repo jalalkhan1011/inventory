@@ -6,24 +6,32 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class ProductSale extends Model
+class ProductSaleItem extends Model
 {
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable =[
+    protected $fillable = [
+        'product_id' ,
         'customer_id',
-        'sub_total',
-        'discount',
-        'grand_total',
-        'total_price',
-        'due',
-        'change',
+        'category_id',
+        'brand_id',
+        'sale_qty',
+        'sale_price',
+        'total_item_price',
         'user_id'
     ];
 
+    public function products(){
+        return $this->belongsTo(Product::class,'product_id');
+    }
+
     public function customers(){
         return $this->belongsTo(Customer::class,'customer_id');
+    }
+
+    public function categories(){
+        return $this->belongsTo(Category::class,'category_id');
     }
 
     public function user(){

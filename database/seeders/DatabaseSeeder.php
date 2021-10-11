@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder
             BrandTableSeeder::class,
             ProductTaleSeeder::class,
             ProductSaleTableSeeder::class,
+            CustomerTableSeeder::class,
         ]);
     }
 }

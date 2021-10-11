@@ -179,7 +179,7 @@
                     @endif
                 </div>
                 <button type="submit" class="btn btn-primary">Save</button>
-                <a href="{{ url('admin/products') }}" class="btn btn-primary" title="Back">Back</a>
+                <a href="{{ route('products.index') }}" class="btn btn-primary" title="Back">Back</a>
             </form>
         </div>
     </div>

@@ -47,4 +47,8 @@ class Product extends Model
     public function productTransaction(){
         return $this->hasMany(ProductTransaction::class);
     }
+
+    public function productSaleItem(){
+        return $this->hasMany(ProductSaleItem::class);
+    }
 }

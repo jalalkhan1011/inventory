@@ -57,7 +57,7 @@ class CustomerController extends Controller
 
         Customer::create($data);
 
-        return redirect('admin/index');
+        return redirect('admin/customers');
     }
 
     /**

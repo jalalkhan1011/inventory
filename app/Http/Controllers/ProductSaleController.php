@@ -2,11 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
 use App\Models\ProductSale;
 use Illuminate\Http\Request;
 
 class ProductSaleController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:product-sale-list|product-sale-create|product-sale-edit|product-sale-delete', ['only' => ['index','show']]);
+        $this->middleware('permission:product-sale-create', ['only' => ['create','store']]);
+        $this->middleware('permission:product-sale-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:product-sale-delete', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +22,9 @@ class ProductSaleController extends Controller
      */
     public function index()
     {
-        //
+        $productSales = ProductSale::latest()->paginate(10);
+
+        return view('admin.productSales.index',compact('productSales'));
     }
 
     /**
@@ -24,7 +34,8 @@ class ProductSaleController extends Controller
      */
     public function create()
     {
-        //
+        $customers = Customer::pluck('name','id');
+        return view('admin.productSales.create',compact('customers'));
     }
 
     /**
