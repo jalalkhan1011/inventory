@@ -43,4 +43,5 @@ Route::middleware('auth')->group(function (){
     Route::resource('/admin/products', ProductController::class);
     Route::resource('/admin/customers', CustomerController::class);
     Route::resource('/admin/productsales',ProductSaleController::class);
+    Route::get('/admin/product-details/{id}',[ProductSaleController::class,'productDetails'])->name('productdetails');
 });

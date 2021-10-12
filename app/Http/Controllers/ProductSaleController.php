@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
+use App\Models\Product;
 use App\Models\ProductSale;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductSaleController extends Controller
 {
@@ -35,7 +37,8 @@ class ProductSaleController extends Controller
     public function create()
     {
         $customers = Customer::pluck('name','id');
-        return view('admin.productSales.create',compact('customers'));
+        $products = Product::pluck('name','id');
+        return view('admin.productSales.create',compact('customers','products'));
     }
 
     /**
@@ -92,5 +95,14 @@ class ProductSaleController extends Controller
     public function destroy(ProductSale $productSale)
     {
         //
+    }
+
+    public function productDetails($id)//this id is the parameter that's comes from route parameters
+    {
+        return DB::table('products')
+            ->select('categories.name','products.category_id')
+            ->leftjoin('categories','categories.id','=','products.category_id')
+            ->where('products.id','=',$id)
+            ->first();
     }
 }

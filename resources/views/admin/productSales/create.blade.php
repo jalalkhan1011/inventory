@@ -38,7 +38,7 @@
                         @endif
                     </div>
                     <div class="col-md-12">
-                        <table class="table table-bordered" id="otherpersonId">
+                        <table class="table table-bordered" id="productId">
                             <thead>
                                 <tr>
                                     <th>Name</th>
@@ -53,8 +53,21 @@
                             </thead>
                             <tbody class="newRow">
                                 <tr class="rowFirst">
-                                    <td></td>
-                                    <td></td>
+                                    <td>
+                                        <select class="custom-select product" name="product_id" required>
+                                            <option value="">Select one</option>
+                                            @foreach($products as $key => $product)
+                                                <option value="{{ $key }}">{{ $product }}</option>
+                                            @endforeach
+                                        </select>
+                                        <div class="clearfix"></div>
+                                        @if($errors->has('product_id'))
+                                            <span class="form-text">
+                                                <strong class="text-danger form-control-sm">{{ $errors->first('product_id') }}</strong>
+                                            </span>
+                                        @endif
+                                    </td>
+                                    <td><input type="text" name="category_id[]" class="category"></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -73,6 +86,7 @@
     </div>
 @endsection
 @push('js')
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script>
         $(document).ready(function (){
             $('.rowAdd').click(function (){
@@ -85,10 +99,26 @@
         //     $(this).closest("tr.removableRow").remove();
         // });
         $(document).on("click", "span.rowRemove ", function () {
-            var count = $("#otherpersonId tr").length - 1;
+            var count = $("#productId tr").length - 1;
             if (count > 1) {
                 $(this).parents("tr").remove();
             }
+        });
+
+        $(document).on('change','.product',function (){
+            var thisRow = $(this).closest('tr');
+            var productId = thisRow.find('.product').val();
+            alert(productId);
+            $.ajax({
+                type: "GET",
+                url : "/admin/product-details/"+productId,//this id from form vai request
+                data: {'productId':productId},
+                success: function (data){
+
+                    thisRow.find('.category').val(data.category_id);
+                }
+            });
+
         });
     </script>
 @endpush
