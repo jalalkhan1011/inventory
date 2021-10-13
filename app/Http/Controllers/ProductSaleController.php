@@ -100,8 +100,9 @@ class ProductSaleController extends Controller
     public function productDetails($id)//this id is the parameter that's comes from route parameters
     {
         return DB::table('products')
-            ->select('categories.name','products.category_id')
+            ->select('categories.name','products.category_id','products.brand_id','brands.name as brandName','products.qty','products.unit_price')
             ->leftjoin('categories','categories.id','=','products.category_id')
+            ->leftJoin('brands','brands.id','=','products.brand_id')
             ->where('products.id','=',$id)
             ->first();
     }

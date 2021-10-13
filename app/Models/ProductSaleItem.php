@@ -16,6 +16,7 @@ class ProductSaleItem extends Model
         'customer_id',
         'category_id',
         'brand_id',
+        'stock_qty',
         'sale_qty',
         'sale_price',
         'total_item_price',

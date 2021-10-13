@@ -54,7 +54,7 @@
                             <tbody class="newRow">
                                 <tr class="rowFirst">
                                     <td>
-                                        <select class="custom-select product" name="product_id" required>
+                                        <select class="custom-select product" id="product" name="product_id" required>
                                             <option value="">Select one</option>
                                             @foreach($products as $key => $product)
                                                 <option value="{{ $key }}">{{ $product }}</option>
@@ -67,12 +67,26 @@
                                             </span>
                                         @endif
                                     </td>
-                                    <td><input type="text" name="category_id[]" class="category"></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>
+                                        <input type="text" name="category_name" class="form-control categoryName" disabled>
+                                        <input type="hidden" name="category_id[]" class="form-control categoryId">
+                                    </td>
+                                    <td>
+                                        <input type="text" name="brand_name" class="form-control brandName" disabled>
+                                        <input type="hidden" name="brand_id[]" class="form-control brandId">
+                                    </td>
+                                    <td>
+                                        <input type="number" name="stock_qty[]" class="form-control stockQty" disabled>
+                                    </td>
+                                    <td>
+                                        <input type="number" name="sale_price[]" class="form-control salePrice" disabled>
+                                    </td>
+                                    <td>
+                                        <input type="number" name="sale_qty[]" class="form-control saleQty" id="saleQty">
+                                    </td>
+                                    <td>
+                                        <input type="number" name="total_item_price[]" class="form-control totalItemPrice" id="totalItemPrice" disabled>
+                                    </td>
                                     <td class="removeButton"><span class="btn btn-danger btn-sm pull-right rowRemove"><i class="fa fa-trash-alt"></i></span></td>
                                 </tr>
                             </tbody>
@@ -93,12 +107,17 @@
                 var getTr = $('tr.rowFirst:first');
                 $('tbody.newRow').append("<tr class='removableRow'>"+getTr.html()+"<tr>");
                 var defultRow = $('tr.removableRow:last');
+                defultRow.find('select.product').attr('disabled',false);
+                defultRow.find('text.categoryName').attr('disabled',true);
+                defultRow.find('text.brandName').attr('disabled',true);
+                defultRow.find('number.stockQty').attr('disabled',true);
+                defultRow.find('number.salePrice').attr('disabled',true);
             });
         });
-        // $(document).on("click","span.rowRemove",function (){
+        // $(document).on("click","span.rowRemove",function (){ //user for delete all row one by one
         //     $(this).closest("tr.removableRow").remove();
         // });
-        $(document).on("click", "span.rowRemove ", function () {
+        $(document).on("click", "span.rowRemove ", function () {//delete all row one by one but except last one row
             var count = $("#productId tr").length - 1;
             if (count > 1) {
                 $(this).parents("tr").remove();
@@ -108,14 +127,18 @@
         $(document).on('change','.product',function (){
             var thisRow = $(this).closest('tr');
             var productId = thisRow.find('.product').val();
-            alert(productId);
+
             $.ajax({
                 type: "GET",
                 url : "/admin/product-details/"+productId,//this id from form vai request
                 data: {'productId':productId},
                 success: function (data){
-
-                    thisRow.find('.category').val(data.category_id);
+                    thisRow.find('.categoryId').val(data.category_id); //user for append data into row column product wise
+                    thisRow.find('.categoryName').val(data.name);
+                    thisRow.find('.brandId').val(data.brand_id);
+                    thisRow.find('.brandName').val(data.brandName);
+                    thisRow.find('.stockQty').val(data.qty);
+                    thisRow.find('.salePrice').val(data.unit_price);
                 }
             });
 
