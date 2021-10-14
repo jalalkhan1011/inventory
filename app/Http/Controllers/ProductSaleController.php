@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Customer;
 use App\Models\Product;
 use App\Models\ProductSale;
+use App\Models\ProductSaleItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -49,7 +50,30 @@ class ProductSaleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+//        dd($request->all());
+        $data = $request->all();
+        $data['user_id'] = auth()->user()->id;
+
+        $productSaleId = ProductSale::create($data);
+
+        $productId = count($_POST['product_id']);
+        for($i=0; $i<$productId; $i++){
+            ProductSaleItem::create([
+                'product_id' => $request->product_id[$i],
+                'customer_id' => $request->customer_id,
+                'category_id' => $request->category_id[$i],
+                'brand_id' => $request->brand_id[$i],
+                'stock_qty' => $request->stock_qty[$i],
+                'sale_qty' => $request->sale_qty[$i],
+                'sale_price' => $request->sale_price[$i],
+                'total_item_price' => $request->total_item_price[$i],
+                'product_sale_id' => $productSaleId->id,
+                'user_id' => auth()->user()->id,
+                'created_at' => now()
+            ]);
+        }
+
+        return redirect(route('productsales.index'));
     }
 
     /**

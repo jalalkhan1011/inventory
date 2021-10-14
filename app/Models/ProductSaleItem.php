@@ -20,6 +20,7 @@ class ProductSaleItem extends Model
         'sale_qty',
         'sale_price',
         'total_item_price',
+        'product_sale_id',
         'user_id'
     ];
 
@@ -33,6 +34,10 @@ class ProductSaleItem extends Model
 
     public function categories(){
         return $this->belongsTo(Category::class,'category_id');
+    }
+
+    public function productSales(){
+        return $this->belongsTo(ProductSale::class,'product_sale_id');
     }
 
     public function user(){

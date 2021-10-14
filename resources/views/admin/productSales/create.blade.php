@@ -54,7 +54,7 @@
                             <tbody class="newRow">
                                 <tr class="rowFirst">
                                     <td>
-                                        <select class="custom-select product" id="product" name="product_id" required>
+                                        <select class="custom-select product" id="product" name="product_id[]" required>
                                             <option value="">Select one</option>
                                             @foreach($products as $key => $product)
                                                 <option value="{{ $key }}">{{ $product }}</option>
@@ -68,24 +68,24 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <input type="text" name="category_name" class="form-control categoryName" disabled>
+                                        <input type="text" name="category_name" class="form-control categoryName" readonly>
                                         <input type="hidden" name="category_id[]" class="form-control categoryId">
                                     </td>
                                     <td>
-                                        <input type="text" name="brand_name" class="form-control brandName" disabled>
+                                        <input type="text" name="brand_name" class="form-control brandName" readonly>
                                         <input type="hidden" name="brand_id[]" class="form-control brandId">
                                     </td>
                                     <td>
-                                        <input type="number" name="stock_qty[]" class="form-control stockQty" disabled>
+                                        <input type="text" name="stock_qty[]"  class="form-control stockQty" readonly>
                                     </td>
                                     <td>
-                                        <input type="number" name="sale_price[]" class="form-control salePrice" disabled>
+                                        <input type="number" name="sale_price[]" class="form-control salePrice" readonly>
                                     </td>
                                     <td>
                                         <input type="number" name="sale_qty[]" class="form-control saleQty" id="saleQty">
                                     </td>
                                     <td>
-                                        <input type="number" name="total_item_price[]" class="form-control totalItemPrice" id="totalItemPrice" disabled>
+                                        <input type="number" name="total_item_price[]" value="10" class="form-control totalItemPrice" id="totalItemPrice"  readonly>
                                     </td>
                                     <td class="removeButton"><span class="btn btn-danger btn-sm pull-right rowRemove"><i class="fa fa-trash-alt"></i></span></td>
                                 </tr>
@@ -93,6 +93,9 @@
                         </table>
                     </div>
                 </div>
+                <input type="hidden" name="sub_total" value="10">
+                <input type="hidden" name="grand_total" value="10">
+                <input type="hidden" name="total_price" value="10">
                 <button type="submit" class="btn btn-primary">Save</button>
                 <a href="{{ route('productsales.index') }}" class="btn btn-primary" title="Back">Back</a>
             </form>
@@ -108,10 +111,10 @@
                 $('tbody.newRow').append("<tr class='removableRow'>"+getTr.html()+"<tr>");
                 var defultRow = $('tr.removableRow:last');
                 defultRow.find('select.product').attr('disabled',false);
-                defultRow.find('text.categoryName').attr('disabled',true);
-                defultRow.find('text.brandName').attr('disabled',true);
-                defultRow.find('number.stockQty').attr('disabled',true);
-                defultRow.find('number.salePrice').attr('disabled',true);
+                defultRow.find('input.categoryName').attr('readonly',true);
+                defultRow.find('input.brandName').attr('readonly',true);
+                defultRow.find('input.stockQty').attr('readonly',true);
+                defultRow.find('input.salePrice').attr('readonly',true);
             });
         });
         // $(document).on("click","span.rowRemove",function (){ //user for delete all row one by one

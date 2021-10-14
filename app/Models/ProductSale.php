@@ -26,6 +26,10 @@ class ProductSale extends Model
         return $this->belongsTo(Customer::class,'customer_id');
     }
 
+    public function productSaleItems(){
+        return $this->hasMany(ProductSaleItem::class);
+    }
+
     public function user(){
         return $this->belongsTo(User::class,'user_id');
     }
