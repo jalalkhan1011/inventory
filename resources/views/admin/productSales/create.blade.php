@@ -199,7 +199,7 @@
            var totDiscount = parseFloat((subTotal * productDis)/100)||0;
            var grandTotal = subTotal - totDiscount;
 
-           $('.grandTotal').val(parseFloat(grandTotal).toFixed(2))111;
+           $('.grandTotal').val(parseFloat(grandTotal).toFixed(2));
        });
     </script>
 @endpush
