@@ -66,6 +66,7 @@
                                                 <strong class="text-danger form-control-sm">{{ $errors->first('product_id') }}</strong>
                                             </span>
                                         @endif
+                                        <input type="number" name="price" class="form-control price" value="" id="price">
                                     </td>
                                     <td>
                                         <input type="text" name="category_name" class="form-control categoryName" readonly>
@@ -76,20 +77,43 @@
                                         <input type="hidden" name="brand_id[]" class="form-control brandId">
                                     </td>
                                     <td>
-                                        <input type="text" name="stock_qty[]"  class="form-control stockQty" readonly>
+                                        <input type="number" name="stock_qty[]"  class="form-control stockQty" readonly>
                                     </td>
                                     <td>
                                         <input type="number" name="sale_price[]" class="form-control salePrice" readonly>
                                     </td>
                                     <td>
-                                        <input type="number" name="sale_qty[]" class="form-control saleQty" id="saleQty">
+                                        <input type="number" name="sale_qty[]" class="form-control saleQty" id="saleQty" required>
                                     </td>
                                     <td>
-                                        <input type="number" name="total_item_price[]" value="10" class="form-control totalItemPrice" id="totalItemPrice"  readonly>
+                                        <input type="number" name="total_item_price[]" value="" class="form-control totalItemPrice" id="totalItemPrice"  readonly required>
                                     </td>
                                     <td class="removeButton"><span class="btn btn-danger btn-sm pull-right rowRemove"><i class="fa fa-trash-alt"></i></span></td>
                                 </tr>
                             </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td class="text-right" colspan="6">Sub total</td>
+                                    <td>
+                                        <input type="number" name="sub_total" value="" class="form-control subTotal" id="subTotal" readonly>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-right" colspan="6">Discount</td>
+                                    <td>
+                                        <input type="number" name="discount" value="" class="form-control discount" id="discount" placeholder="0.00%">
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-right" colspan="6">Grand total</td>
+                                    <td>
+                                        <input type="number" name="grand_total" value="" class="form-control grandTotal" id="grandTotal" placeholder="0.00" readonly required>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            </tfoot>
                         </table>
                     </div>
                 </div>
@@ -105,6 +129,9 @@
 @push('js')
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script>
+        $(document).ready(function (){
+            $('.grandTotal').attr('readonly',true);
+        });
         $(document).ready(function (){
             $('.rowAdd').click(function (){
                 var getTr = $('tr.rowFirst:first');
@@ -142,10 +169,38 @@
                     thisRow.find('.brandName').val(data.brandName);
                     thisRow.find('.stockQty').val(data.qty);
                     thisRow.find('.salePrice').val(data.unit_price);
+                    thisRow.find('.price').val(data.unit_price);
                 }
             });
 
         });
+
+       $(document).on('keyup change','.saleQty',function () {
+           var total = 0;
+           var thisRow = $(this).closest('tr');
+           var saleQty = parseFloat($(this).val())||0;
+           var productPrice = parseFloat(thisRow.find('.price').val() || 0) ;
+
+           var priceAmount = productPrice * saleQty;
+
+           // alert(priceAmount);
+
+           thisRow.find('.totalItemPrice').val(parseFloat(priceAmount).toFixed(2));
+
+          $('.totalItemPrice').each(function (){
+              total += parseFloat($(this).val())||0;
+          });
+           $('.subTotal').val(parseFloat(total).toFixed(2));
+       });
+
+       $(document).on('keyup change','.discount','.saleQty',function (){
+           var productDis = $(this).val()||0;
+           var subTotal = parseFloat($('.subTotal').val())||0;
+           var totDiscount = parseFloat((subTotal * productDis)/100)||0;
+           var grandTotal = subTotal - totDiscount;
+
+           $('.grandTotal').val(parseFloat(grandTotal).toFixed(2));
+       });
     </script>
 @endpush
 
