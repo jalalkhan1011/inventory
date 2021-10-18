@@ -66,7 +66,7 @@
                                                 <strong class="text-danger form-control-sm">{{ $errors->first('product_id') }}</strong>
                                             </span>
                                         @endif
-                                        <input type="number" name="price" class="form-control price" value="" id="price">
+                                        <input type="hidden" name="price" class="form-control price" value="" id="price">
                                     </td>
                                     <td>
                                         <input type="text" name="category_name" class="form-control categoryName" readonly>
@@ -95,7 +95,7 @@
                                 <tr>
                                     <td class="text-right" colspan="6">Sub total</td>
                                     <td>
-                                        <input type="number" name="sub_total" value="" class="form-control subTotal" id="subTotal" readonly>
+                                        <input type="number" name="sub_total" value="" class="form-control subTotal" id="subTotal" placeholder="0.00" readonly>
                                     </td>
                                     <td></td>
                                 </tr>
@@ -110,6 +110,27 @@
                                     <td class="text-right" colspan="6">Grand total</td>
                                     <td>
                                         <input type="number" name="grand_total" value="" class="form-control grandTotal" id="grandTotal" placeholder="0.00" readonly required>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-right" colspan="6">Paid Amount</td>
+                                    <td>
+                                        <input type="number" name="total_price" value="" class="form-control totalPrice" id="totalPrice" placeholder="0.00"  required>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr id="changeTotal" style="display: none">
+                                    <td class="text-right" colspan="6">Change</td>
+                                    <td>
+                                        <input type="number" name="change" value="0.00" class="form-control change" id="change" placeholder="0.00"  required>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr id="dueTotal" style="display: none">
+                                    <td class="text-right" colspan="6">Due</td>
+                                    <td>
+                                        <input type="number" name="due" value="0.00" class="form-control due" id="due" placeholder="0.00"  required>
                                     </td>
                                     <td></td>
                                 </tr>
@@ -191,6 +212,7 @@
               total += parseFloat($(this).val())||0;
           });
            $('.subTotal').val(parseFloat(total).toFixed(2));
+           $('.grandTotal').val(parseFloat(total).toFixed(2));
        });
 
        $(document).on('keyup change','.discount','.saleQty',function (){
@@ -201,6 +223,25 @@
 
            $('.grandTotal').val(parseFloat(grandTotal).toFixed(2));
        });
+
+       $(document).on('keyup change','.totalPrice',function (){
+           var paidAmount = parseFloat($(this).val()) || 0;
+           var grandTotal = parseFloat($('.grandTotal').val()) || 0;
+
+           var dueTotal = parseFloat(grandTotal).toFixed(2) - parseFloat(paidAmount).toFixed(2);
+
+           if(grandTotal <= paidAmount){
+              $('#due').val(0.00);
+              $('#change').val(parseFloat(parseFloat(paidAmount) - parseFloat(grandTotal)));
+              $('#changeTotal').show();
+              $('#dueTotal').hide();
+           }else{
+               $('#changeTotal').hide();
+               $('#dueTotal').show();
+               $('#due').val(parseFloat(dueTotal).toFixed(2));
+               $('#change').val(0.00);
+           }
+       })
     </script>
 @endpush
 
