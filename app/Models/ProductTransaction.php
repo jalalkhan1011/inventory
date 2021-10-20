@@ -13,6 +13,7 @@ class ProductTransaction extends Model
 
     protected $fillable = [
         'product_id',
+        'customer_id',
         'category_id',
         'brand_id',
         'supplier_id',
@@ -24,6 +25,7 @@ class ProductTransaction extends Model
         'p_total_amount',
         's_total_amount',
         'employee_id',
+        'status',
         'user_id',
     ];
 

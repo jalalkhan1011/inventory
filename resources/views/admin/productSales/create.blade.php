@@ -138,9 +138,6 @@
                         </table>
                     </div>
                 </div>
-                <input type="hidden" name="sub_total" value="10">
-                <input type="hidden" name="grand_total" value="10">
-                <input type="hidden" name="total_price" value="10">
                 <button type="submit" class="btn btn-primary">Save</button>
                 <a href="{{ route('productsales.index') }}" class="btn btn-primary" title="Back">Back</a>
             </form>
@@ -189,8 +186,8 @@
                     thisRow.find('.brandId').val(data.brand_id);
                     thisRow.find('.brandName').val(data.brandName);
                     thisRow.find('.stockQty').val(data.qty);
-                    thisRow.find('.salePrice').val(data.unit_price);
-                    thisRow.find('.price').val(data.unit_price);
+                    thisRow.find('.salePrice').val(data.sale_price);
+                    thisRow.find('.price').val(data.sale_price);
                 }
             });
 
@@ -228,11 +225,11 @@
            var paidAmount = parseFloat($(this).val()) || 0;
            var grandTotal = parseFloat($('.grandTotal').val()) || 0;
 
-           var dueTotal = parseFloat(grandTotal).toFixed(2) - parseFloat(paidAmount).toFixed(2);
+           var dueTotal = parseFloat(grandTotal) - parseFloat(paidAmount);
 
            if(grandTotal <= paidAmount){
               $('#due').val(0.00);
-              $('#change').val(parseFloat(parseFloat(paidAmount) - parseFloat(grandTotal)));
+              $('#change').val(parseFloat(parseFloat(paidAmount) - parseFloat(grandTotal)).toFixed(2));
               $('#changeTotal').show();
               $('#dueTotal').hide();
            }else{
