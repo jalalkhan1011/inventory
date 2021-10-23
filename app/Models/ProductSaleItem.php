@@ -40,6 +40,10 @@ class ProductSaleItem extends Model
         return $this->belongsTo(ProductSale::class,'product_sale_id');
     }
 
+    public function brands(){
+        return $this->belongsTo(Brand::class,'brand_id');
+    }
+
     public function user(){
         return $this->belongsTo(User::class,'user_id');
     }

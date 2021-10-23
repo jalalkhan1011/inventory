@@ -52,7 +52,6 @@ class ProductSaleController extends Controller
      */
     public function store(Request $request)
     {
-//        dd($request->all());
         $employeeId = Employee::where('employee_id',auth()->user()->id)->first();
         $data = $request->all();
         $data['user_id'] = auth()->user()->id;
@@ -131,9 +130,18 @@ class ProductSaleController extends Controller
      * @param  \App\Models\ProductSale  $productSale
      * @return \Illuminate\Http\Response
      */
-    public function edit(ProductSale $productSale)
+    public function edit(ProductSale $productSale,$id)
     {
-        return view('admin.productSales.edit',compact('productSale'));
+        $productSaleId = ProductSale::findOrFail($id);
+//        dd( $productSale);
+        $products = Product::pluck('name','id');
+        $customers = Customer::pluck('name','id');
+        $selected_customers =  $productSaleId->customers->id;
+
+        $productSaleItems = ProductSaleItem::where('product_sale_id', $productSaleId->id)->get();
+
+
+        return view('admin.productSales.edit',compact('productSaleId','customers','products','productSaleItems','selected_customers'));
     }
 
     /**
