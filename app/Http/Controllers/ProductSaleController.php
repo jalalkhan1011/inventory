@@ -133,7 +133,7 @@ class ProductSaleController extends Controller
      */
     public function edit(ProductSale $productSale)
     {
-        //
+        return view('admin.productSales.edit',compact('productSale'));
     }
 
     /**

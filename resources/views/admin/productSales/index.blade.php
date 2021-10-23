@@ -29,23 +29,31 @@
                 <tr>
                     <th>No</th>
                     <th>Name</th>
-                    <th>Code</th>
-                    <th>Category</th>
-                    <th>Brand</th>
-                    <th>Qty</th>
+                    <th>Due</th>
+                    <th>Change</th>
+                    <th>Discount</th>
+                    <th>Paid amount</th>
+                    <th>Grand total</th>
                     <th width="280px">Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                @php $i = 0; @endphp
+                @php $i = $dueTotal = $changeTotal = $paidTotal = $grandTotal = 0; @endphp
                 @foreach($productSales as $productSale)
+                    @php
+                     $dueTotal += $productSale->due;
+                     $changeTotal += $productSale->change;
+                     $paidTotal += $productSale->total_price;
+                     $grandTotal += $productSale->grand_total;
+                    @endphp
                     <tr>
-{{--                        <td>{{ sprintf('%02d',++$i) }}</td>--}}
-{{--                        <td>{{ $product->name }}</td>--}}
-{{--                        <td>{{ $product->code ? $product->code : 'NUll' }}</td>--}}
-{{--                        <td>{{ $product->category->name }}</td>--}}
-{{--                        <td>{{ $product->brand->name }}</td>--}}
-{{--                        <td>{{ $product->qty }}</td>--}}
+                        <td>{{ sprintf('%02d',++$i) }}</td>
+                        <td>{{ $productSale->customers->name }}</td>
+                        <td>{{ $productSale->due }}</td>
+                        <td>{{ $productSale->change }}</td>
+                        <td>{{ $productSale->discount }}</td>
+                        <td>{{ $productSale->total_price }}</td>
+                        <td>{{ $productSale->grand_total }}</td>
                         <td>
                             <ul class="list-inline">
                                 <li class="list-inline-item"><a href="" class="btn btn-sm btn-info" title="Show"><i class="fa fa-eye"></i> </a></li>
@@ -62,6 +70,17 @@
                     </tr>
                 @endforeach
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="2" class="text-right font-weight-semibold">Total:</td>
+                        <td>{{ $dueTotal }}</td>
+                        <td>{{ $changeTotal }}</td>
+                        <td></td>
+                        <td>{{ $paidTotal }}</td>
+                        <td>{{ $grandTotal }}</td>
+                        <td></td>
+                    </tr>
+                </tfoot>
             </table>
             {{ $productSales->links() }}
         </div>
