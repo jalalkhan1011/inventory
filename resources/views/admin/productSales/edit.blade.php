@@ -68,7 +68,7 @@
                                                 <strong class="text-danger form-control-sm">{{ $errors->first('product_id') }}</strong>
                                             </span>
                                     @endif
-                                    <input type="hidden" name="price" class="form-control price" value="" id="price">
+                                    <input type="hidden" name="price" class="form-control price" value="{{ $productSaleItem->sale_price }}" id="price">
                                 </td>
                                 <td>
                                     <input type="text" name="category_name" value="{{ $productSaleItem->categories->name }}" class="form-control categoryName" readonly>

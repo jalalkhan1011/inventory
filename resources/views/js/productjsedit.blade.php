@@ -118,7 +118,7 @@
         }
     })
 
-    $(document).on('change','.product', function() {// use for disable same product select
+    $(document).on('change click','.product', function() {// use for disable same product select
         $('option').prop('disabled', false);
         $('select').each(function() {
             var val = $(this).val();
