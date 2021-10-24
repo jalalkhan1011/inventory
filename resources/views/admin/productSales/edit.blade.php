@@ -123,20 +123,40 @@
                                     </td>
                                     <td></td>
                                 </tr>
-                                <tr id="changeTotal" style="display: none">
-                                    <td class="text-right" colspan="6">Change</td>
-                                    <td>
-                                        <input type="number" name="change" step="0.01" value="{{number_format($productSaleId->change,2)}}" class="form-control change" id="change" placeholder="0.00" readonly required>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr id="dueTotal" style="display: none">
-                                    <td class="text-right" colspan="6">Due</td>
-                                    <td>
-                                        <input type="number" name="due" value="{{number_format($productSaleId->due,2)}}" step="0.01" class="form-control due" id="due" placeholder="0.00" readonly required>
-                                    </td>
-                                    <td></td>
-                                </tr>
+                                @if($productSaleId->change > 0)
+                                    <tr id="changeTotal">
+                                        <td class="text-right" colspan="6">Change</td>
+                                        <td>
+                                            <input type="number" name="change" step="0.01" value="{{number_format($productSaleId->change,2)}}" class="form-control change" id="change" placeholder="0.00" readonly required>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                @else
+                                    <tr id="changeTotal" style="display: none">
+                                        <td class="text-right" colspan="6">Change</td>
+                                        <td>
+                                            <input type="number" name="change" step="0.01" value="0.00" class="form-control change" id="change" placeholder="0.00" readonly required>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                @endif
+                                @if($productSaleId->due > 0)
+                                    <tr id="dueTotal">
+                                        <td class="text-right" colspan="6">Due</td>
+                                        <td>
+                                            <input type="number" name="due" value="{{number_format($productSaleId->due,2)}}" step="0.01" class="form-control due" id="due" placeholder="0.00" readonly required>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                @else
+                                    <tr id="dueTotal" style="display: none">
+                                        <td class="text-right" colspan="6">Due</td>
+                                        <td>
+                                            <input type="number" name="due" value="0.00" step="0.01" class="form-control due" id="due" placeholder="0.00" readonly required>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                @endif
                             </tfoot>
                         </table>
                     </div>

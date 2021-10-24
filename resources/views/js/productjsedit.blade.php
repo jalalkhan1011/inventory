@@ -51,7 +51,7 @@
 
     });
 
-    $(document).on('keyup change','.saleQty',function () {
+    $(document).on('keyup change load','.saleQty',function () {
         var total = 0;
         var thisRow = $(this).closest('tr');
         var saleQty = parseFloat($(this).val())||0;
