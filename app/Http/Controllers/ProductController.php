@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductTransaction;
 use App\Models\Suppliers;
+use App\Models\Unit;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -41,9 +42,10 @@ class ProductController extends Controller
         $categories = Category::where('status','Active')->pluck('name','id');
         $brands = Brand::where('status','Active')->pluck('name','id');
         $suppliers = Suppliers::pluck('name','id');
+        $units = Unit::where('status','Active')->pluck('name','id');
         $code = '#p'.' '.'-'.' '.mt_rand(1000000,9999999);
 
-        return view('admin.products.create',compact('categories','brands','suppliers','code'));
+        return view('admin.products.create',compact('categories','brands','suppliers','code','units'));
     }
 
     /**
@@ -60,6 +62,7 @@ class ProductController extends Controller
             'brand_id' => 'required',
             'qty' => 'required|numeric',
             'unit_price' => 'required|numeric',
+            'unit_id' => 'required',
             'sale_price' => 'required|numeric',
             'total_price' => 'required|numeric',
             'supplier_id' => 'required',
@@ -104,8 +107,10 @@ class ProductController extends Controller
         $selected_brand = $product->brand->id;
         $suppliers = Suppliers::pluck('name','id');
         $selected_supplier = $product->supplier->id;
+        $units = Unit::where('status','Active')->pluck('name','id');
+        $selected_unit = $product->unit->id;
 
-        return view('admin.products.edit',compact('product','categories','brands','suppliers','selected_categories','selected_brand','selected_supplier'));
+        return view('admin.products.edit',compact('product','categories','brands','suppliers','selected_categories','selected_brand','selected_supplier','units','selected_unit'));
     }
 
 
@@ -124,6 +129,7 @@ class ProductController extends Controller
             'category_id' => 'required',
             'brand_id' => 'required',
             'qty' => 'required|numeric',
+            'unit_id' => 'required',
             'unit_price' => 'required|numeric',
             'sale_price' => 'required|numeric',
             'total_price' => 'required|numeric',
@@ -145,6 +151,7 @@ class ProductController extends Controller
             'purchase_date' => date('Y-m-d',strtotime($request->purchase_date)),
             'expire_date' => date('Y-m-d',strtotime($request->expire_date)),
             'qty' => $totalQty,
+            'unit_id' => $request->unit_id,
             'unit_price' => $totalUnitPrice,
             'sale_price' => $totalSalePrice,
             'total_price' => $request->total_price,
