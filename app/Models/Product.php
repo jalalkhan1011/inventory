@@ -17,6 +17,7 @@ class Product extends Model
         'category_id',
         'brand_id',
         'supplier_id',
+        'unit_id',
         'qty',
         'unit_price',
         'sale_price',
@@ -42,6 +43,10 @@ class Product extends Model
 
     public function supplier(){
         return $this->belongsTo(Suppliers::class,'supplier_id');
+    }
+
+    public function unit(){
+        return $this->belongsTo(Unit::class,'unit_id');
     }
 
     public function productTransaction(){

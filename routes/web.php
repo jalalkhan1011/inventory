@@ -11,6 +11,7 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProductSaleController;
+use App\Http\Controllers\UnitController;
 
 
 /*
@@ -40,6 +41,7 @@ Route::middleware('auth')->group(function (){
     Route::resource('/admin/suppliers', SuppliersController::class);
     Route::resource('/admin/categories', CategoryController::class);
     Route::resource('/admin/brands', BrandController::class);
+    Route::resource('/admin/units', UnitController::class);
     Route::resource('/admin/products', ProductController::class);
     Route::resource('/admin/customers', CustomerController::class);
     Route::resource('/admin/productsales',ProductSaleController::class);

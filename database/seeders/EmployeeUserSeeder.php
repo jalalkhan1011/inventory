@@ -46,6 +46,9 @@ class EmployeeUserSeeder extends Seeder
         $adminUser = Role::findByName('Admin');
         $adminUser->givePermissionTo(['customer-list','customer-create','customer-edit','customer-delete']);
 
+        $adminUser = Role::findByName('Employee');
+        $adminUser->givePermissionTo(['customer-list','customer-create']);
+
 
         $data = [
             'name' => $user->name,

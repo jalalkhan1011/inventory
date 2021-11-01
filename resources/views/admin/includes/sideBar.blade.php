@@ -85,6 +85,11 @@
                 </a>
             </li>
             <li class="sidenav-item">
+                <a href="{{ route('units.index') }}" class="sidenav-link">
+                    <div>Unit</div>
+                </a>
+            </li>
+            <li class="sidenav-item">
                 <a href="{{ route('products.index') }}" class="sidenav-link">
                     <div>Products Purchase</div>
                 </a>
