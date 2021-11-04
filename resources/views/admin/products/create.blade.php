@@ -105,21 +105,21 @@
                             @endif
                         </div>
                     </div>
-                    <div class="form-group col-md-4">
-                        <label class="form-label">Unit <span class="text-danger"> *</span></label>
-                        <select class="custom-select" name="unit_id" required>
-                            <option value="">Select one</option>
-                            @foreach($units as $key => $unit)
-                                <option value="{{ $key }}">{{ $unit }}</option>
-                            @endforeach
-                        </select>
-                        <div class="clearfix"></div>
-                        @if($errors->has('unit_id'))
-                            <span class="form-text">
-                                <strong class="text-danger form-control-sm">{{ $errors->first('unit_id') }}</strong>
-                            </span>
-                        @endif
-                    </div>
+{{--                    <div class="form-group col-md-4">--}}
+{{--                        <label class="form-label">Unit <span class="text-danger"> *</span></label>--}}
+{{--                        <select class="custom-select" name="unit_id" required>--}}
+{{--                            <option value="">Select one</option>--}}
+{{--                            @foreach($units as $key => $unit)--}}
+{{--                                <option value="{{ $key }}">{{ $unit }}</option>--}}
+{{--                            @endforeach--}}
+{{--                        </select>--}}
+{{--                        <div class="clearfix"></div>--}}
+{{--                        @if($errors->has('unit_id'))--}}
+{{--                            <span class="form-text">--}}
+{{--                                <strong class="text-danger form-control-sm">{{ $errors->first('unit_id') }}</strong>--}}
+{{--                            </span>--}}
+{{--                        @endif--}}
+{{--                    </div>--}}
                     <div class="form-group col-md-4">
                         <label class="form-label">Unit price <span class="text-danger"> *</span></label>
                         <input type="number" name="unit_price" id="unit_price" class="form-control" step="0.01" min = "1"   oninput="maxLengthCheck(this)" maxlength="5" value="{{ old('qty') }}" required>

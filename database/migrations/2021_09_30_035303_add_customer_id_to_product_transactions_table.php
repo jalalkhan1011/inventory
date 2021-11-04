@@ -15,6 +15,8 @@ class AddCustomerIdToProductTransactionsTable extends Migration
     {
         Schema::table('product_transactions', function (Blueprint $table) {
             $table->unsignedBigInteger('customer_id')->after('employee_id')->nullable();
+
+            $table->foreign('customer_id')->references('id')->on('customers')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

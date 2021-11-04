@@ -15,6 +15,8 @@ class AddProductSaleIdColumnToProductSaleItemsTable extends Migration
     {
         Schema::table('product_sale_items', function (Blueprint $table) {
             $table->unsignedBigInteger('product_sale_id')->after('total_item_price');
+
+            $table->foreign('product_sale_id')->references('id')->on('product_sales')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

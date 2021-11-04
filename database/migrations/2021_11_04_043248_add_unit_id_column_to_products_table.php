@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddSalePriceColumnToProductsTable extends Migration
+class AddUnitIdColumnToProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,9 @@ class AddSalePriceColumnToProductsTable extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->float('sale_price',8,2)->after('unit_price');
+            $table->unsignedBigInteger('unit_id')->after('unit_price');
+
+            $table->foreign('unit_id')->references('id')->on('units')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
@@ -26,7 +28,8 @@ class AddSalePriceColumnToProductsTable extends Migration
     public function down()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->dropColumn('sale_price');
+            $table->dropForeign('products_unit_id_foreign');
+            $table->dropColumn('unit_id');
         });
     }
 }

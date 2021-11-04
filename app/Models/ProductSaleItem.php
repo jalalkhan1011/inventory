@@ -16,6 +16,7 @@ class ProductSaleItem extends Model
         'customer_id',
         'category_id',
         'brand_id',
+        'unit_id',
         'stock_qty',
         'sale_qty',
         'sale_price',
@@ -42,6 +43,10 @@ class ProductSaleItem extends Model
 
     public function brands(){
         return $this->belongsTo(Brand::class,'brand_id');
+    }
+
+    public function unit(){
+        return $this->belongsTo(Unit::class,'unit_id');
     }
 
     public function user(){
