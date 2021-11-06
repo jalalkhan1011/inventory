@@ -14,6 +14,7 @@
             defultRow.find('input.brandName').attr('readonly',true);
             defultRow.find('input.stockQty').attr('readonly',true);
             defultRow.find('input.salePrice').attr('readonly',true);
+            defultRow.find('input.unitName').attr('readonly',true);
         });
     });
     // $(document).on("click","span.rowRemove",function (){ //user for delete all row one by one
@@ -42,6 +43,8 @@
                 thisRow.find('.stockQty').val(data.qty);
                 thisRow.find('.salePrice').val(data.sale_price);
                 thisRow.find('.price').val(data.sale_price);
+                thisRow.find('.unitId').val(data.unit_id);
+                thisRow.find('.unitName').val(data.unitName);
             }
         });
 
@@ -114,13 +117,13 @@
         }
     })
 
-    $(document).on('change','.product', function() {// use for disable same product select
-        $('option').prop('disabled', false);
-        $('select').each(function() {
-            var val = $(this).val();
-            $('select').not(this).find('option').filter(function() {
-                return this.value === val;
-            }).prop('disabled', true);
-        });
-    });
+    // $(document).on('change','.product', function() {// use for disable same product select
+    //     $('option').prop('disabled', false);
+    //     $('select').each(function() {
+    //         var val = $(this).val();
+    //         $('select').not(this).find('option').filter(function() {
+    //             return this.value === val;
+    //         }).prop('disabled', true);
+    //     });
+    // });
 </script>

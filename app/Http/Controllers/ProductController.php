@@ -42,10 +42,10 @@ class ProductController extends Controller
         $categories = Category::where('status','Active')->pluck('name','id');
         $brands = Brand::where('status','Active')->pluck('name','id');
         $suppliers = Suppliers::pluck('name','id');
-//        $units = Unit::where('status','Active')->pluck('name','id');
+        $units = Unit::where('status','Active')->pluck('name','id');
         $code = '#p'.' '.'-'.' '.mt_rand(1000000,9999999);
 
-        return view('admin.products.create',compact('categories','brands','suppliers','code'));
+        return view('admin.products.create',compact('categories','brands','suppliers','code','units'));
     }
 
     /**
@@ -62,7 +62,7 @@ class ProductController extends Controller
             'brand_id' => 'required',
             'qty' => 'required|numeric',
             'unit_price' => 'required|numeric',
-//            'unit_id' => 'required',
+            'unit_id' => 'required',
             'sale_price' => 'required|numeric',
             'total_price' => 'required|numeric',
             'supplier_id' => 'required',

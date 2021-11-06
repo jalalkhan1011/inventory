@@ -68,6 +68,7 @@ class ProductSaleController extends Controller
                 'stock_qty' => $request->stock_qty[$i],
                 'sale_qty' => $request->sale_qty[$i],
                 'sale_price' => $request->sale_price[$i],
+                'unit_id' => $request->unit_id[$i],
                 'total_item_price' => $request->total_item_price[$i],
                 'product_sale_id' => $productSaleId->id,
                 'user_id' => auth()->user()->id,
@@ -133,7 +134,6 @@ class ProductSaleController extends Controller
     public function edit(ProductSale $productSale,$id)
     {
         $productSaleId = ProductSale::findOrFail($id);
-//        dd( $productSale);
         $products = Product::pluck('name','id');
         $customers = Customer::pluck('name','id');
         $selected_customers =  $productSaleId->customers->id;
@@ -151,9 +151,38 @@ class ProductSaleController extends Controller
      * @param  \App\Models\ProductSale  $productSale
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ProductSale $productSale)
+    public function update(Request $request, ProductSale $productSale,$id)
     {
-        //
+        $employeeId = Employee::where('employee_id',auth()->user()->id)->first();
+        $productSaleId = ProductSale::findOrFail($id);
+
+        $data = $request->all();
+        $data['user_id'] = auth()->user()->id;
+
+//        $productSaleId->updatec($data);
+
+        $saleItemId = ProductSaleItem::where('product_sale_id',$productSaleId->id)->select('product_id')->get()->toArray();//data get form table array format that why use toArray and update multiple data on by one
+
+        $saleItem = [];
+        foreach ($saleItemId as $row){
+            $saleItem[] = $row['product_id'];
+        }
+        foreach ($saleItem as $i => $item){
+            $productFind = Product::find($item);
+
+            if($productFind['id']){
+                $data = [
+                    'qty' => $productFind['qty'] + $request->sale_qty[$i]
+                ];
+
+                $productFind->update($data);
+            }
+//            dd($i);
+        }
+
+
+
+        return  redirect()->back();
     }
 
     /**
@@ -170,9 +199,10 @@ class ProductSaleController extends Controller
     public function productDetails($id)//this id is the parameter that's comes from route parameters
     {
         return DB::table('products')
-            ->select('categories.name','products.category_id','products.brand_id','brands.name as brandName','products.qty','products.sale_price')
+            ->select('categories.name','products.category_id','products.brand_id','brands.name as brandName','products.qty','products.sale_price','units.name as unitName','products.unit_id')
             ->leftjoin('categories','categories.id','=','products.category_id')
             ->leftJoin('brands','brands.id','=','products.brand_id')
+            ->leftJoin('units','units.id','=','products.unit_id')
             ->where('products.id','=',$id)
             ->first();
     }

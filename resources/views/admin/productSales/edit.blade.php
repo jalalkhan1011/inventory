@@ -47,6 +47,7 @@
                                 <th>Brand</th>
                                 <th>Stock</th>
                                 <th>Price</th>
+                                <th>Unit</th>
                                 <th>Qty</th>
                                 <th>Amount</th>
                                 <th  class="addButton"><span class="btn btn-info btn-sm pull-right rowAdd"><i class="fa fa-plus"></i></span></th>
@@ -79,10 +80,14 @@
                                     <input type="hidden" name="brand_id[]" value="{{ $productSaleItem->brand_id }}" class="form-control brandId">
                                 </td>
                                 <td>
-                                    <input type="number" name="stock_qty[]" step="0.01" value="{{ $productSaleItem->stock_qty }}"  class="form-control stockQty" readonly>
+                                    <input type="number" name="stock_qty[]" step="0.01" value="{{ $productSaleItem->stock_qty - $productSaleItem->sale_qty }}"  class="form-control stockQty" readonly>
                                 </td>
                                 <td>
                                     <input type="number" name="sale_price[]" step="0.01" value="{{ $productSaleItem->sale_price }}" class="form-control salePrice" readonly>
+                                </td>
+                                <td>
+                                    <input type="text" name="unit_name[]" value="{{ $productSaleItem->unit->name }}"  class="form-control unitName" readonly>
+                                    <input type="hidden" name="unit_id[]" value="{{ $productSaleItem->unit_id }}" class="form-control unitId">
                                 </td>
                                 <td>
                                     <input type="number" name="sale_qty[]" step="0.01" value="{{ $productSaleItem->sale_qty }}" class="form-control saleQty" id="saleQty" required>
@@ -96,28 +101,28 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <td class="text-right" colspan="6">Sub total</td>
+                                    <td class="text-right" colspan="7">Sub total</td>
                                     <td>
                                         <input type="number" name="sub_total" step="0.01" value="{{number_format($productSaleId->sub_total,2)}}" class="form-control subTotal" id="subTotal" placeholder="0.00" readonly>
                                     </td>
                                     <td></td>
                                 </tr>
                                 <tr>
-                                    <td class="text-right" colspan="6">Discount</td>
+                                    <td class="text-right" colspan="7">Discount</td>
                                     <td>
                                         <input type="number" step="0.01" name="discount" value="{{number_format($productSaleId->discount,2)}}" class="form-control discount" id="discount" placeholder="0.00%">
                                     </td>
                                     <td></td>
                                 </tr>
                                 <tr>
-                                    <td class="text-right" colspan="6">Grand total</td>
+                                    <td class="text-right" colspan="7">Grand total</td>
                                     <td>
                                         <input type="number" step="0.01" name="grand_total" value="{{number_format($productSaleId->grand_total,2)}}" class="form-control grandTotal" id="grandTotal" placeholder="0.00" readonly required>
                                     </td>
                                     <td></td>
                                 </tr>
                                 <tr>
-                                    <td class="text-right" colspan="6">Paid Amount</td>
+                                    <td class="text-right" colspan="7">Paid Amount</td>
                                     <td>
                                         <input type="number" step="0.01" name="total_price" value="{{number_format($productSaleId->total_price,2)}}" class="form-control totalPrice" id="totalPrice" placeholder="0.00"  required>
                                     </td>
@@ -125,7 +130,7 @@
                                 </tr>
                                 @if($productSaleId->change > 0)
                                     <tr id="changeTotal">
-                                        <td class="text-right" colspan="6">Change</td>
+                                        <td class="text-right" colspan="7">Change</td>
                                         <td>
                                             <input type="number" name="change" step="0.01" value="{{number_format($productSaleId->change,2)}}" class="form-control change" id="change" placeholder="0.00" readonly required>
                                         </td>
@@ -133,7 +138,7 @@
                                     </tr>
                                 @else
                                     <tr id="changeTotal" style="display: none">
-                                        <td class="text-right" colspan="6">Change</td>
+                                        <td class="text-right" colspan="7">Change</td>
                                         <td>
                                             <input type="number" name="change" step="0.01" value="0.00" class="form-control change" id="change" placeholder="0.00" readonly required>
                                         </td>
@@ -142,7 +147,7 @@
                                 @endif
                                 @if($productSaleId->due > 0)
                                     <tr id="dueTotal">
-                                        <td class="text-right" colspan="6">Due</td>
+                                        <td class="text-right" colspan="7">Due</td>
                                         <td>
                                             <input type="number" name="due" value="{{number_format($productSaleId->due,2)}}" step="0.01" class="form-control due" id="due" placeholder="0.00" readonly required>
                                         </td>
@@ -150,7 +155,7 @@
                                     </tr>
                                 @else
                                     <tr id="dueTotal" style="display: none">
-                                        <td class="text-right" colspan="6">Due</td>
+                                        <td class="text-right" colspan="7">Due</td>
                                         <td>
                                             <input type="number" name="due" value="0.00" step="0.01" class="form-control due" id="due" placeholder="0.00" readonly required>
                                         </td>
@@ -161,7 +166,7 @@
                         </table>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="submit" class="btn btn-primary">Update</button>
                 <a href="{{ route('productsales.index') }}" class="btn btn-primary" title="Back">Back</a>
             </form>
         </div>

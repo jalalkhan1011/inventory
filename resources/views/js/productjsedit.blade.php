@@ -118,13 +118,13 @@
         }
     })
 
-    $(document).on('change click','.product', function() {// use for disable same product select
-        $('option').prop('disabled', false);
-        $('select').each(function() {
-            var val = $(this).val();
-            $('select').not(this).find('option').filter(function() {
-                return this.value === val;
-            }).prop('disabled', true);
-        });
-    });
+    // $(document).on('change click','.product', function() {// use for disable same product select
+    //     $('option').prop('disabled', false);
+    //     $('select').each(function() {
+    //         var val = $(this).val();
+    //         $('select').not(this).find('option').filter(function() {
+    //             return this.value === val;
+    //         }).prop('disabled', true);
+    //     });
+    // });
 </script>
