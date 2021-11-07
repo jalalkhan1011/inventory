@@ -105,6 +105,7 @@ class ProductSaleController extends Controller
                 's_unit_amount' => $request->sale_price[$j],
                 's_total_amount' => $request->total_item_price[$j],
                 'status' => 'S',
+                'product_sale_id' => $productSaleId->id,
                 'employee_id' => $employeeId->id,
                 'user_id' => auth()->user()->id,
                 'created_at' => now()
@@ -167,18 +168,38 @@ class ProductSaleController extends Controller
         foreach ($saleItemId as $row){
             $saleItem[] = $row['product_id'];
         }
-        foreach ($saleItem as $i => $item){
-            $productFind = Product::find($item);
+        foreach ($saleItem as $i => $product){
+            $productFind = Product::find($product);
 
             if($productFind['id']){
                 $data = [
                     'qty' => $productFind['qty'] + $request->sale_qty[$i]
                 ];
 
-                $productFind->update($data);
+//                $productFind->update($data);
             }
-//            dd($i);
         }
+
+        $saleItemProductId = ProductSaleItem::where('product_sale_id',$productSaleId->id)->select('id')->get()->toArray();
+
+        $saleProduct = [];
+        foreach ($saleItemProductId as $row){
+            $saleProduct[] = $row['id'];
+        }
+        foreach ($saleProduct as $j => $saleItem){
+            $saleItemFiend = ProductSaleItem::find($saleItem);
+
+            if($saleItemFiend['id']){
+                $data = [
+                    'stock_qty' => $saleItemFiend['stock_qty'] + $request->sale_qty[$j],
+                    'sale_qty' => $saleItemFiend['sale_qty'] - $request->sale_qty[$j]
+                ];
+
+                $saleItemFiend->update($data);
+            }
+
+        }
+
 
 
 

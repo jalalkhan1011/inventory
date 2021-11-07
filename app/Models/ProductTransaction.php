@@ -24,6 +24,7 @@ class ProductTransaction extends Model
         's_unit_amount',
         'p_total_amount',
         's_total_amount',
+        'product_sale_id',
         'employee_id',
         'status',
         'user_id',
