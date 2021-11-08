@@ -187,18 +187,40 @@ class ProductSaleController extends Controller
             $saleProduct[] = $row['id'];
         }
         foreach ($saleProduct as $j => $saleItem){
-            $saleItemFiend = ProductSaleItem::find($saleItem);
+            $saleItemFind = ProductSaleItem::find($saleItem);
 
-            if($saleItemFiend['id']){
+            if($saleItemFind['id']){
                 $data = [
-                    'stock_qty' => $saleItemFiend['stock_qty'] + $request->sale_qty[$j],
-                    'sale_qty' => $saleItemFiend['sale_qty'] - $request->sale_qty[$j]
+                    'stock_qty' => $saleItemFind['stock_qty'] + $request->sale_qty[$j],
+                    'sale_qty' => $saleItemFind['sale_qty'] - $request->sale_qty[$j]
                 ];
 
-                $saleItemFiend->update($data);
+//                $saleItemFiend->update($data);
             }
 
         }
+
+        $saleTransProductId = ProductTransaction::where('product_sale_id',$productSaleId->id)->select('id')->get()->toArray();
+
+        $productTransId = [];
+        foreach ($saleTransProductId as $row){
+            $productTransId[] = $row['id'];
+        }
+        foreach  ($productTransId as $k => $saleTrans){
+            $saleTransFind = ProductTransaction::find($saleTrans);
+
+            if($saleTransFind['id']){
+                $data = [
+                    's_qty' => $saleTransFind['s_qty'] - $request->sale_qty[$k],
+                    'stock_qty' => $saleTransFind['stock_qty'] + $request->sale_qty[$k],
+                    's_total_amount' => $request->total_item_price[$k]
+                ];
+
+                $saleTransFind->update($data);
+            }
+        }
+
+
 
 
 
