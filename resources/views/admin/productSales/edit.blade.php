@@ -103,7 +103,7 @@
                                 <tr>
                                     <td class="text-right" colspan="7">Sub total</td>
                                     <td>
-                                        <input type="number" name="sub_total" step="0.01" value="{{number_format($productSaleId->sub_total,2)}}" class="form-control subTotal" id="subTotal" placeholder="0.00" readonly>
+                                        <input type="number" name="sub_total" step="0.01" value="{{round($productSaleId->sub_total,2)}}" class="form-control subTotal" id="subTotal" placeholder="0.00" readonly>
                                     </td>
                                     <td></td>
                                 </tr>
@@ -117,14 +117,14 @@
                                 <tr>
                                     <td class="text-right" colspan="7">Grand total</td>
                                     <td>
-                                        <input type="number" step="0.01" name="grand_total" value="{{number_format($productSaleId->grand_total,2)}}" class="form-control grandTotal" id="grandTotal" placeholder="0.00" readonly required>
+                                        <input type="number" step="0.01" name="grand_total" value="{{round($productSaleId->grand_total,2)}}" class="form-control grandTotal" id="grandTotal" placeholder="0.00" readonly required>
                                     </td>
                                     <td></td>
                                 </tr>
                                 <tr>
                                     <td class="text-right" colspan="7">Paid Amount</td>
                                     <td>
-                                        <input type="number" step="0.01" name="total_price" value="{{number_format($productSaleId->total_price,2)}}" class="form-control totalPrice" id="totalPrice" placeholder="0.00"  required>
+                                        <input type="number" step="0.01" name="total_price" value="{{round($productSaleId->total_price,2)}}" class="form-control totalPrice" id="totalPrice" placeholder="0.00"  required>
                                     </td>
                                     <td></td>
                                 </tr>
