@@ -7,7 +7,8 @@ use App\Models\ProductTransaction;
 
 trait ProductSaleTrait
 {
-    private function saleItem($request,$productSaleId){
+    private function saleItem($request,$productSaleId)
+    {
         $productId = count($_POST['product_id']);
         for($i=0; $i<$productId; $i++){
             ProductSaleItem::create([
@@ -27,7 +28,8 @@ trait ProductSaleTrait
         }
     }
 
-    private function saleQtyCalculation($request,$productSaleId){
+    private function saleQtyCalculation($request,$productSaleId)
+    {
         $saleProductId = ProductSaleItem::where('product_sale_id',$productSaleId->id)->select('product_id')->get()->toArray();//get array data form product item table
 
         $productSaleQty = [];
@@ -47,7 +49,8 @@ trait ProductSaleTrait
         }
     }
 
-    private function saleTransaction($request,$productSaleId,$employeeId){
+    private function saleTransaction($request,$productSaleId,$employeeId)
+    {
         $productId = count($_POST['product_id']);
         for($j =0; $j<$productId; $j++){
             ProductTransaction::create([
@@ -65,6 +68,27 @@ trait ProductSaleTrait
                 'user_id' => auth()->user()->id,
                 'created_at' => now()
             ]);
+        }
+    }
+
+    private function updateProduct($request,$productSaleId)
+    {
+        $saleItemId = ProductSaleItem::where('product_sale_id',$productSaleId->id)->select('product_id')->get()->toArray();//data get form table array format that why use toArray and update multiple data on by one
+
+        $saleItem = [];
+        foreach ($saleItemId as $row){
+            $saleItem[] = $row['product_id'];
+        }
+        foreach ($saleItem as $i => $product){
+            $productFind = Product::find($product);
+
+            if($productFind['id']){
+                $data = [
+                    'qty' => $productFind['qty'] + $request->sale_qty[$i]
+                ];
+
+                $productFind->update($data);
+            }
         }
     }
 }

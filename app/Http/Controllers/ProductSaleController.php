@@ -117,23 +117,7 @@ class ProductSaleController extends Controller
 
         $productSaleId->update($data);
 
-        $saleItemId = ProductSaleItem::where('product_sale_id',$productSaleId->id)->select('product_id')->get()->toArray();//data get form table array format that why use toArray and update multiple data on by one
-
-        $saleItem = [];
-        foreach ($saleItemId as $row){
-            $saleItem[] = $row['product_id'];
-        }
-        foreach ($saleItem as $i => $product){
-            $productFind = Product::find($product);
-
-            if($productFind['id']){
-                $data = [
-                    'qty' => $productFind['qty'] + $request->sale_qty[$i]
-                ];
-
-                $productFind->update($data);
-            }
-        }
+        $this->updateProduct($request,$productSaleId);
 
         $saleItemProductId = ProductSaleItem::where('product_sale_id',$productSaleId->id)->select('id')->get()->toArray();
 
