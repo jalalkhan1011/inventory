@@ -19,7 +19,7 @@
                     <strong>{{ session('message') }}</strong>
                 </div>
             @endif
-            <form action="{{ route('productsales.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ url('product-management/sales') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-row">
                     <div class="form-group col-md-6">
@@ -144,7 +144,7 @@
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Save</button>
-                <a href="{{ route('productsales.index') }}" class="btn btn-primary" title="Back">Back</a>
+                <a href="{{ url('product-management/sales') }}" class="btn btn-primary" title="Back">Back</a>
             </form>
         </div>
     </div>

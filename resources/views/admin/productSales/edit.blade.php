@@ -19,7 +19,7 @@
                     <strong>{{ session('message') }}</strong>
                 </div>
             @endif
-            <form action="{{ route('productsales.update',$productSaleId->id) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ url('product-management/sales/'.$productSaleId->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('put')
                 <div class="form-row">
@@ -167,7 +167,7 @@
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Update</button>
-                <a href="{{ route('productsales.index') }}" class="btn btn-primary" title="Back">Back</a>
+                <a href="{{ url('product-management/sales') }}" class="btn btn-primary" title="Back">Back</a>
             </form>
         </div>
     </div>

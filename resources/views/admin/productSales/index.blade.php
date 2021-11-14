@@ -13,7 +13,7 @@
                 </div>
                 <div class="col-lg-6 text-right">
                     @can('product-sale-create')
-                        <a class="btn btn-success" href="{{ route('productsales.create') }}"> Create New Product sale</a>
+                        <a class="btn btn-success" href="{{ url('product-management/sales/create') }}"> Create New Product sale</a>
                     @endcan
                 </div>
             </div>
@@ -57,9 +57,9 @@
                         <td>
                             <ul class="list-inline">
                                 <li class="list-inline-item"><a href="" class="btn btn-sm btn-info" title="Show"><i class="fa fa-eye"></i> </a></li>
-                                <li class="list-inline-item"><a href="{{ route('productsales.edit',$productSale->id) }}" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil-alt"></i> </a> </li>
+                                <li class="list-inline-item"><a href="{{ url('product-management/sales/'.$productSale->id.'/edit') }}" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil-alt"></i> </a> </li>
                                 <li class="list-inline-item">
-                                    <form class="" action="{{ route('productsales.destroy',$productSale->id) }}" method="post">
+                                    <form class="" action="{{ url('product-management/sales/'.$productSale->id) }}" method="post">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-sm btn-danger" title="Delete" onclick="return confirm('Are you want to delete {{$productSale->id}} ?')"><i class="fa fa-trash-alt"></i> </button>

@@ -34,16 +34,33 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::middleware('auth')->group(function (){
-    Route::resource('/admin/roles', RoleController::class);
-    Route::resource('/admin/users', UserController::class);
-    Route::resource('/admin/profiles',ProfileController::class);
-    Route::resource('/admin/employees', EmployeeController::class);
-    Route::resource('/admin/suppliers', SuppliersController::class);
-    Route::resource('/admin/categories', CategoryController::class);
-    Route::resource('/admin/brands', BrandController::class);
-    Route::resource('/admin/units', UnitController::class);
-    Route::resource('/admin/products', ProductController::class);
-    Route::resource('/admin/customers', CustomerController::class);
-    Route::resource('/admin/productsales',ProductSaleController::class);
-    Route::get('/admin/product-details/{id}',[ProductSaleController::class,'productDetails'])->name('productdetails');
+    //admin routing start
+    Route::group(['prefix' => 'admin'],function(){
+        Route::resource('/roles', RoleController::class);
+        Route::resource('/users', UserController::class);
+        Route::resource('/profiles',ProfileController::class);
+        Route::resource('/employees', EmployeeController::class);
+        Route::resource('/suppliers', SuppliersController::class);
+        Route::resource('/customers', CustomerController::class);
+    });
+    //admin routing end
+
+    //product setting routing start
+    Route::group(['prefix' => 'product-setting'],function (){
+        Route::resource('/categories', CategoryController::class);
+        Route::resource('/brands', BrandController::class);
+        Route::resource('/units', UnitController::class);
+    });
+    //product setting routing end
+
+    //product routing start
+    Route::group(['prefix' => 'product-management'],function (){
+        Route::resource('/products', ProductController::class);
+        Route::resource('/sales',ProductSaleController::class);
+    });
+    //product routing end
+
+    //ajax request routing start
+    Route::get('/admin/product-details/{id}',[ProductSaleController::class,'productDetails'])->name('productdetails');//this rout user for ajax request for get product details on product sale page
+    //ajax request routing end
 });

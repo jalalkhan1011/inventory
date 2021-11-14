@@ -67,7 +67,7 @@ class ProductSaleController extends Controller
 
         $this->saleTransaction($request,$productSaleId,$employeeId);//this function used to insert data into product_transactions table and the function comes from ProductSaleTrait File
 
-        return redirect(route('productsales.index'));
+        return redirect('product-management/sales');
     }
 
     /**
