@@ -32,33 +32,39 @@
         </a>
         <ul class="sidenav-menu collapse {{ request()->is('admin/*') ? 'open' :'' }}" aria-expanded="{{ request()->is('admin/*') ? 'true' :'false' }}">
             <li class="sidenav-item">
-                <a href="{{ route('users.index') }}" class="sidenav-link {{ request()->is('admin/users*') ? 'active' : '' }}">//* its use for selected and mark user menu for all user menu route
-                    <div>Manage Users</div>
+                <a href="{{ route('users.index') }}" class="sidenav-link {{ request()->is('admin/users*') ? 'active' : '' }}"> <!-- '*' it's use for selected and mark user menu for all user menu route -->
+                    <i class="fa fa-users"></i>
+                    <div class="ml-1">Manage Users</div>
                 </a>
             </li>
             <li class="sidenav-item">
                 <a href="{{ route('roles.index') }}" class="sidenav-link {{ request()->is('admin/roles*') ? 'active' : '' }}">
-                    <div>Manage Roles</div>
+                    <i class="fas fa-users-cog"></i>
+                    <div class="ml-1">Manage Roles</div>
                 </a>
             </li>
             <li class="sidenav-item">
                 <a href="{{ route('profiles.index') }}" class="sidenav-link {{ request()->is('admin/profiles*') ? 'active' : '' }}">
-                    <div>Manage Profiles</div>
+                    <i class="fas fa-user-circle"></i>
+                    <div class="ml-1">Manage Profiles</div>
                 </a>
             </li>
             <li class="sidenav-item">
                 <a href="{{ route('employees.index') }}" class="sidenav-link {{ request()->is('admin/employees*') ? 'active' : '' }}">
-                    <div>Manage Employees</div>
+                    <i class="fas fa-user-tie"></i>
+                    <div class="ml-1">Manage Employees</div>
                 </a>
             </li>
             <li class="sidenav-item">
                 <a href="{{ route('suppliers.index') }}" class="sidenav-link {{ request()->is('admin/suppliers*') ? 'active' : '' }}">
-                    <div>Manage Supplier</div>
+                    <i class="fas fa-user-tag"></i>
+                    <div class="ml-1">Manage Supplier</div>
                 </a>
             </li>
             <li class="sidenav-item">
                 <a href="{{ route('customers.index') }}" class="sidenav-link {{ request()->is('admin/customers*') ? 'active' : '' }}">
-                    <div>Manage Customer</div>
+                    <i class="fas fa-user-check"></i>
+                    <div class="ml-1">Manage Customer</div>
                 </a>
             </li>
         </ul>
@@ -69,23 +75,26 @@
     <li class="sidenav-header small font-weight-semibold">Product Setting</li>
     <li class="sidenav-item {{ request()->is('product-setting/*') ? 'open' :'' }}">
         <a href="javascript:" class="sidenav-link sidenav-toggle" data-toggle="collapse" aria-expanded="{{ request()->is('product-setting/*') ? 'true' :'false' }}">
-            <i class="sidenav-icon feather icon-clipboard"></i>
+            <i class="sidenav-icon feather icon-settings"></i>
             <div>Product</div>
         </a>
         <ul class="sidenav-menu collapse {{ request()->is('product-setting/*') ? 'open' :'' }}"  aria-expanded="{{ request()->is('product-setting/*') ? 'true' :'false' }}">
             <li class="sidenav-item">
                 <a href="{{ route('categories.index') }}" class="sidenav-link {{ request()->is('product-setting/categories*') ? 'active' : '' }}">
-                    <div>Category</div>
+                    <i class="fas fa-th-list"></i>
+                    <div class="ml-1">Category</div>
                 </a>
             </li>
             <li class="sidenav-item">
                 <a href="{{ route('brands.index') }}" class="sidenav-link {{ request()->is('product-setting/brands*') ? 'active' : '' }}">
-                    <div>Brand</div>
+                    <i class="far fa-copyright"></i>
+                    <div class="ml-1">Brand</div>
                 </a>
             </li>
             <li class="sidenav-item">
                 <a href="{{ route('units.index') }}" class="sidenav-link {{ request()->is('product-setting/units*') ? 'active' : '' }}">
-                    <div>Unit</div>
+                    <i class="fa fa-weight"></i>
+                    <div class="ml-1">Unit</div>
                 </a>
             </li>
         </ul>
@@ -96,18 +105,20 @@
     <li class="sidenav-header small font-weight-semibold">Product</li>
     <li class="sidenav-item {{ request()->is('product-management/*') ? 'open' :'' }}">
         <a href="javascript:" class="sidenav-link sidenav-toggle" data-toggle="collapse" aria-expanded="{{ request()->is('product-management/*') ? 'true' :'false' }}">
-            <i class="sidenav-icon feather icon-clipboard"></i>
+            <i class="sidenav-icon feather icon-shopping-cart"></i>
             <div>Product Management</div>
         </a>
         <ul class="sidenav-menu collapse {{ request()->is('product-management/*') ? 'open' :'' }}"  aria-expanded="{{ request()->is('product-management/*') ? 'true' :'false' }}">
             <li class="sidenav-item">
                 <a href="{{ route('products.index') }}" class="sidenav-link {{ request()->is('product-management/products*') ? 'active' : '' }}">
-                    <div>Products Purchase</div>
+                    <i class="fas fa-cart-plus"></i>
+                    <div class="ml-1">Products Purchase</div>
                 </a>
             </li>
             <li class="sidenav-item">
                 <a href="{{ url('product-management/sales') }}" class="sidenav-link {{ request()->is('product-management/sales*') ? 'active' : '' }}">
-                    <div>Products Sale</div>
+                    <i class="fas fa-shopping-cart"></i>
+                    <div class="ml-1">Products Sale</div>
                 </a>
             </li>
         </ul>
