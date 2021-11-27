@@ -93,9 +93,11 @@
         var productDis = $(this).val()||0;
         var subTotal = parseFloat($('.subTotal').val())||0;
         var totDiscount = parseFloat((subTotal * productDis)/100)||0;
+        var paidAmont = parseFloat($('.totalPrice').val())||0;
         var grandTotal = subTotal - totDiscount;
 
         $('.grandTotal').val(parseFloat(grandTotal).toFixed(2));
+        $('#due').val(parseFloat(grandTotal - paidAmont).toFixed(2));
     });
 
     $(document).on('keyup change','.totalPrice',function (){
