@@ -44,6 +44,7 @@ class ProductSaleController extends Controller
     {
         $customers = Customer::pluck('name','id');
         $products = Product::pluck('name','id');
+
         return view('admin.productSales.create',compact('customers','products'));
     }
 
@@ -143,12 +144,12 @@ class ProductSaleController extends Controller
 
     public function productDetails($id)//this id is the parameter that's comes from route parameters
     {
-        return DB::table('products')
-            ->select('categories.name','products.category_id','products.brand_id','brands.name as brandName','products.qty','products.sale_price','units.name as unitName','products.unit_id')
-            ->leftjoin('categories','categories.id','=','products.category_id')
-            ->leftJoin('brands','brands.id','=','products.brand_id')
-            ->leftJoin('units','units.id','=','products.unit_id')
-            ->where('products.id','=',$id)
+        return DB::table('products as p')
+            ->select('c.name','p.category_id','p.brand_id','b.name as brandName','p.qty','p.sale_price','u.name as unitName','p.unit_id')
+            ->leftjoin('categories as c','c.id','=','p.category_id')
+            ->leftJoin('brands as b','b.id','=','p.brand_id')
+            ->leftJoin('units as u','u.id','=','p.unit_id')
+            ->where('p.id','=',$id)
             ->first();
     }
 }
