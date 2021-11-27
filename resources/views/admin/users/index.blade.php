@@ -14,7 +14,7 @@
                 @if(Auth::user()->hasRole('Admin'))
                     <div class="col-lg-6 text-right">
                         @can('role-create')
-                            <a class="btn btn-success" href="{{ route('users.create') }}"> Create New user</a>
+                            <a class="btn btn-success" href="{{ route('users.create') }}"> New user</a>
                         @endcan
                     </div>
             </div>
@@ -25,42 +25,44 @@
                     <strong>{{ session('message') }}</strong>
                 </div>
             @endif
-            <table class="table card-table">
-                <thead class="thead-light">
-                <tr>
-                    <th>No</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Roles</th>
-                    <th width="280px">Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach ($data as $key => $user)
+            <div class="table-responsive">
+                <table class="table card-table">
+                    <thead class="thead-light">
                     <tr>
-                        <td>{{ ++$i }}</td>
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->email }}</td>
-                        <td>
-                            @if(!empty($user->getRoleNames()))
-                                @foreach($user->getRoleNames() as $v)
-                                    <label class="badge badge-success">{{ $v }}</label>
-                                @endforeach
-                            @endif
-                        </td>
-                        <td>
-                            <a class="btn btn-info" href="{{ route('users.show',$user->id) }}">Show</a>
-                            <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">Edit</a>
-                            {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}
-                            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-                            {!! Form::close() !!}
-                        </td>
+                        <th>No</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Roles</th>
+                        <th width="280px">Action</th>
                     </tr>
-                @endforeach
-                {!! $data->render() !!}
-                @endif
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    @foreach ($data as $key => $user)
+                        <tr>
+                            <td>{{ ++$i }}</td>
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->email }}</td>
+                            <td>
+                                @if(!empty($user->getRoleNames()))
+                                    @foreach($user->getRoleNames() as $v)
+                                        <label class="badge badge-success">{{ $v }}</label>
+                                    @endforeach
+                                @endif
+                            </td>
+                            <td>
+                                <a class="btn btn-info" href="{{ route('users.show',$user->id) }}">Show</a>
+                                <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">Edit</a>
+                                {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}
+                                {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                                {!! Form::close() !!}
+                            </td>
+                        </tr>
+                    @endforeach
+                    {!! $data->render() !!}
+                    @endif
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 @endsection

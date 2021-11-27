@@ -24,53 +24,54 @@
                     <strong>{{ session('message') }}</strong>
                 </div>
             @endif
-            <table class="table card-table">
-                <thead class="thead-light">
-                <tr>
-                    <th>No</th>
-                    <th>Name</th>
-                    <th>Due</th>
-                    <th>Change</th>
-                    <th>Discount</th>
-                    <th>Paid amount</th>
-                    <th>Grand total</th>
-                    <th width="280px">Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                @php $i = $dueTotal = $changeTotal = $paidTotal = $grandTotal = 0; @endphp
-                @foreach($productSales as $productSale)
-                    @php
-                     $dueTotal += $productSale->due;
-                     $changeTotal += $productSale->change;
-                     $paidTotal += $productSale->total_price;
-                     $grandTotal += $productSale->grand_total;
-                    @endphp
+            <div class="table-responsive">
+                <table class="table card-table">
+                    <thead class="thead-light">
                     <tr>
-                        <td>{{ sprintf('%02d',++$i) }}</td>
-                        <td>{{ $productSale->customers->name }}</td>
-                        <td>{{ $productSale->due }}</td>
-                        <td>{{ $productSale->change }}</td>
-                        <td>{{ $productSale->discount }}</td>
-                        <td>{{ $productSale->total_price }}</td>
-                        <td>{{ $productSale->grand_total }}</td>
-                        <td>
-                            <ul class="list-inline">
-                                <li class="list-inline-item"><a href="" class="btn btn-sm btn-info" title="Show"><i class="fa fa-eye"></i> </a></li>
-                                <li class="list-inline-item"><a href="{{ url('product-management/sales/'.$productSale->id.'/edit') }}" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil-alt"></i> </a> </li>
-                                <li class="list-inline-item">
-                                    <form class="" action="{{ url('product-management/sales/'.$productSale->id) }}" method="post">
-                                        @csrf
-                                        @method('delete')
-                                        <button type="submit" class="btn btn-sm btn-danger" title="Delete" onclick="return confirm('Are you want to delete {{$productSale->id}} ?')"><i class="fa fa-trash-alt"></i> </button>
-                                    </form>
-                                </li>
-                            </ul>
-                        </td>
+                        <th>No</th>
+                        <th>Name</th>
+                        <th>Due</th>
+                        <th>Change</th>
+                        <th>Discount</th>
+                        <th>Paid amount</th>
+                        <th>Grand total</th>
+                        <th width="280px">Action</th>
                     </tr>
-                @endforeach
-                </tbody>
-                <tfoot>
+                    </thead>
+                    <tbody>
+                    @php $i = $dueTotal = $changeTotal = $paidTotal = $grandTotal = 0; @endphp
+                    @foreach($productSales as $productSale)
+                        @php
+                            $dueTotal += $productSale->due;
+                            $changeTotal += $productSale->change;
+                            $paidTotal += $productSale->total_price;
+                            $grandTotal += $productSale->grand_total;
+                        @endphp
+                        <tr>
+                            <td>{{ sprintf('%02d',++$i) }}</td>
+                            <td>{{ $productSale->customers->name }}</td>
+                            <td>{{ $productSale->due }}</td>
+                            <td>{{ $productSale->change }}</td>
+                            <td>{{ $productSale->discount }}</td>
+                            <td>{{ $productSale->total_price }}</td>
+                            <td>{{ $productSale->grand_total }}</td>
+                            <td>
+                                <ul class="list-inline">
+                                    <li class="list-inline-item"><a href="" class="btn btn-sm btn-info" title="Show"><i class="fa fa-eye"></i> </a></li>
+                                    <li class="list-inline-item"><a href="{{ url('product-management/sales/'.$productSale->id.'/edit') }}" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil-alt"></i> </a> </li>
+                                    <li class="list-inline-item">
+                                        <form class="" action="{{ url('product-management/sales/'.$productSale->id) }}" method="post">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="btn btn-sm btn-danger" title="Delete" onclick="return confirm('Are you want to delete {{$productSale->id}} ?')"><i class="fa fa-trash-alt"></i> </button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                    <tfoot>
                     <tr>
                         <td colspan="2" class="text-right font-weight-semibold">Total:</td>
                         <td>{{ $dueTotal }}</td>
@@ -80,9 +81,10 @@
                         <td>{{ $grandTotal }}</td>
                         <td></td>
                     </tr>
-                </tfoot>
-            </table>
-            {{ $productSales->links() }}
+                    </tfoot>
+                </table>
+                {{ $productSales->links() }}
+            </div>
         </div>
     </div>
 @endsection

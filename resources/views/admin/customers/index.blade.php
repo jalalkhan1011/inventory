@@ -13,7 +13,7 @@
                 </div>
                 <div class="col-lg-6 text-right">
                     @can('customer-create')
-                        <a class="btn btn-success" href="{{ route('customers.create') }}"> Create New Employee</a>
+                        <a class="btn btn-success" href="{{ route('customers.create') }}"> New Employee</a>
                     @endcan
                 </div>
             </div>
@@ -24,44 +24,46 @@
                     <strong>{{ session('message') }}</strong>
                 </div>
             @endif
-            <table class="table card-table">
-                <thead class="thead-light">
-                <tr>
-                    <th>No</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Mobile</th>
-                    <th>Address</th>
-                    <th width="280px">Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                @php $i = 0; @endphp
-                @foreach($customers as $customer)
+            <div class="table-responsive">
+                <table class="table card-table">
+                    <thead class="thead-light">
                     <tr>
-                        <td>{{ sprintf('%02d',++$i) }}</td>
-                        <td>{{ $customer->name }}</td>
-                        <td>{{ $customer->email ? $customer->email : 'Null' }}</td>
-                        <td>{{ $customer->mobile }}</td>
-                        <td>{{ $customer->address }}</td>
-                        <td>
-                            <ul class="list-inline">
-                                <li class="list-inline-item"><a href="" class="btn btn-sm btn-info" title="Show"><i class="fa fa-eye"></i> </a></li>
-                                <li class="list-inline-item"><a href="{{ route('customers.edit',$customer->id) }}" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil-alt"></i> </a> </li>
-                                <li class="list-inline-item">
-                                    <form class="" action="{{ route('customers.destroy',$customer->id) }}" method="post">
-                                        @csrf
-                                        @method('delete')
-                                        <button type="submit" class="btn btn-sm btn-danger" title="Delete" onclick="return confirm('Are you want to delete {{$customer->name}} ?')"><i class="fa fa-trash-alt"></i> </button>
-                                    </form>
-                                </li>
-                            </ul>
-                        </td>
+                        <th>No</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Mobile</th>
+                        <th>Address</th>
+                        <th width="280px">Action</th>
                     </tr>
-                @endforeach
-                </tbody>
-            </table>
-            {{ $customers->links() }}
+                    </thead>
+                    <tbody>
+                    @php $i = 0; @endphp
+                    @foreach($customers as $customer)
+                        <tr>
+                            <td>{{ sprintf('%02d',++$i) }}</td>
+                            <td>{{ $customer->name }}</td>
+                            <td>{{ $customer->email ? $customer->email : 'Null' }}</td>
+                            <td>{{ $customer->mobile }}</td>
+                            <td>{{ $customer->address }}</td>
+                            <td>
+                                <ul class="list-inline">
+                                    <li class="list-inline-item"><a href="" class="btn btn-sm btn-info" title="Show"><i class="fa fa-eye"></i> </a></li>
+                                    <li class="list-inline-item"><a href="{{ route('customers.edit',$customer->id) }}" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil-alt"></i> </a> </li>
+                                    <li class="list-inline-item">
+                                        <form class="" action="{{ route('customers.destroy',$customer->id) }}" method="post">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="btn btn-sm btn-danger" title="Delete" onclick="return confirm('Are you want to delete {{$customer->name}} ?')"><i class="fa fa-trash-alt"></i> </button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+                {{ $customers->links() }}
+            </div>
         </div>
     </div>
 @endsection
