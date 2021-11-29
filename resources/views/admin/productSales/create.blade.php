@@ -143,7 +143,7 @@
                         </table>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button id="productPurchase" type="submit" class="btn btn-primary">Save</button>
                 <a href="{{ url('product-management/sales') }}" class="btn btn-primary" title="Back">Back</a>
             </form>
         </div>

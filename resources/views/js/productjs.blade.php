@@ -119,13 +119,39 @@
         }
     })
 
-    // $(document).on('change','.product', function() {// use for disable same product select
-    //     $('option').prop('disabled', false);
-    //     $('select').each(function() {
-    //         var val = $(this).val();
-    //         $('select').not(this).find('option').filter(function() {
-    //             return this.value === val;
-    //         }).prop('disabled', true);
-    //     });
-    // });
+    //this script use to disable every select value after select into table row
+    $(document).on('change','.product', function ()
+    {
+        // Store the current value on focus and on change
+        previous = this.value;
+    }).on('change','.product',function() {
+        // Do something with the previous value after the change
+        var previoues_val=previous;
+        var selected=$(this).val();
+        var opts = $(this)[0].options;
+        var array = $.map(opts, function(elem) {
+            return (elem.value || elem.text);
+        });
+        $('.product').each(function() {
+            var v=$(this).val();
+            if(previoues_val != '' )
+            {
+                $('.product option[value="' + previoues_val + '"]').removeAttr('disabled');
+            }
+            $('.product option[value="' + selected + '"]').attr('disabled','disabled');
+            $('.product option[value=""]').removeAttr('disabled');
+        });
+        // Make sure the previous value is updated
+        previous = this.value;
+    });
+
+
+
+    //this function use to enable all disable after click on submit button
+    $(document).on('click','#productPurchase',function() {
+        $('.product').each(function (){
+            var tr = $(this).closest("tr");
+            tr.find('.product option').attr("disabled", false);
+        })
+    });
 </script>
