@@ -149,7 +149,7 @@
                                     <tr id="dueTotal">
                                         <td class="text-right" colspan="7">Due</td>
                                         <td>
-                                            <input type="number" name="due" value="{{number_format($productSaleId->due,2)}}" step="0.01" class="form-control due" id="due" placeholder="0.00" readonly required>
+                                            <input type="number" name="due" value="{{$productSaleId->due}}" step="0.01" class="form-control due" id="due" placeholder="0.00" readonly required>
                                         </td>
                                         <td></td>
                                     </tr>
@@ -166,7 +166,7 @@
                         </table>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Update</button>
+                <button  type="submit" class="btn btn-primary">Update</button>
                 <a href="{{ url('product-management/sales') }}" class="btn btn-primary" title="Back">Back</a>
             </form>
         </div>

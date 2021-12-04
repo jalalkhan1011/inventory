@@ -9,13 +9,14 @@
             var getTr = $('tr.rowFirst:first');
             $('tbody.newRow').append("<tr class='removableRow'>"+getTr.html()+"<tr>");
             var defultRow = $('tr.removableRow:last');
-            defultRow.find('select.product').attr('disabled',false);
+            defultRow.find('select.product').attr('disabled',false).val('');
             defultRow.find('input.categoryName').attr('readonly',true).val('');
             defultRow.find('input.categoryId').val('');
             defultRow.find('input.brandName').attr('readonly',true).val('');
             defultRow.find('input.brandId').val('');
             defultRow.find('input.stockQty').attr('readonly',true).val('');
             defultRow.find('input.salePrice').attr('readonly',true).val('');
+            defultRow.find('input.unitName').attr('readonly',true).val('');
             defultRow.find('input.saleQty').val('');
             defultRow.find('input.totalItemPrice').val('');
         });
@@ -46,6 +47,7 @@
                 thisRow.find('.stockQty').val(data.qty);
                 thisRow.find('.salePrice').val(data.sale_price);
                 thisRow.find('.price').val(data.sale_price);
+                thisRow.find('.unitName').val(data.unitName);
             }
         });
 
@@ -120,13 +122,23 @@
         }
     })
 
-    // $(document).on('change click','.product', function() {// use for disable same product select
-    //     $('option').prop('disabled', false);
-    //     $('select').each(function() {
-    //         var val = $(this).val();
-    //         $('select').not(this).find('option').filter(function() {
-    //             return this.value === val;
-    //         }).prop('disabled', true);
-    //     });
-    // });
+    $(document).on('keyup change','.totalPrice',function (){
+        var paidAmount = parseFloat($(this).val()) || 0;
+        var grandTotal = parseFloat($('.grandTotal').val()) || 0;
+
+        var dueTotal = parseFloat(grandTotal) - parseFloat(paidAmount);
+
+        if(grandTotal <= paidAmount){
+            $('#due').val(0.00);
+            $('#change').val(parseFloat(parseFloat(paidAmount) - parseFloat(grandTotal)).toFixed(2));
+            $('#changeTotal').show();
+            $('#dueTotal').hide();
+        }else{
+            $('#changeTotal').hide();
+            $('#dueTotal').show();
+            $('#due').val(parseFloat(dueTotal).toFixed(2));
+            $('#change').val(0.00);
+        }
+    })
 </script>
+
