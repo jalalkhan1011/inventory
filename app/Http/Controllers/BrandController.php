@@ -53,7 +53,7 @@ class BrandController extends Controller
 
         Brand::create($data);
 
-        return redirect('admin/brands');
+        return redirect(route('brands.index'));
     }
 
     /**
@@ -110,6 +110,6 @@ class BrandController extends Controller
     {
         $brand->delete();
 
-        return redirect('admin/brands');
+        return redirect(route('brands.index'));
     }
 }

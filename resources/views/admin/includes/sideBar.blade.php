@@ -123,4 +123,46 @@
             </li>
         </ul>
     </li>
+
+    <li class="sidenav-divider mb-1"></li>
+    <li class="sidenav-header small font-weight-semibold">Stock</li>
+    <li class="sidenav-item {{ request()->is('stock/*') ? 'open' :'' }}">
+        <a href="javascript:" class="sidenav-link sidenav-toggle" data-toggle="collapse" aria-expanded="{{ request()->is('stock/*') ? 'true' :'false' }}">
+            <i class="sidenav-icon feather icon-shopping-cart"></i>
+            <div>Stock Listing</div>
+        </a>
+        <ul class="sidenav-menu collapse {{ request()->is('stock/*') ? 'open' :'' }}"  aria-expanded="{{ request()->is('stock/*') ? 'true' :'false' }}">
+            <li class="sidenav-item">
+                <a href="{{ route('currentStock') }}" class="sidenav-link {{ request()->is('stock/current-stock*') ? 'active' : '' }}">
+                    <i class="fas fa-cart-plus"></i>
+                    <div class="ml-1">Current stock</div>
+                </a>
+            </li>
+            <li class="sidenav-item">
+                <a href="#" class="sidenav-link">
+                    <i class="fas fa-shopping-cart"></i>
+                    <div class="ml-1">Purchase Stock</div>
+                </a>
+            </li>
+            <li class="sidenav-item">
+                <a href="#" class="sidenav-link">
+                    <i class="fas fa-shopping-cart"></i>
+                    <div class="ml-1">Sell stock</div>
+                </a>
+            </li>
+            <li class="sidenav-item">
+                <a href="#" class="sidenav-link">
+                    <i class="fas fa-shopping-cart"></i>
+                    <div class="ml-1">Low stock</div>
+                </a>
+            </li>
+            <li class="sidenav-item">
+                <a href="#" class="sidenav-link">
+                    <i class="fas fa-shopping-cart"></i>
+                    <div class="ml-1">Expire stock</div>
+                </a>
+            </li>
+        </ul>
+    </li>
+
 </ul>

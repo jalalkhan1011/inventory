@@ -19,7 +19,7 @@
                     <strong>{{ session('message') }}</strong>
                 </div>
             @endif
-            <form action="{{ url('admin/categories/'.$category->id) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('categories.update',$category->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('put')
                 <div class="form-row">

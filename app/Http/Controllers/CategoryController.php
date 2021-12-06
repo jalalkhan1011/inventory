@@ -55,7 +55,7 @@ class CategoryController extends Controller
 
         Category::create($data);
 
-        return redirect('admin/categories');
+        return redirect(route('categories.index'));
     }
 
     /**
@@ -112,6 +112,6 @@ class CategoryController extends Controller
     {
         $category->delete();
 
-        return redirect('admin/categories');
+        return redirect(route('categories.index'));
     }
 }

@@ -12,6 +12,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProductSaleController;
 use App\Http\Controllers\UnitController;
+use App\Http\Controllers\StockController;
 
 
 /*
@@ -59,6 +60,12 @@ Route::middleware('auth')->group(function (){
         Route::resource('/sales',ProductSaleController::class);
     });
     //product routing end
+
+    //stock routing state
+    Route::group(['prefix' => 'stock'],function (){
+        Route::get('current-stock',[StockController::class,'index'])->name('currentStock');
+    });
+    //stock routing end
 
     //ajax request routing start
     Route::get('/admin/product-details/{id}',[ProductSaleController::class,'productDetails'])->name('productdetails');//this rout user for ajax request for get product details on product sale page

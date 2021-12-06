@@ -75,21 +75,45 @@ trait ProductSaleTrait
     private function updateProduct($request,$productSaleId)
     {
         $saleItemId = ProductSaleItem::where('product_sale_id',$productSaleId->id)->select('product_id')->get()->toArray();//data get form table array format that why use toArray and update multiple data on by one
+        $saleItemQty = ProductSaleItem::where('product_sale_id',$productSaleId->id)->select('id')->get()->toArray();
 
         $saleItem = [];
+        $saleQty =[];
         foreach ($saleItemId as $row){
             $saleItem[] = $row['product_id'];
         }
         foreach ($saleItem as $i => $product){
+            foreach ($saleItemQty as $row){
             $productFind = Product::find($product);
+            $saleQty[] = $row['id'];
+                foreach ($saleQty as $k => $saleProduct){
+                    $saleItemFind = ProductSaleItem::find($saleProduct);
+                    $saleRequestQty = $request->sale_qty[$i];
+                    $itemSaleQty = $saleItemFind['sale_qty'];
+                   if($productFind['id']){
+                     if($itemSaleQty >= $saleRequestQty){
+                         $qty =  $saleRequestQty - $itemSaleQty;
+                         $total = $itemSaleQty + $qty;
+                         $data = [
+                             'qty' =>  $productFind['qty'] + $total
+                         ];
 
-            if($productFind['id']){
-                $data = [
-                    'qty' => $productFind['qty'] + $request->sale_qty[$i]
-                ];
-
-                $productFind->update($data);
+                         $productFind->update($data);
+                     }
+                   }
+                }
             }
+
+//            $saleRequestQty = $request->sale_qty[$i];
+//            $itemSaleQty = $saleItemFind['sale_qty'];
+//            if($productFind['id']){
+////                if()
+//                $data = [
+//                    'qty' => $productFind['qty'] + $request->sale_qty[$i]
+//                ];
+//
+//                $productFind->update($data);
+//            }
         }
     }
 
