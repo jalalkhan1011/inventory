@@ -88,32 +88,34 @@ trait ProductSaleTrait
             $saleQty[] = $row['id'];
                 foreach ($saleQty as $k => $saleProduct){
                     $saleItemFind = ProductSaleItem::find($saleProduct);
+
                     $saleRequestQty = $request->sale_qty[$i];
                     $itemSaleQty = $saleItemFind['sale_qty'];
+
                    if($productFind['id']){
-                     if($itemSaleQty >= $saleRequestQty){
+
+                     if($saleRequestQty >= $itemSaleQty){
+
                          $qty =  $saleRequestQty - $itemSaleQty;
                          $total = $itemSaleQty + $qty;
+
                          $data = [
-                             'qty' =>  $productFind['qty'] + $total
+                             'qty' =>  $productFind['qty'] - $qty
                          ];
 
+                         $productFind->update($data);
+                     }else{
+                         $qty =  $itemSaleQty - $saleRequestQty;
+                         $total = $itemSaleQty - $qty;
+
+                         $data = [
+                             'qty' =>  $productFind['qty'] +  $qty
+                         ];
                          $productFind->update($data);
                      }
                    }
                 }
             }
-
-//            $saleRequestQty = $request->sale_qty[$i];
-//            $itemSaleQty = $saleItemFind['sale_qty'];
-//            if($productFind['id']){
-////                if()
-//                $data = [
-//                    'qty' => $productFind['qty'] + $request->sale_qty[$i]
-//                ];
-//
-//                $productFind->update($data);
-//            }
         }
     }
 
@@ -127,14 +129,30 @@ trait ProductSaleTrait
         }
         foreach ($saleProduct as $j => $saleItem){
             $saleItemFind = ProductSaleItem::find($saleItem);
+            $saleRequestQty = $request->sale_qty[$j];
+            $itemSaleQty = $saleItemFind['sale_qty'];
 
             if($saleItemFind['id']){
-                $data = [
-                    'stock_qty' => $saleItemFind['stock_qty'] + $request->sale_qty[$j],
-                    'sale_qty' => $saleItemFind['sale_qty'] - $request->sale_qty[$j]
-                ];
+                if($saleRequestQty >= $itemSaleQty){
 
-                $saleItemFind->update($data);
+                    $qty =  $saleRequestQty - $itemSaleQty;
+                    $total = $itemSaleQty + $qty;
+                    $data = [
+                        'stock_qty' => $saleItemFind['stock_qty'] -  $qty,
+                        'sale_qty' => $saleItemFind['sale_qty'] +  $qty
+                    ];
+
+                    $saleItemFind->update($data);
+                }else{
+                    $qty = $itemSaleQty - $saleRequestQty;
+                    $total = $itemSaleQty - $qty;
+                    $data = [
+                        'stock_qty' => $saleItemFind['stock_qty'] +  $qty,
+                        'sale_qty' => $saleItemFind['sale_qty'] -  $qty
+                    ];
+
+                    $saleItemFind->update($data);
+                }
             }
 
         }
@@ -203,7 +221,7 @@ trait ProductSaleTrait
                     'qty' => $saleQtyFind['qty'] - $request->sale_qty[$k]
                 ];
 
-                $saleQtyFind->update($data );
+//                $saleQtyFind->update($data );
             }
         }
 

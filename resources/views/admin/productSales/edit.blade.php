@@ -80,7 +80,7 @@
                                     <input type="hidden" name="brand_id[]" value="{{ $productSaleItem->brand_id }}" class="form-control brandId">
                                 </td>
                                 <td>
-                                    <input type="number" name="stock_qty[]" step="0.01" value="{{ $productSaleItem->stock_qty - $productSaleItem->sale_qty }}"  class="form-control stockQty" readonly>
+                                    <input type="number" name="stock_qty[]" step="0.01" value="{{ $productSaleItem->stock_qty }}"  class="form-control stockQty" readonly>
                                 </td>
                                 <td>
                                     <input type="number" name="sale_price[]" step="0.01" value="{{ $productSaleItem->sale_price }}" class="form-control salePrice" readonly>
