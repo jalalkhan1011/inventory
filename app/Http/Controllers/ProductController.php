@@ -6,9 +6,11 @@ use App\Http\Traits\ProductTransactionTraits;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\ProductStock;
 use App\Models\ProductTransaction;
 use App\Models\Suppliers;
 use App\Models\Unit;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -58,7 +60,7 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|unique:products,name,NULL,id,deleted_at,NULL',//validation for unique value
+            'name' => 'required|unique:products,name,NULL,id,deleted_at,NULL',//validation for unique value by name
             'category_id' => 'required',
             'brand_id' => 'required',
             'qty' => 'required|numeric',
@@ -76,6 +78,17 @@ class ProductController extends Controller
         $data['user_id'] = auth()->user()->id;
 
         $product = Product::create($data);
+
+            $data = [
+                'product_id' => $product->id,
+                'p_qty' => $request->qty ,
+                'p_reduce_qty' => $request->qty,
+                'user_id' => auth()->user()->id,
+                'created_at' => Carbon::now()
+            ];
+
+            ProductStock::create($data);
+
 
 
         $this->productTransaction($product);
@@ -164,6 +177,18 @@ class ProductController extends Controller
         ];
 
         $product->update($data);
+
+        $productStock = ProductStock::where('product_id',$product->id)->first();
+//        dd($productStock);
+        $data = [
+            'product_id' => $product->id,
+            'p_qty' => $totalQty ,
+            'p_reduce_qty' => $totalQty,
+            'user_id' => auth()->user()->id,
+            'updated_at' => Carbon::now()
+        ];
+
+        $productStock->update($data);
 
         $this->stockQty($request,$product);
         $this->purchaseUnitPrice($request,$product);

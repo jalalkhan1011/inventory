@@ -221,7 +221,7 @@ trait ProductSaleTrait
                     'qty' => $saleQtyFind['qty'] - $request->sale_qty[$k]
                 ];
 
-//                $saleQtyFind->update($data );
+                $saleQtyFind->update($data );
             }
         }
 
