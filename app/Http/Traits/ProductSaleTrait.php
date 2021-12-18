@@ -3,6 +3,7 @@ namespace App\Http\Traits;
 
 use App\Models\Product;
 use App\Models\ProductSaleItem;
+use App\Models\ProductStock;
 use App\Models\ProductTransaction;
 use Illuminate\Support\Facades\DB;
 
@@ -37,15 +38,15 @@ trait ProductSaleTrait
         foreach ($saleProductId as $row){
             $productSaleQty[] = $row['product_id'];
         }
-        foreach ( $productSaleQty as $k=>$saleQty ){
-            $saleQtyFind = Product::findOrFail($saleQty);
+        foreach ( $productSaleQty as $k=>$saleStockQty ){
+            $saleStockQtyFind = ProductStock::findOrFail($saleStockQty);
 
-            if($saleQtyFind['id']){
+            if($saleStockQtyFind['id']){
                 $data = [
-                    'qty' => $saleQtyFind['qty'] - $request->sale_qty[$k]
+                    'p_reduce_qty' => $saleStockQtyFind['p_reduce_qty'] - $request->sale_qty[$k]
                 ];
 
-                $saleQtyFind->update($data );
+                $saleStockQtyFind->update($data );
             }
         }
     }

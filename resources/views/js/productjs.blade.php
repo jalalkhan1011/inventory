@@ -40,7 +40,7 @@
                 thisRow.find('.categoryName').val(data.name);
                 thisRow.find('.brandId').val(data.brand_id);
                 thisRow.find('.brandName').val(data.brandName);
-                thisRow.find('.stockQty').val(data.qty);
+                thisRow.find('.stockQty').val(data.p_reduce_qty);
                 thisRow.find('.salePrice').val(data.sale_price);
                 thisRow.find('.price').val(data.sale_price);
                 thisRow.find('.unitId').val(data.unit_id);

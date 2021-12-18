@@ -179,7 +179,7 @@ class ProductController extends Controller
         $product->update($data);
 
         $productStock = ProductStock::where('product_id',$product->id)->first();
-//        dd($productStock);
+
         $data = [
             'product_id' => $product->id,
             'p_qty' => $totalQty ,
