@@ -120,13 +120,13 @@ class ProductSaleController extends Controller
 
         $this->updateProduct($request,$productSaleId);
 
-        $this->updateSaleItem($request,$productSaleId);
+//        $this->updateSaleItem($request,$productSaleId);
 
-        $this->updateProductTransaction($request,$productSaleId);
+//        $this->updateProductTransaction($request,$productSaleId);
 
-        $this->saleItemDeleteAndUpdate($request,$productSaleId);
+//        $this->saleItemDeleteAndUpdate($request,$productSaleId);
 
-        $this->saleTransactionDeleteAndUpdate($request,$productSaleId,$employeeId);
+//        $this->saleTransactionDeleteAndUpdate($request,$productSaleId,$employeeId);
 
        return  redirect()->back();
     }

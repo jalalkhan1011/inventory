@@ -23,4 +23,8 @@ class ProductStock extends Model
     public function products(){
         return $this->belongsTo(Product::class,'product_id');
     }
+
+    public function productSaleItem(){
+        return $this->hasMany(ProductSaleItem::class,'product_id');
+    }
 }

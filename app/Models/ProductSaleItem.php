@@ -52,4 +52,8 @@ class ProductSaleItem extends Model
     public function user(){
         return $this->belongsTo(User::class,'user_id');
     }
+
+    public function productStock(){
+        return $this->belongsTo(ProductStock::class,'product_id');
+    }
 }

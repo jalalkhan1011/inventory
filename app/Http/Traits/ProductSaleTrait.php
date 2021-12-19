@@ -6,6 +6,7 @@ use App\Models\ProductSaleItem;
 use App\Models\ProductStock;
 use App\Models\ProductTransaction;
 use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Role;
 
 trait ProductSaleTrait
 {
@@ -79,15 +80,15 @@ trait ProductSaleTrait
         $saleItemQty = ProductSaleItem::where('product_sale_id',$productSaleId->id)->select('id')->get()->toArray();
 
         $saleItem = [];
-        $saleQty =[];
+        $saleStockQty =[];
         foreach ($saleItemId as $row){
             $saleItem[] = $row['product_id'];
         }
         foreach ($saleItem as $i => $product){
             foreach ($saleItemQty as $row){
-            $productFind = Product::find($product);
-            $saleQty[] = $row['id'];
-                foreach ($saleQty as $k => $saleProduct){
+            $productFind = ProductStock::find($product);
+                $saleStockQty[] = $row['id'];
+                foreach ($saleStockQty as $k => $saleProduct){
                     $saleItemFind = ProductSaleItem::find($saleProduct);
 
                     $saleRequestQty = $request->sale_qty[$i];
@@ -101,8 +102,9 @@ trait ProductSaleTrait
                          $total = $itemSaleQty + $qty;
 
                          $data = [
-                             'qty' =>  $productFind['qty'] - $qty
+                             'p_reduce_qty' =>  $productFind['p_reduce_qty'] - $qty
                          ];
+
 
                          $productFind->update($data);
                      }else{
@@ -110,8 +112,9 @@ trait ProductSaleTrait
                          $total = $itemSaleQty - $qty;
 
                          $data = [
-                             'qty' =>  $productFind['qty'] +  $qty
+                             'p_reduce_qty' =>  $productFind['p_reduce_qty'] +  $qty
                          ];
+
                          $productFind->update($data);
                      }
                    }
@@ -225,24 +228,43 @@ trait ProductSaleTrait
                 $saleQtyFind->update($data );
             }
         }
-
-        $productId = count($_POST['product_id']);
-        for($j =0; $j<$productId; $j++){
-            ProductTransaction::create([
-                'product_id' => $request->product_id[$j],
-                'customer_id' => $request->customer_id,
-                'category_id' => $request->category_id[$j],
-                'brand_id' =>  $request->brand_id[$j],
-                's_qty' => $request->sale_qty[$j],
-                'stock_qty' => $request->stock_qty[$j] -  $request->sale_qty[$j],
-                's_unit_amount' => $request->sale_price[$j],
-                's_total_amount' => $request->total_item_price[$j],
-                'status' => 'S',
-                'product_sale_id' => $productSaleId->id,
-                'employee_id' => $employeeId->id,
-                'user_id' => auth()->user()->id,
-                'created_at' => now()
-            ]);
+        if(Role::findByName('Admin')){
+            $productId = count($_POST['product_id']);
+            for($j =0; $j<$productId; $j++){
+                ProductTransaction::create([
+                    'product_id' => $request->product_id[$j],
+                    'customer_id' => $request->customer_id,
+                    'category_id' => $request->category_id[$j],
+                    'brand_id' =>  $request->brand_id[$j],
+                    's_qty' => $request->sale_qty[$j],
+                    'stock_qty' => $request->stock_qty[$j] -  $request->sale_qty[$j],
+                    's_unit_amount' => $request->sale_price[$j],
+                    's_total_amount' => $request->total_item_price[$j],
+                    'status' => 'S',
+                    'product_sale_id' => $productSaleId->id,
+                    'user_id' => auth()->user()->id,
+                    'created_at' => now()
+                ]);
+            }
+        }else{
+            $productId = count($_POST['product_id']);
+            for($j =0; $j<$productId; $j++){
+                ProductTransaction::create([
+                    'product_id' => $request->product_id[$j],
+                    'customer_id' => $request->customer_id,
+                    'category_id' => $request->category_id[$j],
+                    'brand_id' =>  $request->brand_id[$j],
+                    's_qty' => $request->sale_qty[$j],
+                    'stock_qty' => $request->stock_qty[$j] -  $request->sale_qty[$j],
+                    's_unit_amount' => $request->sale_price[$j],
+                    's_total_amount' => $request->total_item_price[$j],
+                    'status' => 'S',
+                    'product_sale_id' => $productSaleId->id,
+                    'employee_id' => $employeeId->id,
+                    'user_id' => auth()->user()->id,
+                    'created_at' => now()
+                ]);
+            }
         }
     }
 }
