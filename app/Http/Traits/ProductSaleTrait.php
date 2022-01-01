@@ -44,9 +44,9 @@ trait ProductSaleTrait
 
             if($saleStockQtyFind['id']){
                 $data = [
-                    'p_reduce_qty' => $saleStockQtyFind['p_reduce_qty'] - $request->sale_qty[$k]
+                    'p_reduce_qty' => abs($saleStockQtyFind['p_reduce_qty'] - $request->sale_qty[$k])
                 ];
-
+//                dd($data);
                 $saleStockQtyFind->update($data );
             }
         }
@@ -77,89 +77,67 @@ trait ProductSaleTrait
     private function updateProduct($request,$productSaleId)
     {
         $saleItemId = ProductSaleItem::where('product_sale_id',$productSaleId->id)->select('product_id')->get()->toArray();//data get form table array format that why use toArray and update multiple data on by one
-        $saleItemQty = ProductSaleItem::where('product_sale_id',$productSaleId->id)->select('id')->get()->toArray();
 
-        $saleItem = [];
-        $saleStockQty =[];
+        $stockProductQty = [];
         foreach ($saleItemId as $row){
-            $saleItem[] = $row['product_id'];
+            $stockProductQty[] = $row['product_id'];
         }
-        foreach ($saleItem as $i => $product){
-            foreach ($saleItemQty as $row){
-            $productFind = ProductStock::find($product);
-                $saleStockQty[] = $row['id'];
-                foreach ($saleStockQty as $k => $saleProduct){
-                    $saleItemFind = ProductSaleItem::find($saleProduct);
 
-                    $saleRequestQty = $request->sale_qty[$i];
-                    $itemSaleQty = $saleItemFind['sale_qty'];
+        foreach ($stockProductQty as $i => $stockProduct){
+            $stockProductFind = ProductStock::findOrFail($stockProduct);
 
-                   if($productFind['id']){
-
-                     if($saleRequestQty >= $itemSaleQty){
-
-                         $qty =  $saleRequestQty - $itemSaleQty;
-                         $total = $itemSaleQty + $qty;
-
-                         $data = [
-                             'p_reduce_qty' =>  $productFind['p_reduce_qty'] - $qty
-                         ];
+            if($stockProductFind['id']){
+                $data = [
+                    'p_reduce_qty' =>  $stockProductFind['p_reduce_qty'] + $request->sale_qty[$i]
+                ];
 
 
-                         $productFind->update($data);
-                     }else{
-                         $qty =  $itemSaleQty - $saleRequestQty;
-                         $total = $itemSaleQty - $qty;
-
-                         $data = [
-                             'p_reduce_qty' =>  $productFind['p_reduce_qty'] +  $qty
-                         ];
-
-                         $productFind->update($data);
-                     }
-                   }
-                }
+                $stockProductFind->update($data);
             }
         }
     }
 
     private function updateSaleItem($request,$productSaleId)
     {
-        $saleItemProductId = ProductSaleItem::where('product_sale_id',$productSaleId->id)->select('id')->get()->toArray();
+        DB::table('product_sale_items')->where('product_sale_id',$productSaleId->id)->delete();
+        $this->saleItem($request,$productSaleId);
+        $this->saleQtyCalculation($request,$productSaleId);
 
-        $saleProduct = [];
-        foreach ($saleItemProductId as $row){
-            $saleProduct[] = $row['id'];
-        }
-        foreach ($saleProduct as $j => $saleItem){
-            $saleItemFind = ProductSaleItem::find($saleItem);
-            $saleRequestQty = $request->sale_qty[$j];
-            $itemSaleQty = $saleItemFind['sale_qty'];
-
-            if($saleItemFind['id']){
-                if($saleRequestQty >= $itemSaleQty){
-
-                    $qty =  $saleRequestQty - $itemSaleQty;
-                    $total = $itemSaleQty + $qty;
-                    $data = [
-                        'stock_qty' => $saleItemFind['stock_qty'] -  $qty,
-                        'sale_qty' => $saleItemFind['sale_qty'] +  $qty
-                    ];
-
-                    $saleItemFind->update($data);
-                }else{
-                    $qty = $itemSaleQty - $saleRequestQty;
-                    $total = $itemSaleQty - $qty;
-                    $data = [
-                        'stock_qty' => $saleItemFind['stock_qty'] +  $qty,
-                        'sale_qty' => $saleItemFind['sale_qty'] -  $qty
-                    ];
-
-                    $saleItemFind->update($data);
-                }
-            }
-
-        }
+//        $saleItemProductId = ProductSaleItem::where('product_sale_id',$productSaleId->id)->select('id')->get()->toArray();
+//
+//        $saleProduct = [];
+//        foreach ($saleItemProductId as $row){
+//            $saleProduct[] = $row['id'];
+//        }
+//        foreach ($saleProduct as $j => $saleItem){
+//            $saleItemFind = ProductSaleItem::find($saleItem);
+//            $saleRequestQty = $request->sale_qty[$j];
+//            $itemSaleQty = $saleItemFind['sale_qty'];
+//
+//            if($saleItemFind['id']){
+//                if($saleRequestQty >= $itemSaleQty){
+//
+//                    $qty =  $saleRequestQty - $itemSaleQty;
+//                    $total = $itemSaleQty + $qty;
+//                    $data = [
+//                        'stock_qty' => $saleItemFind['stock_qty'] -  $qty,
+//                        'sale_qty' => $saleItemFind['sale_qty'] +  $qty
+//                    ];
+//
+//                    $saleItemFind->update($data);
+//                }else{
+//                    $qty = $itemSaleQty - $saleRequestQty;
+//                    $total = $itemSaleQty - $qty;
+//                    $data = [
+//                        'stock_qty' => $saleItemFind['stock_qty'] +  $qty,
+//                        'sale_qty' => $saleItemFind['sale_qty'] -  $qty
+//                    ];
+//
+//                    $saleItemFind->update($data);
+//                }
+//            }
+//
+//        }
     }
 
     private function updateProductTransaction($request,$productSaleId)

@@ -13,6 +13,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProductSaleController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\StockController;
+use App\Http\Controllers\FileController;
 
 
 /*
@@ -29,7 +30,7 @@ use App\Http\Controllers\StockController;
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::resource('files',FileController::class);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

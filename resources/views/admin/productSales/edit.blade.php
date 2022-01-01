@@ -56,6 +56,8 @@
                             <tbody class="newRow">
                             @foreach($productSaleItems as $productSaleItem)
                             <tr class="rowFirst">
+                                <input type="text" name="p_id[]" value={{ $productSaleItem->product_id }}>
+                                <input type="text" name="u_p_q[]" value="{{ $productSaleItem->sale_qty}}">
                                 <td>
                                     <select class="custom-select product" id="product" name="product_id[]" required>
                                         <option value="">Select one</option>

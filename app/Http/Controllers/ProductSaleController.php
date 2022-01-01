@@ -8,6 +8,7 @@ use App\Models\Employee;
 use App\Models\Product;
 use App\Models\ProductSale;
 use App\Models\ProductSaleItem;
+use App\Models\ProductStock;
 use App\Models\ProductTransaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -113,13 +114,84 @@ class ProductSaleController extends Controller
         $employeeId = Employee::where('employee_id',auth()->user()->id)->first();
         $productSaleId = ProductSale::findOrFail($id);
 
+        $productSaleItemId = ProductSaleItem::where('product_sale_id',$productSaleId->id)->select('product_id')->get()->toArray();
+//        dd($productSaleItemId);
+        $usedProductStock = [];
+        foreach ($productSaleItemId as $row){
+            $usedProductStock[] = $row['product_id'];
+        }
+//        dd($usedProductStock);
+        foreach ($usedProductStock as $i => $productStock){
+            $productStockFind = ProductStock::find($productStock);
+//            dd($productStockFind);
+            if($productStockFind['product_id']){
+                $data = [
+                    'p_reduce_qty' => $productStockFind['p_reduce_qty'] + $request->u_p_q[$i]
+                ];
+//                dd($data);
+
+                $productStockFind->update($data);
+            }
+        }
+
+
         $data = $request->all();
         $data['user_id'] = auth()->user()->id;
 
         $productSaleId->update($data);
 
-        $this->updateProduct($request,$productSaleId);
+//        $productSaleItemId = ProductSaleItem::where('product_sale_id',$productSaleId->id)->select('product_id')->get()->toArray();
+////        dd($productSaleItemId);
+//        $usedProductStock = [];
+//        foreach ($productSaleItemId as $row){
+//            $usedProductStock[] = $row['product_id'];
+//        }
+////        dd($usedProductStock);
+//        foreach ($usedProductStock as $i => $productStock){
+//            $productStockFind = ProductStock::find($productStock);
+////            dd($productStockFind);
+//            if($productStockFind['product_id']){
+//                $data = [
+//                    'p_reduce_qty' => $productStockFind['p_reduce_qty'] + $request->u_p_q[$i]
+//                ];
+////                dd($data);
+//
+//                $productStockFind->update($data);
+//            }
+//        }
 
+       $a = DB::table('product_sale_items')->where('product_sale_id',$productSaleId->id)->delete();
+//        dd($a);
+        $this->saleItem($request,$productSaleId);
+
+        $productSaleItemIds = ProductSaleItem::where('product_sale_id',$productSaleId->id)->select('product_id')->get()->toArray();
+//        dd($productSaleItemId);
+        $usedProductStocks = [];
+        foreach ($productSaleItemIds as $row){
+            $usedProductStocks[] = $row['product_id'];
+        }
+//        dd($usedProductStock);
+        foreach ($usedProductStocks as $i => $productStocks){
+            $productStockFinds = ProductStock::find($productStocks);
+//            dd($productStockFind);
+            if($productStockFinds['product_id']){
+                $data = [
+                    'p_reduce_qty' => $productStockFinds['p_reduce_qty'] - $request->sale_qty[$i]
+                ];
+//                dd($data);
+
+                $productStockFinds->update($data);
+            }
+        }
+
+
+
+
+
+
+
+//        $this->updateProduct($request,$productSaleId);
+//
 //        $this->updateSaleItem($request,$productSaleId);
 
 //        $this->updateProductTransaction($request,$productSaleId);
