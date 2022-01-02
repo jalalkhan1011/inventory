@@ -17,6 +17,7 @@
             defultRow.find('input.stockQty').attr('readonly',true).val('');
             defultRow.find('input.salePrice').attr('readonly',true).val('');
             defultRow.find('input.unitName').attr('readonly',true).val('');
+            defultRow.find('input.unitId').val('');
             defultRow.find('input.saleQty').val('');
             defultRow.find('input.totalItemPrice').val('');
         });
@@ -48,6 +49,7 @@
                 thisRow.find('.salePrice').val(data.sale_price);
                 thisRow.find('.price').val(data.sale_price);
                 thisRow.find('.unitName').val(data.unitName);
+                thisRow.find('.unitId').val(data.unit_id);
             }
         });
 

@@ -74,25 +74,25 @@ trait ProductSaleTrait
         }
     }
 
-    private function updateProduct($request,$productSaleId)
+    private function updateProductStock($request,$productSaleId)
     {
-        $saleItemId = ProductSaleItem::where('product_sale_id',$productSaleId->id)->select('product_id')->get()->toArray();//data get form table array format that why use toArray and update multiple data on by one
+//        dd($request->all());
+        $productSaleItemId = ProductSaleItem::where('product_sale_id',$productSaleId->id)->select('product_id')->get()->toArray();//data get form table array format that why use toArray and update multiple data on by one
 
-        $stockProductQty = [];
-        foreach ($saleItemId as $row){
-            $stockProductQty[] = $row['product_id'];
+        $usedProductStock = [];
+        foreach ($productSaleItemId as $row){
+            $usedProductStock[] = $row['product_id'];
         }
 
-        foreach ($stockProductQty as $i => $stockProduct){
-            $stockProductFind = ProductStock::findOrFail($stockProduct);
+        foreach ($usedProductStock as $i => $productStock){
+            $productStockFind = ProductStock::find($productStock);
 
-            if($stockProductFind['id']){
+            if($productStockFind['product_id']){
                 $data = [
-                    'p_reduce_qty' =>  $stockProductFind['p_reduce_qty'] + $request->sale_qty[$i]
+                    'p_reduce_qty' => $productStockFind['p_reduce_qty'] + $request->u_p_q[$i]
                 ];
-
-
-                $stockProductFind->update($data);
+//                dd($data);
+                $productStockFind->update($data);
             }
         }
     }
@@ -100,44 +100,28 @@ trait ProductSaleTrait
     private function updateSaleItem($request,$productSaleId)
     {
         DB::table('product_sale_items')->where('product_sale_id',$productSaleId->id)->delete();
-        $this->saleItem($request,$productSaleId);
-        $this->saleQtyCalculation($request,$productSaleId);
 
-//        $saleItemProductId = ProductSaleItem::where('product_sale_id',$productSaleId->id)->select('id')->get()->toArray();
-//
-//        $saleProduct = [];
-//        foreach ($saleItemProductId as $row){
-//            $saleProduct[] = $row['id'];
-//        }
-//        foreach ($saleProduct as $j => $saleItem){
-//            $saleItemFind = ProductSaleItem::find($saleItem);
-//            $saleRequestQty = $request->sale_qty[$j];
-//            $itemSaleQty = $saleItemFind['sale_qty'];
-//
-//            if($saleItemFind['id']){
-//                if($saleRequestQty >= $itemSaleQty){
-//
-//                    $qty =  $saleRequestQty - $itemSaleQty;
-//                    $total = $itemSaleQty + $qty;
-//                    $data = [
-//                        'stock_qty' => $saleItemFind['stock_qty'] -  $qty,
-//                        'sale_qty' => $saleItemFind['sale_qty'] +  $qty
-//                    ];
-//
-//                    $saleItemFind->update($data);
-//                }else{
-//                    $qty = $itemSaleQty - $saleRequestQty;
-//                    $total = $itemSaleQty - $qty;
-//                    $data = [
-//                        'stock_qty' => $saleItemFind['stock_qty'] +  $qty,
-//                        'sale_qty' => $saleItemFind['sale_qty'] -  $qty
-//                    ];
-//
-//                    $saleItemFind->update($data);
-//                }
-//            }
-//
-//        }
+        $this->saleItem($request,$productSaleId);
+
+        $productSaleItemIds = ProductSaleItem::where('product_sale_id',$productSaleId->id)->select('product_id')->get()->toArray();
+
+        $usedProductStocks = [];
+        foreach ($productSaleItemIds as $row){
+            $usedProductStocks[] = $row['product_id'];
+        }
+
+        foreach ($usedProductStocks as $i => $productStocks){
+            $productStockFinds = ProductStock::find($productStocks);
+
+            if($productStockFinds['product_id']){
+                $data = [
+                    'p_reduce_qty' => $productStockFinds['p_reduce_qty'] - $request->sale_qty[$i]
+                ];
+
+
+                $productStockFinds->update($data);
+            }
+        }
     }
 
     private function updateProductTransaction($request,$productSaleId)
