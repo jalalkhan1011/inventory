@@ -26,8 +26,13 @@
                         <div class="row">
                             <div class="col-lg-3">
                                 <label class="form-label">Profile image</label><br>
-                                <img class="image-preview" id="profile_image"  src="{{ File::exists('uploads/profileImage/'.$profile->profile_image) ? asset('uploads/profileImage/'.$profile->profile_image) : asset('default/Profile_avatar.png') }}" alt="...">
-                                <input type="file" class="pt-1" name="profile_image" onchange="loadFile()">
+                                @if(!empty($profile->profile_image))
+                                    <img class="image-preview" id="profile_image"  src="{{ file_exists('uploads/profileImage/'.$profile->profile_image) ? asset('uploads/profileImage/'.$profile->profile_image) : asset('default/Profile_avatar.png') }}" alt="...">
+                                    <input type="file" class="pt-1" name="profile_image" onchange="loadFile()">
+                                @else
+                                    <img class="image-preview" id="profile_image"  src="{{  asset('default/Profile_avatar.png') }}" alt="...">
+                                    <input type="file" class="pt-1" name="profile_image" onchange="loadFile()">
+                                @endif
                                 <div class="clearfix"></div>
                                 @if($errors->has('profile_image'))
                                     <span class="form-text">

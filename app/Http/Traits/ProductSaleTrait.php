@@ -76,7 +76,6 @@ trait ProductSaleTrait
 
     private function updateProductStock($request,$productSaleId)
     {
-//        dd($request->all());
         $productSaleItemId = ProductSaleItem::where('product_sale_id',$productSaleId->id)->select('product_id')->get()->toArray();//data get form table array format that why use toArray and update multiple data on by one
 
         $usedProductStock = [];
@@ -91,7 +90,7 @@ trait ProductSaleTrait
                 $data = [
                     'p_reduce_qty' => $productStockFind['p_reduce_qty'] + $request->u_p_q[$i]
                 ];
-//                dd($data);
+
                 $productStockFind->update($data);
             }
         }
