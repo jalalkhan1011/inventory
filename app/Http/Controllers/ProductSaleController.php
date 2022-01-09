@@ -123,11 +123,7 @@ class ProductSaleController extends Controller
 
         $this->updateSaleItem($request,$productSaleId);
 
-//        $this->updateProductTransaction($request,$productSaleId);
-
-//        $this->saleItemDeleteAndUpdate($request,$productSaleId);
-
-//        $this->saleTransactionDeleteAndUpdate($request,$productSaleId,$employeeId);
+        $this->saleTransactionUpdate($request,$productSaleId,$employeeId);
 
        return  redirect()->back();
     }
