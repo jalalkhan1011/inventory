@@ -61,15 +61,16 @@
                     <div class="ml-1">Manage Supplier</div>
                 </a>
             </li>
-            <li class="sidenav-item">
-                <a href="{{ route('customers.index') }}" class="sidenav-link {{ request()->is('admin/customers*') ? 'active' : '' }}">
-                    <i class="fas fa-user-check"></i>
-                    <div class="ml-1">Manage Customer</div>
-                </a>
-            </li>
         </ul>
-{{--        @endif--}}
     </li>
+    @if(Auth::user()->hasRole('Admin') || Auth::user()->hasRole('Employee'))
+    <li class="sidenav-item">
+        <a href="{{ route('customers.index') }}" class="sidenav-link {{ request()->is('customers*') ? 'active' : '' }}">
+            <i class="fas fa-user-check"></i>
+            <div class="ml-1">Manage Customer</div>
+        </a>
+    </li>
+    @endif
 
     <li class="sidenav-divider mb-1"></li>
     <li class="sidenav-header small font-weight-semibold">Product Setting</li>

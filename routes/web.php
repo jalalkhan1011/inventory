@@ -43,9 +43,12 @@ Route::middleware('auth')->group(function (){
         Route::resource('/profiles',ProfileController::class);
         Route::resource('/employees', EmployeeController::class);
         Route::resource('/suppliers', SuppliersController::class);
-        Route::resource('/customers', CustomerController::class);
     });
     //admin routing end
+
+    //Customer routing start
+    Route::resource('/customers', CustomerController::class);
+    //Customer routing send
 
     //product setting routing start
     Route::group(['prefix' => 'product-setting'],function (){

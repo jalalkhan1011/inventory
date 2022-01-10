@@ -48,7 +48,10 @@
                             <td>
                                 <ul class="list-inline">
                                     <li class="list-inline-item"><a href="" class="btn btn-sm btn-info" title="Show"><i class="fa fa-eye"></i> </a></li>
+                                    @can('customer-edit')
                                     <li class="list-inline-item"><a href="{{ route('customers.edit',$customer->id) }}" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil-alt"></i> </a> </li>
+                                    @endif
+                                    @can('customer-delete')
                                     <li class="list-inline-item">
                                         <form class="" action="{{ route('customers.destroy',$customer->id) }}" method="post">
                                             @csrf
@@ -56,6 +59,7 @@
                                             <button type="submit" class="btn btn-sm btn-danger" title="Delete" onclick="return confirm('Are you want to delete {{$customer->name}} ?')"><i class="fa fa-trash-alt"></i> </button>
                                         </form>
                                     </li>
+                                    @endcan
                                 </ul>
                             </td>
                         </tr>
