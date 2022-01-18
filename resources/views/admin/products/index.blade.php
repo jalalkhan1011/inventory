@@ -50,14 +50,18 @@
                             <td>
                                 <ul class="list-inline">
                                     <li class="list-inline-item"><a href="" class="btn btn-sm btn-info" title="Show"><i class="fa fa-eye"></i> </a></li>
-                                    <li class="list-inline-item"><a href="{{ route('products.edit',$product->id) }}" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil-alt"></i> </a> </li>
-                                    <li class="list-inline-item">
-                                        <form class="" action="{{ route('products.destroy',$product->id) }}" method="post">
-                                            @csrf
-                                            @method('delete')
-                                            <button type="submit" class="btn btn-sm btn-danger" title="Delete" onclick="return confirm('Are you want to delete {{$product->name}} ?')"><i class="fa fa-trash-alt"></i> </button>
-                                        </form>
-                                    </li>
+                                    @can('product-edit')
+                                        <li class="list-inline-item"><a href="{{ route('products.edit',$product->id) }}" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil-alt"></i> </a> </li>
+                                    @endcan
+                                    @can('product-delete')
+                                        <li class="list-inline-item">
+                                            <form class="" action="{{ route('products.destroy',$product->id) }}" method="post">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit" class="btn btn-sm btn-danger" title="Delete" onclick="return confirm('Are you want to delete {{$product->name}} ?')"><i class="fa fa-trash-alt"></i> </button>
+                                            </form>
+                                        </li>
+                                    @endcan
                                 </ul>
                             </td>
                         </tr>

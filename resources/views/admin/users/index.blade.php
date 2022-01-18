@@ -13,8 +13,8 @@
                 </div>
                 @if(Auth::user()->hasRole('Admin'))
                     <div class="col-lg-6 text-right">
-                        @can('role-create')
-                            <a class="btn btn-success" href="{{ route('users.create') }}"> New user</a>
+                        @can('user-create')
+                            <a class="btn btn-outline-success" href="{{ route('users.create') }}"> New user</a>
                         @endcan
                     </div>
             </div>
@@ -50,11 +50,15 @@
                                 @endif
                             </td>
                             <td>
-                                <a class="btn btn-info" href="{{ route('users.show',$user->id) }}">Show</a>
-                                <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">Edit</a>
-                                {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}
-                                {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-                                {!! Form::close() !!}
+                                <a class="btn btn-outline-info" href="{{ route('users.show',$user->id) }}">Show</a>
+                                @can('user-edit')
+                                    <a class="btn btn-outline-primary" href="{{ route('users.edit',$user->id) }}">Edit</a>
+                                @endcan
+                                @can('user-delete')
+                                    {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}
+                                    {!! Form::submit('Delete', ['class' => 'btn btn-outline-danger']) !!}
+                                    {!! Form::close() !!}
+                                @endcan
                             </td>
                         </tr>
                     @endforeach

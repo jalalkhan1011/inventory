@@ -40,11 +40,14 @@ Route::middleware('auth')->group(function (){
     Route::group(['prefix' => 'admin'],function(){
         Route::resource('/roles', RoleController::class);
         Route::resource('/users', UserController::class);
-        Route::resource('/profiles',ProfileController::class);
         Route::resource('/employees', EmployeeController::class);
         Route::resource('/suppliers', SuppliersController::class);
     });
     //admin routing end
+
+    //Profile routing start
+    Route::resource('/profiles',ProfileController::class);
+    //Profile routing end
 
     //Customer routing start
     Route::resource('/customers', CustomerController::class);

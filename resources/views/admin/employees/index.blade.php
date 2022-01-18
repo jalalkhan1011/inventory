@@ -13,7 +13,7 @@
                 </div>
                 <div class="col-lg-6 text-right">
                     @can('employee-create')
-                        <a class="btn btn-success" href="{{ route('employees.create') }}"> New Employee</a>
+                        <a class="btn btn-outline-success" href="{{ route('employees.create') }}"> New Employee</a>
                     @endcan
                 </div>
             </div>
@@ -45,15 +45,19 @@
                             <td>{{ $employee->address }}</td>
                             <td>
                                 <ul class="list-inline">
-                                    <li class="list-inline-item"><a href="" class="btn btn-sm btn-info" title="Show"><i class="fa fa-eye"></i> </a></li>
-                                    <li class="list-inline-item"><a href="{{ url('admin/employees/'.$employee->id.'/edit') }}" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil-alt"></i> </a> </li>
-                                    <li class="list-inline-item">
-                                        <form class="" action="{{ url('admin/employees/'.$employee->id) }}" method="post">
-                                            @csrf
-                                            @method('delete')
-                                            <button type="submit" class="btn btn-sm btn-danger" title="Delete" onclick="return confirm('Are you want to delete {{$employee->name}} ?')"><i class="fa fa-trash-alt"></i> </button>
-                                        </form>
-                                    </li>
+                                    <li class="list-inline-item"><a href="" class="btn btn-outline-info" title="Show"><i class="fa fa-eye"></i> </a></li>
+                                    @can('employee-edit')
+                                        <li class="list-inline-item"><a href="{{ url('admin/employees/'.$employee->id.'/edit') }}" class="btn btn-outline-warning" title="Edit"><i class="fa fa-pencil-alt"></i> </a> </li>
+                                    @endcan
+                                    @can('employee-delete')
+                                        <li class="list-inline-item">
+                                            <form class="" action="{{ url('admin/employees/'.$employee->id) }}" method="post">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit" class="btn btn-outline-danger" title="Delete" onclick="return confirm('Are you want to delete {{$employee->name}} ?')"><i class="fa fa-trash-alt"></i> </button>
+                                            </form>
+                                        </li>
+                                    @endcan
                                 </ul>
                             </td>
                         </tr>

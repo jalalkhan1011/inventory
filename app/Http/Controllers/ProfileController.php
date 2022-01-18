@@ -29,7 +29,7 @@ class ProfileController extends Controller
     public function index()
     {
         $profile = Profile::where('user_id',auth()->user()->id)->first();
-//        dd($profile);
+
         $user = Auth::user();
 
         if(!empty($profile))
