@@ -13,7 +13,7 @@
                 </div>
                 <div class="col-lg-6 text-right">
                     @can('unit-create')
-                        <a class="btn btn-success" href="{{ route('units.create') }}"> Create New unit</a>
+                        <a class="btn btn-outline-success" href="{{ route('units.create') }}"> Create New unit</a>
                     @endcan
                 </div>
             </div>
@@ -42,16 +42,16 @@
                         <td>{{ $unit->status }}</td>
                         <td>
                             <ul class="list-inline">
-                                <li class="list-inline-item"><a href="" class="btn btn-sm btn-info" title="Show"><i class="fa fa-eye"></i> </a></li>
+                                <li class="list-inline-item"><a href="" class="btn btn-outline-info" title="Show"><i class="fa fa-eye"></i> </a></li>
                                 @can('unit-edit')
-                                    <li class="list-inline-item"><a href="{{ route('units.edit',$unit->id) }}" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil-alt"></i> </a> </li>
+                                    <li class="list-inline-item"><a href="{{ route('units.edit',$unit->id) }}" class="btn btn-outline-warning" title="Edit"><i class="fa fa-pencil-alt"></i> </a> </li>
                                 @endcan
                                 @can('unit-delete')
                                     <li class="list-inline-item">
                                         <form class="" action="{{ route('units.destroy',$unit->id) }}" method="post">
                                             @csrf
                                             @method('delete')
-                                            <button type="submit" class="btn btn-sm btn-danger" title="Delete" onclick="return confirm('Are you want to delete {{$unit->name}} ?')"><i class="fa fa-trash-alt"></i> </button>
+                                            <button type="submit" class="btn btn-outline-danger" title="Delete" onclick="return confirm('Are you want to delete {{$unit->name}} ?')"><i class="fa fa-trash-alt"></i> </button>
                                         </form>
                                     </li>
                                 @endcan

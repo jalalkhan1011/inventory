@@ -13,7 +13,7 @@
                 </div>
                 <div class="col-lg-6 text-right">
                     @can('brand-create')
-                        <a class="btn btn-success" href="{{ route('brands.create') }}"> New Brand</a>
+                        <a class="btn btn-outline-success" href="{{ route('brands.create') }}"> New Brand</a>
                     @endcan
                 </div>
             </div>
@@ -43,16 +43,16 @@
                             <td>{{ $brand->description }}</td>
                             <td>
                                 <ul class="list-inline">
-                                    <li class="list-inline-item"><a href="" class="btn btn-sm btn-info" title="Show"><i class="fa fa-eye"></i> </a></li>
+                                    <li class="list-inline-item"><a href="" class="btn btn-outline-info" title="Show"><i class="fa fa-eye"></i> </a></li>
                                     @can('brand-edit')
-                                        <li class="list-inline-item"><a href="{{ route('brands.edit',$brand->id) }}" class="btn btn-sm btn-warning" title="Edit"><i class="fa fa-pencil-alt"></i> </a> </li>
+                                        <li class="list-inline-item"><a href="{{ route('brands.edit',$brand->id) }}" class="btn btn-outline-warning" title="Edit"><i class="fa fa-pencil-alt"></i> </a> </li>
                                     @endcan
                                     @can('brand-delete')
                                         <li class="list-inline-item">
                                             <form class="" action="{{ route('brands.destroy',$brand->id) }}" method="post">
                                                 @csrf
                                                 @method('delete')
-                                                <button type="submit" class="btn btn-sm btn-danger" title="Delete" onclick="return confirm('Are you want to delete {{$brand->name}} ?')"><i class="fa fa-trash-alt"></i> </button>
+                                                <button type="submit" class="btn btn-outline-danger" title="Delete" onclick="return confirm('Are you want to delete {{$brand->name}} ?')"><i class="fa fa-trash-alt"></i> </button>
                                             </form>
                                         </li>
                                     @endcan

@@ -58,7 +58,7 @@
                                             <form class="" action="{{ url('admin/suppliers/'.$supplier->id) }}" method="post">
                                                 @csrf
                                                 @method('delete')
-                                                <button type="submit" class="btn btn btn-outline-danger" title="Delete" onclick="return confirm('Are you want to delete {{$supplier->name}} ?')"><i class="fa fa-trash-alt"></i> </button>
+                                                <button type="submit" class="btn btn-outline-danger" title="Delete" onclick="return confirm('Are you want to delete {{$supplier->name}} ?')"><i class="fa fa-trash-alt"></i> </button>
                                             </form>
                                         </li>
                                     @endcan
