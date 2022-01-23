@@ -121,7 +121,10 @@
                     <button type="submit" class="btn btn-primary">{{ __('Login') }}</button>
                 </div>
             </form>
-            <div class="text-center text-muted"> Don't have an account yet? <a href="#">Sign Up</a>
+            <div class="text-center text-muted"> Don't have an account yet?
+                @if (Route::has('register'))
+                    <a href="{{ route('register') }}" >Sign Up</a>
+                @endif
             </div>
         </div>
     </div>
