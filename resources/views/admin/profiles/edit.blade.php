@@ -19,7 +19,7 @@
                     <strong>{{ session('message') }}</strong>
                 </div>
             @endif
-            <form action="{{ url('admin/profiles') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ url('profiles') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-row">
                     <div class="form-group col-md-12">

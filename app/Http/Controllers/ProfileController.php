@@ -94,7 +94,7 @@ class ProfileController extends Controller
 
         $this->userInfo($request);
 
-            return redirect('admin/profiles');
+            return redirect('/profiles');
         }else{
             $request->validate([
                 'profile_image' => 'nullable|mimes:jpeg,jpg,png,gif',
@@ -110,7 +110,7 @@ class ProfileController extends Controller
             Profile::create($data);
             $this->userInfo($request);
 
-            return redirect('admin/profiles');
+            return redirect('/profiles');
         }
     }
 
