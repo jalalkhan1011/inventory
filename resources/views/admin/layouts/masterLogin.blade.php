@@ -15,6 +15,7 @@
 <div class="page-loader">
     <div class="bg-primary"></div>
 </div>
+@include('admin.includes.commonNav')
 @yield('content')
 @include('admin.includes.js')
 @stack('js')

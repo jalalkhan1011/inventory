@@ -20,7 +20,7 @@
     <div class="bg-primary"></div>
 </div>
 
-
+@include('admin.includes.commonNav')
 @yield('content')
 
 
