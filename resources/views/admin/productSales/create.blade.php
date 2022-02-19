@@ -55,7 +55,7 @@
                             <tbody class="newRow">
                                 <tr class="rowFirst">
                                     <td>
-                                        <select class="custom-select product" id="product" name="product_id[]" required>
+                                        <select class="custom-select product product1" id="product" name="product_id[]" required>
                                             <option value="">Select one</option>
                                             @foreach($products as $key => $product)
                                                 <option value="{{ $key }}">{{ $product }}</option>
@@ -68,6 +68,15 @@
                                             </span>
                                         @endif
                                         <input type="hidden" name="price" class="form-control price" value="" id="price">
+                                        <script>
+                                                $('select').change(function () {
+                                                    if ($(this).closest('table').find('option[value=' + $(this).val() + ']:selected').length > 1)
+                                                    {
+                                                        alert('option is already selected');
+                                                        $(this).val($(this).find("option:first").val());
+                                                    }
+                                                });
+                                        </script>
                                     </td>
                                     <td>
                                         <input type="text" name="category_name" class="form-control categoryName" readonly>
@@ -151,6 +160,7 @@
 @endsection
 @push('js')
     @include('js.productjs')
+
 @endpush
 
 
