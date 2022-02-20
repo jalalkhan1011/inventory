@@ -76,7 +76,7 @@
                                         $('select').change(function () {
                                             if ($(this).closest('table').find('option[value=' + $(this).val() + ']:selected').length > 1)
                                             {
-                                                alert('option is already selected');
+                                                alert('Item is already selected');
                                                 $(this).val($(this).find("option:first").val());
                                             }
                                         });

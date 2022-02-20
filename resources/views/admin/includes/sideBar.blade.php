@@ -3,7 +3,7 @@
                     <img src="{{ asset('back-end/assets/img/logo.png') }}" alt="Brand Logo" class="img-fluid" />
                 </span>
     <a href="index-2.html" class="app-brand-text demo sidenav-text font-weight-normal ml-2">Empire</a>
-    <a href="javascript:" class="layout-sidenav-toggle sidenav-link text-large ml-auto">
+    <a href="#" class="layout-sidenav-toggle sidenav-link text-large ml-auto">
         <i class="ion ion-md-menu align-middle"></i>
     </a>
 </div>
@@ -25,7 +25,7 @@
 
 
     <li class="sidenav-item {{ request()->is('admin/*') ? 'open' :'' }}">
-        <a href="javascript:" class="sidenav-link sidenav-toggle" data-toggle="collapse" aria-expanded="{{ request()->is('admin/*') ? 'true' :'false' }}">
+        <a href="#" class="sidenav-link sidenav-toggle" data-toggle="collapse" aria-expanded="{{ request()->is('admin/*') ? 'true' :'false' }}">
             <i class="sidenav-icon feather icon-box"></i>
             <div>User & role</div>
         </a>
@@ -78,7 +78,7 @@
     <li class="sidenav-divider mb-1"></li>
     <li class="sidenav-header small font-weight-semibold">Product Setting</li>
     <li class="sidenav-item {{ request()->is('product-setting/*') ? 'open' :'' }}">
-        <a href="javascript:" class="sidenav-link sidenav-toggle" data-toggle="collapse" aria-expanded="{{ request()->is('product-setting/*') ? 'true' :'false' }}">
+        <a href="#" class="sidenav-link sidenav-toggle" data-toggle="collapse" aria-expanded="{{ request()->is('product-setting/*') ? 'true' :'false' }}">
             <i class="sidenav-icon feather icon-settings"></i>
             <div>Product</div>
         </a>
@@ -112,7 +112,7 @@
     <li class="sidenav-divider mb-1"></li>
     <li class="sidenav-header small font-weight-semibold">Product</li>
     <li class="sidenav-item {{ request()->is('product-management/*') ? 'open' :'' }}">
-        <a href="javascript:" class="sidenav-link sidenav-toggle" data-toggle="collapse" aria-expanded="{{ request()->is('product-management/*') ? 'true' :'false' }}">
+        <a href="#" class="sidenav-link sidenav-toggle" data-toggle="collapse" aria-expanded="{{ request()->is('product-management/*') ? 'true' :'false' }}">
             <i class="sidenav-icon feather icon-shopping-cart"></i>
             <div>Product Management</div>
         </a>
@@ -137,7 +137,7 @@
     <li class="sidenav-divider mb-1"></li>
     <li class="sidenav-header small font-weight-semibold">Stock</li>
     <li class="sidenav-item {{ request()->is('stock/*') ? 'open' :'' }}">
-        <a href="javascript:" class="sidenav-link sidenav-toggle" data-toggle="collapse" aria-expanded="{{ request()->is('stock/*') ? 'true' :'false' }}">
+        <a href="#" class="sidenav-link sidenav-toggle" data-toggle="collapse" aria-expanded="{{ request()->is('stock/*') ? 'true' :'false' }}">
             <i class="sidenav-icon feather icon-shopping-cart"></i>
             <div>Stock Listing</div>
         </a>
