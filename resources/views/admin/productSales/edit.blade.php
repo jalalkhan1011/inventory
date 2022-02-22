@@ -72,6 +72,7 @@
                                             </span>
                                     @endif
                                     <input type="hidden" name="price" class="form-control price" value="{{ $productSaleItem->sale_price }}" id="price">
+                                    <script src="{{ asset('js/jquery-3.1.1.min.js') }}"></script>
                                     <script>
                                         $('select').change(function () {
                                             if ($(this).closest('table').find('option[value=' + $(this).val() + ']:selected').length > 1)

@@ -86,7 +86,7 @@
                     </div>
                     <div class="list-group list-group-flush">
                         <a href="javascript:" class="list-group-item list-group-item-action media d-flex align-items-center">
-                            <img src="assets/img/avatars/6-small.png" class="d-block ui-w-40 rounded-circle" alt />
+                            <img src="{{ asset('back-end/assets/img/avatars/6-small.png') }}" class="d-block ui-w-40 rounded-circle" alt />
                             <div class="media-body ml-3">
                                 <div class="text-dark line-height-condenced">Lorem ipsum dolor consectetuer elit.</div>
                                 <div class="text-light small mt-1">
@@ -95,7 +95,7 @@
                             </div>
                         </a>
                         <a href="javascript:" class="list-group-item list-group-item-action media d-flex align-items-center">
-                            <img src="assets/img/avatars/4-small.png" class="d-block ui-w-40 rounded-circle" alt />
+                            <img src="{{ asset('back-end/assets/img/avatars/4-small.png') }}" class="d-block ui-w-40 rounded-circle" alt />
                             <div class="media-body ml-3">
                                 <div class="text-dark line-height-condenced">Lorem ipsum dolor sit amet, consectetuer.</div>
                                 <div class="text-light small mt-1">
@@ -104,7 +104,7 @@
                             </div>
                         </a>
                         <a href="javascript:" class="list-group-item list-group-item-action media d-flex align-items-center">
-                            <img src="assets/img/avatars/5-small.png" class="d-block ui-w-40 rounded-circle" alt />
+                            <img src="{{ asset('back-end/assets/img/avatars/5-small.png') }}" class="d-block ui-w-40 rounded-circle" alt />
                             <div class="media-body ml-3">
                                 <div class="text-dark line-height-condenced">Lorem ipsum dolor sit amet elit.</div>
                                 <div class="text-light small mt-1">
@@ -113,7 +113,7 @@
                             </div>
                         </a>
                         <a href="javascript:" class="list-group-item list-group-item-action media d-flex align-items-center">
-                            <img src="assets/img/avatars/11-small.png" class="d-block ui-w-40 rounded-circle" alt />
+                            <img src="{{ asset('back-end/assets/img/avatars/11-small.png') }}" class="d-block ui-w-40 rounded-circle" alt />
                             <div class="media-body ml-3">
                                 <div class="text-dark line-height-condenced">Lorem ipsum dolor sit amet consectetuer amet elit dolor sit.</div>
                                 <div class="text-light small mt-1">
