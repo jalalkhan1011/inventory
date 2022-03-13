@@ -71,10 +71,14 @@
                                         <script src="{{ asset('js/jquery-3.1.1.min.js') }}"></script>
                                         <script>
                                                 $('select').change(function () {
+                                                    console.clear();
                                                     if ($(this).closest('table').find('option[value=' + $(this).val() + ']:selected').length > 1)
                                                     {
+                                                        console.clear();
                                                         alert('Item is already selected');
+                                                        console.clear();
                                                         $(this).val($(this).find("option:first").val());
+                                                        console.clear();
                                                     }
                                                 });
                                         </script>
