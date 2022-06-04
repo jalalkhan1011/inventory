@@ -17,10 +17,10 @@
             defultRow.find('input.unitName').attr('readonly',true);
         });
     });
-    // $(document).on("click","span.rowRemove",function (){ //user for delete all row one by one
+    // $(document).on("click","span.rowRemove",function (){ //delete all row one by one but except last one row
     //     $(this).closest("tr.removableRow").remove();
     // });
-    $(document).on("click", "span.rowRemove ", function () {//delete all row one by one but except last one row
+    $(document).on("click", "span.rowRemove ", function () {//user for delete all row one by one
         var count = $("#productId tr").length - 1;
         if (count > 1) {
             $(this).parents("tr").remove();
@@ -117,5 +117,17 @@
             $('#due').val(parseFloat(dueTotal).toFixed(2));
             $('#change').val(0.00);
         }
+    });
+
+    $(document).on('change click','.removeButton',function (){
+        var subTotal = 0;
+        var grandTotal = 0;
+        var billSubTotal = $('#subTotal').val();
+        var billDiscountPercent = $('#discount').val();
+
+        var thisRow = $(this).closest('tr');
+
+        var billTotal = parseFloat(thisRow.find('#totalItemPrice').val());
+        alert(billTotal);
     })
 </script>
