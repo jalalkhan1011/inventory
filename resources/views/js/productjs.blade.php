@@ -119,15 +119,23 @@
         }
     });
 
-    $(document).on('change click','.removeButton',function (){
+    $(document).on('change click','.rowRemove',function (){
         var subTotal = 0;
+        var total = 0;
         var grandTotal = 0;
         var billSubTotal = $('#subTotal').val();
-        var billDiscountPercent = $('#discount').val();
+        //var billDiscountPercent = $('#discount').val();
+        // alert(billDiscountPercent);
 
         var thisRow = $(this).closest('tr');
 
         var billTotal = parseFloat(thisRow.find('#totalItemPrice').val());
-        alert(billTotal);
+
+        $('.totalItemPrice').each(function(){
+            total -= parseFloat($(this).val()) || 0;
+        })
+
+        $('.grandTotal').val(Math.abs(parseFloat(total).toFixed(2)));
+        // alert(billTotal);
     })
 </script>

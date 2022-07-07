@@ -107,7 +107,7 @@
                                     <td>
                                         <input type="number" name="total_item_price[]" step="0.01" value="" class="form-control totalItemPrice" id="totalItemPrice"  readonly required>
                                     </td>
-                                    <td class="removeButton"><span class="btn btn-danger btn-sm pull-right rowRemove"><i class="fa fa-trash-alt"></i></span></td>
+                                    <td class="removeButton"><span class="btn btn-danger btn-sm pull-right rowRemove "><i class="fa fa-trash-alt"></i></span></td>
                                 </tr>
                             </tbody>
                             <tfoot>
