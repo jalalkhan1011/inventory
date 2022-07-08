@@ -120,22 +120,23 @@
     });
 
     $(document).on('change click','.rowRemove',function (){
-        var subTotal = 0;
         var total = 0;
-        var grandTotal = 0;
-        var billSubTotal = $('#subTotal').val();
-        //var billDiscountPercent = $('#discount').val();
-        // alert(billDiscountPercent);
+        var billSubtotal = $('#subTotal').val();
+        var billDiscountPercent = $('#discount').val();
 
         var thisRow = $(this).closest('tr');
 
-        var billTotal = parseFloat(thisRow.find('#totalItemPrice').val());
+        var totalDiscount = parseFloat(billSubtotal) * parseFloat(billDiscountPercent)/100;
+
 
         $('.totalItemPrice').each(function(){
             total -= parseFloat($(this).val()) || 0;
         })
 
-        $('.grandTotal').val(Math.abs(parseFloat(total).toFixed(2)));
-        // alert(billTotal);
+
+        $('.subTotal').val(Math.abs(parseFloat(total).toFixed(2)));
+        $('.grandTotal').val(Math.abs(parseFloat(total + totalDiscount).toFixed(2)));
+        $('.due').val(Math.abs(parseFloat(total + totalDiscount).toFixed(2)));
+
     })
 </script>
