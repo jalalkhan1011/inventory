@@ -141,6 +141,27 @@
             $('#due').val(parseFloat(dueTotal).toFixed(2));
             $('#change').val(0.00);
         }
+    });
+
+    $(document).on('change click','.rowRemove',function (){
+        var total = 0;
+        var billSubtotal = $('#subTotal').val();
+        var billDiscountPercent = $('#discount').val();
+
+        var thisRow = $(this).closest('tr');
+
+        var totalDiscount = parseFloat(billSubtotal) * parseFloat(billDiscountPercent)/100;
+
+
+        $('.totalItemPrice').each(function(){
+            total -= parseFloat($(this).val()) || 0;
+        })
+
+
+        $('.subTotal').val(Math.abs(parseFloat(total).toFixed(2)));
+        $('.grandTotal').val(Math.abs(parseFloat(total + totalDiscount).toFixed(2)));
+        $('.due').val(Math.abs(parseFloat(total + totalDiscount).toFixed(2)));
+
     })
 </script>
 
