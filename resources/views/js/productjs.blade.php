@@ -78,13 +78,13 @@
         var dueTotal = parseFloat(gTotal) - parseFloat(paidAmount);
         if(gTotal <= paidAmount){
             $('#due').val(0.00);
-            $('#change').val(parseFloat(changTotal).toFixed(2));
+            $('#change').val(Math.abs(parseFloat(changTotal).toFixed(2)));
             $('#changeTotal').show();
             $('#dueTotal').hide();
         }else{
             $('#changeTotal').hide();
             $('#dueTotal').show();
-            $('#due').val(parseFloat(dueTotal).toFixed(2));
+            $('#due').val(Math.abs(parseFloat(dueTotal).toFixed(2)));
             $('#change').val(0.00);
         }
     });
@@ -93,11 +93,25 @@
         var productDis = $(this).val()||0;
         var subTotal = parseFloat($('.subTotal').val())||0;
         var totDiscount = parseFloat((subTotal * productDis)/100)||0;
-        var paidAmont = parseFloat($('.totalPrice').val())||0;
+        var paidAmount = parseFloat($('.totalPrice').val())||0;
         var grandTotal = subTotal - totDiscount;
 
         $('.grandTotal').val(parseFloat(grandTotal).toFixed(2));
-        $('#due').val(parseFloat(grandTotal - paidAmont).toFixed(2));
+
+        var gTotal = $('.grandTotal').val()||0;
+        var changTotal = parseFloat(paidAmount) - parseFloat(gTotal);
+        var dueTotal = parseFloat(gTotal) - parseFloat(paidAmount);
+        if(gTotal <= paidAmount){
+            $('#due').val(0.00);
+            $('#change').val(Math.abs(parseFloat(changTotal).toFixed(2)));
+            $('#changeTotal').show();
+            $('#dueTotal').hide();
+        }else{
+            $('#changeTotal').hide();
+            $('#dueTotal').show();
+            $('#due').val(Math.abs(parseFloat(dueTotal).toFixed(2)));
+            $('#change').val(0.00);
+        }
     });
 
     $(document).on('keyup change','.totalPrice',function (){
@@ -121,22 +135,38 @@
 
     $(document).on('change click','.rowRemove',function (){
         var total = 0;
-        var billSubtotal = $('#subTotal').val();
         var billDiscountPercent = $('#discount').val();
+        var paidAmount = $('.totalPrice').val()||0;
 
-        var thisRow = $(this).closest('tr');
 
-        var totalDiscount = parseFloat(billSubtotal) * parseFloat(billDiscountPercent)/100;
-
+        $(this).closest('tr');
 
         $('.totalItemPrice').each(function(){
             total -= parseFloat($(this).val()) || 0;
         })
 
+        $('.subTotal').val(parseFloat(total).toFixed(2));
+
+        var subTotal = Math.abs($('.subTotal').val()||0);
+        var totalDiscount = parseFloat(subTotal) * parseFloat(billDiscountPercent)/100;
 
         $('.subTotal').val(Math.abs(parseFloat(total).toFixed(2)));
-        $('.grandTotal').val(Math.abs(parseFloat(total + totalDiscount).toFixed(2)));
-        $('.due').val(Math.abs(parseFloat(total + totalDiscount).toFixed(2)));
 
+        $('.grandTotal').val(Math.abs(parseFloat(total + totalDiscount).toFixed(2)));
+
+        var gTotal = $('.grandTotal').val()||0;
+        var changTotal = parseFloat(paidAmount) - parseFloat(gTotal);
+        var dueTotal = parseFloat(gTotal) - parseFloat(paidAmount);
+        if(gTotal <= paidAmount){
+            $('#due').val(0.00);
+            $('#change').val(Math.abs(parseFloat(changTotal).toFixed(2)));
+            $('#changeTotal').show();
+            $('#dueTotal').hide();
+        }else{
+            $('#changeTotal').hide();
+            $('#dueTotal').show();
+            $('#due').val(Math.abs(parseFloat(dueTotal).toFixed(2)));
+            $('#change').val(0.00);
+        }
     })
 </script>

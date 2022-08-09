@@ -165,7 +165,6 @@
 @endsection
 @push('js')
     @include('js.productjs')
-
 @endpush
 
 
