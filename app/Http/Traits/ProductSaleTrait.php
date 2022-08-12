@@ -73,6 +73,46 @@ trait ProductSaleTrait
         }
     }
 
+    private function saleProductItemArray($productSaleId)
+    {
+        $saleProducts = ProductSaleItem::where('product_sale_id',$productSaleId->id)->select('product_id')->get()->toArray();
+        $oldSaleProducts = [];
+
+        foreach ($saleProducts as $saleProduct){
+            $oldSaleProducts[] = $saleProduct['product_id'];
+        }
+
+        return $oldSaleProducts;
+    }
+
+    private function saleProductBatchUpdate($request,$productSaleId)
+    {
+        $previousSaleProducts = $this->saleProductItemArray($productSaleId);
+        $addProducts = array_diff($request->product_id,$previousSaleProducts);
+        $removeProducts = array_diff($previousSaleProducts,$request->product_id);
+
+        foreach ($addProducts as $i => $addProduct){
+            ProductSaleItem::create([
+                'product_id' => $request->product_id[$i],
+                'customer_id' => $request->customer_id,
+                'category_id' => $request->category_id[$i],
+                'brand_id' => $request->brand_id[$i],
+                'stock_qty' => $request->stock_qty[$i],
+                'sale_qty' => $request->sale_qty[$i],
+                'sale_price' => $request->sale_price[$i],
+                'unit_id' => $request->unit_id[$i],
+                'total_item_price' => $request->total_item_price[$i],
+                'product_sale_id' => $productSaleId->id,
+                'user_id' => auth()->user()->id,
+                'created_at' => now()
+            ]);
+        }
+
+        foreach ($removeProducts as $removeProduct){
+            ProductSaleItem::where('product_sale_id',$productSaleId)->where('product_id',$removeProduct)->delete();
+        }
+    }
+
     private function updateProductStock($request,$productSaleId)
     {
         $productSaleItemId = ProductSaleItem::where('product_sale_id',$productSaleId->id)->select('product_id')->get()->toArray();//data get form table array format that why use toArray and update multiple data on by one
