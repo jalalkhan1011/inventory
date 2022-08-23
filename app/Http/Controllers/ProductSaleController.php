@@ -116,14 +116,14 @@ class ProductSaleController extends Controller
 
         $this->saleProductBatchUpdate($request,$productSaleId);
 
-//        $this->updateProductStock($request,$productSaleId);
+        $this->updateProductStock($request,$productSaleId);
 //
         $data = $request->all();
         $data['user_id'] = auth()->user()->id;
 
         $productSaleId->update($data);
 //
-//        $this->updateSaleItem($request,$productSaleId);
+        $this->updateSaleItem($request,$productSaleId);
 //
 //        $this->saleTransactionUpdate($request,$productSaleId,$employeeId);
 

@@ -122,6 +122,7 @@ trait ProductSaleTrait
             $usedProductStock[] = $row['product_id'];
         }
 
+
         foreach ($usedProductStock as $i => $productStock){
             $productStockFind = ProductStock::find($productStock);
 
@@ -137,28 +138,30 @@ trait ProductSaleTrait
 
     private function updateSaleItem($request,$productSaleId)
     {
-        DB::table('product_sale_items')->where('product_sale_id',$productSaleId->id)->delete();
+        $productSaleItemIds = ProductSaleItem::where('product_sale_id',$productSaleId->id)->select('id')->get()->toArray();
 
-        $this->saleItem($request,$productSaleId);
-
-        $productSaleItemIds = ProductSaleItem::where('product_sale_id',$productSaleId->id)->select('product_id')->get()->toArray();
-
-        $usedProductStocks = [];
+        $saleItems = [];
         foreach ($productSaleItemIds as $row){
-            $usedProductStocks[] = $row['product_id'];
+            $saleItems[] = $row['id'];
         }
 
-        foreach ($usedProductStocks as $i => $productStocks){
-            $productStockFinds = ProductStock::find($productStocks);
+        foreach ($saleItems as $s => $saleItem){
+            $productFind = ProductSaleItem::find($saleItem);
 
-            if($productStockFinds['product_id']){
-                $data = [
-                    'p_reduce_qty' => $productStockFinds['p_reduce_qty'] - $request->sale_qty[$i]
-                ];
+            $data = [
+                'product_id' => $request->product_id[$s],
+                'customer_id' => $request->customer_id,
+                'category_id' => $request->category_id[$s],
+                'brand_id' => $request->brand_id[$s],
+                'stock_qty' => $request->stock_qty[$s],
+                'sale_qty' => $request->sale_qty[$s],
+                'sale_price' => $request->sale_price[$s],
+                'unit_id' => $request->unit_id[$s],
+                'total_item_price' => $request->total_item_price[$s],
+                'updated_at' => now()
+            ];
 
-
-                $productStockFinds->update($data);
-            }
+            $productFind->update($data);
         }
     }
 
