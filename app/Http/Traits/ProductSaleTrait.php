@@ -113,6 +113,30 @@ trait ProductSaleTrait
         }
     }
 
+    private function updateProductStockIncrease($request,$productSaleId)
+    {
+        $productSaleItemId = ProductSaleItem::where('product_sale_id',$productSaleId->id)->select('product_id')->get()->toArray();//data get form table array format that why use toArray and update multiple data on by one
+
+        $usedProductStock = [];
+        foreach ($productSaleItemId as $row){
+            $usedProductStock[] = $row['product_id'];
+        }
+
+
+        foreach ($usedProductStock as $i => $productStock){
+            $productStockFind = ProductStock::find($productStock);
+
+            if($productStockFind['product_id']){
+                $data = [
+                    'p_reduce_qty' => $productStockFind['p_reduce_qty'] + $request->u_p_q[$i],
+                ];
+
+                $productStockFind->update($data);
+
+            }
+        }
+    }
+
     private function updateProductStock($request,$productSaleId)
     {
         $productSaleItemId = ProductSaleItem::where('product_sale_id',$productSaleId->id)->select('product_id')->get()->toArray();//data get form table array format that why use toArray and update multiple data on by one
@@ -128,10 +152,11 @@ trait ProductSaleTrait
 
             if($productStockFind['product_id']){
                 $data = [
-                    'p_reduce_qty' => $productStockFind['p_reduce_qty'] + $request->u_p_q[$i]
+                    'p_reduce_qty' => $productStockFind['p_reduce_qty'] - $request->sale_qty[$i],
                 ];
 
                 $productStockFind->update($data);
+
             }
         }
     }
