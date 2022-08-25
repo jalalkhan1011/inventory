@@ -115,17 +115,15 @@ class ProductSaleController extends Controller
         $productSaleId = ProductSale::findOrFail($id);
 
         $this->saleProductBatchUpdate($request,$productSaleId);
-
-        $this->updateProductStockIncrease($request,$productSaleId);
         $this->updateProductStock($request,$productSaleId);
-//
+
         $data = $request->all();
         $data['user_id'] = auth()->user()->id;
 
         $productSaleId->update($data);
-//
+
         $this->updateSaleItem($request,$productSaleId);
-//
+
 //        $this->saleTransactionUpdate($request,$productSaleId,$employeeId);
 
        return  redirect()->back();

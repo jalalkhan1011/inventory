@@ -139,6 +139,7 @@ trait ProductSaleTrait
 
     private function updateProductStock($request,$productSaleId)
     {
+        $this->updateProductStockIncrease($request,$productSaleId);
         $productSaleItemId = ProductSaleItem::where('product_sale_id',$productSaleId->id)->select('product_id')->get()->toArray();//data get form table array format that why use toArray and update multiple data on by one
 
         $usedProductStock = [];
