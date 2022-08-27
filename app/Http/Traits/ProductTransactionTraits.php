@@ -6,55 +6,27 @@ namespace App\Http\Traits;
 use App\Models\Employee;
 use App\Models\Product;
 use App\Models\ProductTransaction;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 
 trait ProductTransactionTraits
 {
-    private function productTransaction($product)//This function use for add product details into production_transactions table
+    private function  purchaseTransaction($request)
     {
-        $employeeId = Employee::where('employee_id',auth()->user()->id)->first();
+        $data = [
+            'trans_id'  => NULL,
+            'description'    => 'Product purchase',
+            'access_user'   => 'Purchase',
+            'access_user_id'    => auth()->user()->id,
+            'amount'    => $request->total_price,
+            'product_status'    => 'P',
+            'status' => 'Active',
+            'user_id'   => auth()->user()->id,
+        ];
 
-        if(Auth::user()->hasRole('Admin')){
-            $data = [
-                'product_id' => $product->id,
-                'category_id' => $product->category_id,
-                'brand_id' => $product->brand_id,
-                'supplier_id' => $product->supplier_id,
-                'p_qty' => $product->qty,
-                'stock_qty' => $product->qty,
-                'p_unit_amount' => $product->unit_price,
-                's_unit_amount' => $product->sale_price,
-                'p_total_amount' => $product->total_price,
-                'status' => 'p',
-                'user_id' => auth()->user()->id,
-                'created_at' => now()
-            ];
-
-            $productTransaction = ProductTransaction::create($data);
-        }else{
-            $data = [
-                'product_id' => $product->id,
-                'category_id' => $product->category_id,
-                'brand_id' => $product->brand_id,
-                'supplier_id' => $product->supplier_id,
-                'p_qty' => $product->qty,
-                'stock_qty' => $product->qty,
-                'p_unit_amount' => $product->unit_price,
-                's_unit_amount' => $product->sale_price,
-                'p_total_amount' => $product->total_price,
-                'employee_id' =>  $employeeId->id,
-                'status' => 'p',
-                'user_id' => auth()->user()->id,
-                'created_at' => now()
-            ];
-
-            $productTransaction = ProductTransaction::create($data);
-        }
-
-
-        return $productTransaction;
+        Transaction::create($data);
     }
 
     private function productQty(Request $request,Product $product)//user for calculation product quantity

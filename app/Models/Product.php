@@ -49,8 +49,8 @@ class Product extends Model
         return $this->belongsTo(Unit::class,'unit_id');
     }
 
-    public function productTransaction(){
-        return $this->hasMany(ProductTransaction::class);
+    public function transaction(){
+        return $this->hasMany(Transaction::class);
     }
 
     public function productSaleItem(){

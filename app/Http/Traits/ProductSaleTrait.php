@@ -5,6 +5,7 @@ use App\Models\Product;
 use App\Models\ProductSaleItem;
 use App\Models\ProductStock;
 use App\Models\ProductTransaction;
+use App\Models\Transaction;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 
@@ -51,26 +52,22 @@ trait ProductSaleTrait
         }
     }
 
-    private function saleTransaction($request,$productSaleId,$employeeId)
+    private function saleTransaction($request,$productSaleId)
     {
-        $productId = count($_POST['product_id']);
-        for($j =0; $j<$productId; $j++){
-            ProductTransaction::create([
-                'product_id' => $request->product_id[$j],
-                'customer_id' => $request->customer_id,
-                'category_id' => $request->category_id[$j],
-                'brand_id' =>  $request->brand_id[$j],
-                's_qty' => $request->sale_qty[$j],
-                'stock_qty' => $request->stock_qty[$j],
-                's_unit_amount' => $request->sale_price[$j],
-                's_total_amount' => $request->total_item_price[$j],
-                'status' => 'S',
-                'product_sale_id' => $productSaleId->id,
-                'employee_id' => $employeeId->id,
-                'user_id' => auth()->user()->id,
-                'created_at' => now()
-            ]);
-        }
+        $data = [
+            'trans_id'  => NULL,
+            'description'    => 'Product Sale',
+            'product_sale_id' => $productSaleId,
+            'access_user'   => 'Sale',
+            'access_user_id'    => $request->customer_id,
+            'customer_id' => $request->customer_id,
+            'amount'    => $request->total_price,
+            'product_status'    => 'S',
+            'status' => 'Active',
+            'user_id'   => auth()->user()->id,
+        ];
+
+        Transaction::create($data);
     }
 
     private function saleProductItemArray($productSaleId)

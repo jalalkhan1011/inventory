@@ -9,6 +9,7 @@ use App\Models\Product;
 use App\Models\ProductStock;
 use App\Models\ProductTransaction;
 use App\Models\Suppliers;
+use App\Models\Transaction;
 use App\Models\Unit;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -89,9 +90,7 @@ class ProductController extends Controller
 
             ProductStock::create($data);
 
-
-
-        $this->productTransaction($product);
+            $this->purchaseTransaction($request);
 
         return redirect('product-management/products');
     }

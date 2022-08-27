@@ -70,8 +70,8 @@ class User extends Authenticatable
         return $this->hasMany(Customer::class);
     }
 
-    public function productTransaction(){
-        return $this->hasMany(ProductTransaction::class);
+    public function transaction(){
+        return $this->hasMany(Transaction::class);
     }
 
     public function productSale(){

@@ -67,7 +67,7 @@ class ProductSaleController extends Controller
 
         $this->saleQtyCalculation($request,$productSaleId);// this function used to calculate qty into products table and this function comes form ProductSaleTrait
 
-        $this->saleTransaction($request,$productSaleId,$employeeId);//this function used to insert data into product_transactions table and the function comes from ProductSaleTrait File
+        $this->saleTransaction($request,$productSaleId->id);//this function used to insert data into product_transactions table and the function comes from ProductSaleTrait File
 
         return redirect('product-management/sales');
     }
