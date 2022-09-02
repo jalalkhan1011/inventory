@@ -57,6 +57,7 @@
 <!--Logout end-->
 
 @include('admin.includes.js')
+@include('admin.includes.commonjs')
 @stack('js')
 </body>
 </html>

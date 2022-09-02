@@ -4,6 +4,7 @@
 @section('page_title','See all category')
 
 @section('content')
+    @include('sweetalert::alert')
     <div class="card mb-4">
         <div class="card-body">
             <div class="row">
@@ -18,12 +19,12 @@
                 </div>
             </div>
             <hr>
-            @if(session('message'))
-                <div  class="alert {{ Session('alert-class', 'alert-success','alert-block') }}">
-                    <button type="button" class="close" data-dismiss="alert">×</button>
-                    <strong>{{ session('message') }}</strong>
-                </div>
-            @endif
+{{--            @if(session('message'))--}}
+{{--                <div  class="alert {{ Session('alert-class', 'alert-success','alert-block') }}">--}}
+{{--                    <button type="button" class="close" data-dismiss="alert">×</button>--}}
+{{--                    <strong>{{ session('message') }}</strong>--}}
+{{--                </div>--}}
+{{--            @endif--}}
             <div class="table-responsive">
                 <table class="table card-table">
                     <thead class="thead-light">
@@ -49,10 +50,10 @@
                                     @endcan
                                     @can('category-delete')
                                     <li class="list-inline-item">
-                                        <form class="" action="{{ route('categories.destroy',$category->id) }}" method="post">
+                                        <form class="" action="{{ route('categories.destroy',$category->id) }}" method="post" id="deleteButton{{ $category->id }}">
                                             @csrf
                                             @method('delete')
-                                            <button type="submit" class="btn btn-outline-danger" title="Delete" onclick="return confirm('Are you want to delete {{$category->name}} ?')"><i class="fa fa-trash-alt"></i> </button>
+                                            <button type="submit" class="btn btn-outline-danger" title="Delete" onclick="sweetalertDelete({{ $category->id }})"><i class="fa fa-trash-alt"></i> </button>
                                         </form>
                                     </li>
                                     @endcan
@@ -67,3 +68,4 @@
         </div>
     </div>
 @endsection
+
