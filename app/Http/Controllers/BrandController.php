@@ -53,6 +53,8 @@ class BrandController extends Controller
 
         Brand::create($data);
 
+        toast('Brand create successfully!','success');
+
         return redirect(route('brands.index'));
     }
 
@@ -97,6 +99,8 @@ class BrandController extends Controller
 
         $brand->update($data);
 
+        toast('Brand update successfully!','success');
+
         return back();
     }
 
@@ -109,6 +113,8 @@ class BrandController extends Controller
     public function destroy(Brand $brand)
     {
         $brand->delete();
+
+        toast('Brand delete successfully!','error');
 
         return redirect(route('brands.index'));
     }

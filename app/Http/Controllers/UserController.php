@@ -95,7 +95,9 @@ class UserController extends Controller
             }
         }
 
-        return redirect()->route('users.index')->with('success','User created successfully');
+        toast('User crate successfully!','success');
+
+        return redirect(route('users.index'));
     }
 
     /**
@@ -154,7 +156,9 @@ class UserController extends Controller
 
         $user->assignRole($request->input('roles'));
 
-        return redirect()->route('users.index')->with('success','User updated successfully');
+        toast('User updated successfully!','success');
+
+        return redirect(route('users.index'));
     }
 
     /**
@@ -166,6 +170,9 @@ class UserController extends Controller
     public function destroy($id)
     {
         User::find($id)->delete();
-        return redirect()->route('users.index')->with('success','User deleted successfully');
+
+        toast('User deleted successfully!','error');
+
+        return redirect(route('users.index'));
     }
 }

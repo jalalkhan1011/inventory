@@ -4,6 +4,7 @@
 @section('page_title','Create brand')
 
 @section('content')
+    @include('sweetalert::alert')
     <div class="card mb-4">
         <div class="card-body">
             <div class="row">
@@ -13,12 +14,6 @@
                 </div>
             </div>
             <hr>
-            @if(session('message'))
-                <div class="alert {{ Session('alert-class','alert-success','alert-block') }}">
-                    <button type="button" class="close" data-dissmiss="alert">x</button>
-                    <strong>{{ session('message') }}</strong>
-                </div>
-            @endif
             <form action="{{ route('brands.update',$brand->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('put')

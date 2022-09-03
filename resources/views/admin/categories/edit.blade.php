@@ -14,12 +14,6 @@
                 </div>
             </div>
             <hr>
-            @if(session('message'))
-                <div class="alert {{ Session('alert-class','alert-success','alert-block') }}">
-                    <button type="button" class="close" data-dissmiss="alert">x</button>
-                    <strong>{{ session('message') }}</strong>
-                </div>
-            @endif
             <form action="{{ route('categories.update',$category->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('put')

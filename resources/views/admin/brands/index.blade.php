@@ -4,6 +4,7 @@
 @section('page_title','See all brand')
 
 @section('content')
+    @include('sweetalert::alert')
     <div class="card mb-4">
         <div class="card-body">
             <div class="row">
@@ -49,10 +50,10 @@
                                     @endcan
                                     @can('brand-delete')
                                         <li class="list-inline-item">
-                                            <form class="" action="{{ route('brands.destroy',$brand->id) }}" method="post">
+                                            <form class="" action="{{ route('brands.destroy',$brand->id) }}" method="post" id="deleteButton{{ $brand->id }}">
                                                 @csrf
                                                 @method('delete')
-                                                <button type="submit" class="btn btn-outline-danger" title="Delete" onclick="return confirm('Are you want to delete {{$brand->name}} ?')"><i class="fa fa-trash-alt"></i> </button>
+                                                <button type="submit" class="btn btn-outline-danger" title="Delete" onclick="sweetalertDelete({{ $brand->id }})"><i class="fa fa-trash-alt"></i> </button>
                                             </form>
                                         </li>
                                     @endcan

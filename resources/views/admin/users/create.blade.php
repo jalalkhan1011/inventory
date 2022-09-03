@@ -8,11 +8,11 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-lg-6 text-left">
-                    <h6>User Management</h6>
-                    <p class="text-info">Create users</p>
+                    <h6>{{ __('User Management') }}t</h6>
+                    <p class="text-info">{{ __('Create users') }}</p>
                 </div>
                 <div class="col-lg-6 text-right">
-                    <a class="btn btn-primary" href="{{ route('users.index') }}"> Back</a>
+                    <a class="btn btn-primary" href="{{ route('users.index') }}"> {{ __('Back') }}</a>
                 </div>
             </div>
         </div>
@@ -22,7 +22,7 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>Name:</strong>
+                        <strong>{{ __('Name') }}:</strong>
                         {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
                     </div>
                 </div>

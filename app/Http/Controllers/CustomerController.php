@@ -57,6 +57,8 @@ class CustomerController extends Controller
 
         Customer::create($data);
 
+        toast('Customer create successfully!','success');
+
         return redirect(route('customers.index'));
     }
 
@@ -103,6 +105,8 @@ class CustomerController extends Controller
 
        $customer->update($data);
 
+        toast('Customer update successfully!','success');
+
         return redirect()->back();
     }
 
@@ -115,6 +119,8 @@ class CustomerController extends Controller
     public function destroy(Customer $customer)
     {
         $customer->delete();
+
+        toast('Customer delete successfully!','error');
 
         return redirect()->back();
     }
