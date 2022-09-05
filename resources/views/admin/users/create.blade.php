@@ -4,6 +4,7 @@
 @section('page_title','Create user')
 
 @section('content')
+    @include('sweetalert::alert')
     <div class="card mb-4">
         <div class="card-body">
             <div class="row">
