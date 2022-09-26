@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Brand;
 use Illuminate\Http\Request;
+use Brian2694\Toastr\Facades\Toastr;
 
 class BrandController extends Controller
 {
@@ -53,7 +54,8 @@ class BrandController extends Controller
 
         Brand::create($data);
 
-        toast('Brand create successfully!','success');
+        Toastr::success('Brand update successfully!', 'Hi');
+//        toast('Brand update successfully!','success');
 
         return redirect(route('brands.index'));
     }

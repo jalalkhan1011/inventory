@@ -1,0 +1,1250 @@
+<?xml version='1.0' encoding='utf-8'?>
+<project name="G:\laravel-project\inventory-management\inventory-management.clpprj">
+ <settings>
+  <PM_URL><![CDATA[http://localhost/G:/laravel-project/inventory-management]]></PM_URL>
+  <PM_HOME_URL><![CDATA[http://localhost/G:/laravel-project/inventory-management]]></PM_HOME_URL>
+  <PM_LIBS><![CDATA[]]></PM_LIBS>
+  <PM_FTP_CONNECTION><![CDATA[]]></PM_FTP_CONNECTION>
+  <PM_FTP_DIR><![CDATA[]]></PM_FTP_DIR>
+  <PM_FTP_UPLOAD_ON_SAVE><![CDATA[INT:0]]></PM_FTP_UPLOAD_ON_SAVE>
+  <PM_LANGUAGE><![CDATA[]]></PM_LANGUAGE>
+ </settings>
+ <removed value=";"/>
+ <added value=""/>
+ <lastopfiles>
+  <lastactivefile name=""/>
+ </lastopfiles>
+ <errors version="1.12.0"/>
+ <cakedata/>
+ <dplmenupath/>
+ <laravael>
+  <facade class="Alert" name="alert"/>
+  <facade class="App" name="app"/>
+  <facade class="Auth" name="auth"/>
+  <facade class="Blade" name="blade.compiler"/>
+  <facade class="Cache" name="cache"/>
+  <facade class="Config" name="config"/>
+  <facade class="Cookie" name="cookie"/>
+  <facade class="Crypt" name="encrypter"/>
+  <facade class="DB" name="db"/>
+  <facade class="Date" name="date"/>
+  <facade class="Event" name="events"/>
+  <facade class="Facade" name="Facade does not implement getFacadeAccessor method."/>
+  <facade class="File" name="files"/>
+  <facade class="FormFacade" name="form"/>
+  <facade class="Hash" name="hash"/>
+  <facade class="HtmlFacade" name="html"/>
+  <facade class="Image" name="image"/>
+  <facade class="Lang" name="translator"/>
+  <facade class="Log" name="log"/>
+  <facade class="Mail" name="mail.manager"/>
+  <facade class="Password" name="auth.password"/>
+  <facade class="Queue" name="queue"/>
+  <facade class="RateLimiter" name="Illuminate\Cache\RateLimiter"/>
+  <facade class="Redirect" name="redirect"/>
+  <facade class="Redis" name="redis"/>
+  <facade class="Request" name="request"/>
+  <facade class="Route" name="router"/>
+  <facade class="Schema" name="db"/>
+  <facade class="Session" name="session"/>
+  <facade class="Storage" name="filesystem"/>
+  <facade class="URL" name="url"/>
+  <facade class="Validator" name="validator"/>
+  <facade class="View" name="view"/>
+  <file name="G:\laravel-project\inventory-management\vendor\laravel\framework\src\Illuminate\Cache\CacheServiceProvider.php">
+   <type class="MemcachedConnector" name="memcached.connector"/>
+  </file>
+  <file name="G:\laravel-project\inventory-management\vendor\laravel\framework\src\Illuminate\Database\DatabaseServiceProvider.php">
+   <type class="DatabaseTransactionsManager" name="db.transactions"/>
+  </file>
+  <file name="G:\laravel-project\inventory-management\vendor\laravel\framework\src\Illuminate\Database\MigrationServiceProvider.php">
+   <type class="FreshCommand" name="command.migrate.fresh"/>
+   <type class="RefreshCommand" name="command.migrate.refresh"/>
+  </file>
+  <file name="G:\laravel-project\inventory-management\vendor\laravel\framework\src\Illuminate\Filesystem\FilesystemServiceProvider.php">
+   <type class="Filesystem" name="files"/>
+  </file>
+  <file name="G:\laravel-project\inventory-management\vendor\laravel\framework\src\Illuminate\Foundation\Providers\ArtisanServiceProvider.php">
+   <type class="ClearResetsCommand" name="command.auth.resets.clear"/>
+   <type class="ClearCompiledCommand" name="command.clear-compiled"/>
+   <type class="WipeCommand" name="command.db.wipe"/>
+   <type class="DownCommand" name="command.down"/>
+   <type class="EnvironmentCommand" name="command.environment"/>
+   <type class="EventCacheCommand" name="command.event.cache"/>
+   <type class="EventGenerateCommand" name="command.event.generate"/>
+   <type class="EventListCommand" name="command.event.list"/>
+   <type class="KeyGenerateCommand" name="command.key.generate"/>
+   <type class="OptimizeCommand" name="command.optimize"/>
+   <type class="OptimizeClearCommand" name="command.optimize.clear"/>
+   <type class="PackageDiscoverCommand" name="command.package.discover"/>
+   <type class="QueueClearCommand" name="command.queue.clear"/>
+   <type class="ListFailedQueueCommand" name="command.queue.failed"/>
+   <type class="FlushFailedQueueCommand" name="command.queue.flush"/>
+   <type class="ForgetFailedQueueCommand" name="command.queue.forget"/>
+   <type class="PruneBatchesQueueCommand" name="command.queue.prune-batches"/>
+   <type class="PruneFailedJobsCommand" name="command.queue.prune-failed-jobs"/>
+   <type class="QueueRetryCommand" name="command.queue.retry"/>
+   <type class="QueueRetryBatchCommand" name="command.queue.retry-batch"/>
+   <type class="DumpCommand" name="command.schema.dump"/>
+   <type class="ServeCommand" name="command.serve"/>
+   <type class="StorageLinkCommand" name="command.storage.link"/>
+   <type class="StubPublishCommand" name="command.stub.publish"/>
+   <type class="UpCommand" name="command.up"/>
+   <type class="ViewCacheCommand" name="command.view.cache"/>
+  </file>
+  <file name="G:\laravel-project\inventory-management\vendor\laravel\framework\src\Illuminate\View\ViewServiceProvider.php">
+   <type class="EngineResolver" name="view.engine.resolver"/>
+  </file>
+  <file name="G:\laravel-project\inventory-management\vendor\laravel\tinker\src\TinkerServiceProvider.php">
+   <type class="TinkerCommand" name="command.tinker"/>
+  </file>
+ </laravael>
+ <smartyassings/>
+ <twigtemplate/>
+ <yiidata/>
+ <todoblock>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\glob\common.js">
+   <todo name="TODO: is an absolute `cwd` supposed to be resolved against `root`?" pos="3;99"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\hash-base\node_modules\readable-stream\lib\_stream_readable.js">
+   <todo name="TODO(ronag): Throw ERR_VALUE_OUT_OF_RANGE." pos="5;350"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\hash-base\node_modules\readable-stream\lib\_stream_transform.js">
+   <todo name="TODO(BridgeAR): Write a test for these two error cases" pos="24;193"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\hash-base\node_modules\readable-stream\lib\_stream_writable.js">
+   <todo name="TODO: defer error events consistently everywhere, not just the cb" pos="46;260"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\hpack.js\lib\hpack\decoder.js">
+   <todo name="TODO(indutny): what about > 32bit numbers?" pos="3;67"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\html-minifier-terser\node_modules\clean-css\lib\optimizer\level-2\reorderable.js">
+   <todo name="TODO: it'd be great to merge it with the other canReorder functionality" pos="1;0"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\htmlparser2\lib\FeedHandler.js">
+   <todo name="TODO: Consume data as it is coming in" pos="1;28"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\htmlparser2\lib\Tokenizer.js">
+   <todo name="TODO make events conditional" pos="5;579"/>
+   <todo name="TODO add a way to remove current tag" pos="9;836"/>
+   <todo name="TODO implement the new event" pos="44;850"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\http-deceiver\lib\deceiver.js">
+   <todo name="TODO(indutny): support CONNECT" pos="1;73"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\iconv-lite\encodings\dbcs-codec.js">
+   <todo name="TODO: What if we have no default? (resCode == undefined)" pos="21;347"/>
+   <todo name="todo above." pos="17;419"/>
+   <todo name="TODO: Callback with seq." pos="13;471"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\iconv-lite\encodings\dbcs-data.js">
+   <todo name="TODO: KDDI extension to Shift_JIS" pos="5;63"/>
+   <todo name="TODO: IBM CCSID 942 = CP932, but F0-F9 custom chars and other char changes." pos="5;64"/>
+   <todo name="TODO: IBM CCSID 943 = Shift_JIS = CP932 with original Shift_JIS lower 128 chars." pos="5;65"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\iconv-lite\lib\extend-node.js">
+   <todo name="TODO: Set _charsWritten." pos="13;168"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\jest-worker\build\workers\ChildProcessWorker.js">
+   <todo name="TODO: Add appropriate type check" pos="5;220"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\jquery\dist\jquery.js">
+   <todo name="TODO: identify versions" pos="8;793"/>
+   <todo name="TODO: identify versions" pos="7;807"/>
+   <todo name="TODO: Drop _data, _removeData)" pos="48;4397"/>
+   <todo name="TODO: Now that all calls to _data and _removeData have been replaced" pos="2;4465"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\jquery\dist\jquery.slim.js">
+   <todo name="TODO: identify versions" pos="8;793"/>
+   <todo name="TODO: identify versions" pos="7;807"/>
+   <todo name="TODO: Drop _data, _removeData)" pos="48;4397"/>
+   <todo name="TODO: Now that all calls to _data and _removeData have been replaced" pos="2;4465"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\jquery\external\sizzle\dist\sizzle.js">
+   <todo name="TODO: identify versions" pos="8;270"/>
+   <todo name="TODO: identify versions" pos="7;284"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\jquery\src\data.js">
+   <todo name="TODO: Drop _data, _removeData)" pos="48;16"/>
+   <todo name="TODO: Now that all calls to _data and _removeData have been replaced" pos="2;84"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\junk\index.d.ts">
+   <todo name="TODO: Remove this for the next major release" pos="2;35"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\junk\index.js">
+   <todo name="TODO: Remove this for the next major release" pos="1;37"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\laravel-mix\src\Chunks.js">
+   <todo name="TODO: Simplify in Mix 7 -- Here for backwards compat if a plugin creates this class directly" pos="9;31"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\laravel-mix\src\File.js">
+   <todo name="TODO: Can we refactor this to remove the need for implicit global? Or does this one make sense to l" pos="5;323"/>
+   <todo name="TODO: Use warning-less version here" pos="9;325"/>
+   <todo name="TODO: Use warning-less version here" pos="9;330"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\laravel-mix\src\Paths.js">
+   <todo name="TODO: Refactor setup to allow removing this check" pos="9;7"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\laravel-mix\src\builder\Entry.js">
+   <todo name="TODO: Simplify in Mix 7 -- Here for backwards compat if a plugin creates this class directly" pos="9;9"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\laravel-mix\src\builder\webpack-default.js">
+   <todo name="TODO: Remove in Mix 7 -- Here for backwards compat if a plugin requires this file" pos="5;8"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\laravel-mix\src\builder\webpack-plugins.js">
+   <todo name="TODO: Remove in Mix 7 -- Here for backwards compat if a plugin requires this file" pos="5;13"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\laravel-mix\src\builder\webpack-rules.js">
+   <todo name="TODO: Remove in Mix 7 -- Here for backwards compat if a plugin requires this file" pos="5;5"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\laravel-mix\src\components\CssWebpackConfig.js">
+   <todo name="TODO: Fix" pos="13;179"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\laravel-mix\src\components\TypeScript.js">
+   <todo name="TODO: Maybe move to Vue plugin?" pos="17;44"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\laravel-mix\src\config.js">
+   <todo name="TODO: Remove in Mix 7 -- Here for backwards compat if a plugin requires this file" pos="5;9"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\laravel-mix\src\webpackPlugins\BuildOutputPlugin.js">
+   <todo name="TODO: Refactor setup to allow removing this check" pos="9;42"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\laravel-mix\src\webpackPlugins\CustomTasksPlugin.js">
+   <todo name="TODO: We should probably add the directory but skip hashing" pos="9;58"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\laravel-mix\src\webpackPlugins\ManifestPlugin.js">
+   <todo name="TODO: Simplify in Mix 7 -- Here for backwards compat if a plugin creates this class directly" pos="9;6"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\laravel-mix\src\webpackPlugins\MockEntryPlugin.js">
+   <todo name="TODO: Remove in Mix 7 -- Here for backwards compat if a plugin requires this file" pos="9;8"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\mem\dist\index.js">
+   <todo name="TODO: Drop after https://github.com/SamVerschueren/map-age-cleaner/issues/5" pos="9;35"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\memfs\lib\volume.js">
+   <todo name="TODO: Use `internal/errors.js` in the future." pos="1;49"/>
+   <todo name="TODO: Check if it is file, dir, other..." pos="9;1184"/>
+   <todo name="TODO: Check if it is directory, if non-empty, we cannot move it, right?" pos="9;1291"/>
+   <todo name="TODO: Also treat cases with directories and symbolic links." pos="9;1297"/>
+   <todo name="TODO: See: http://man7.org/linux/man-pages/man2/rename.2.html" pos="9;1298"/>
+   <todo name="TODO: Verify permissions" pos="9;1346"/>
+   <todo name="TODO: What do we do here?" pos="9;1707"/>
+   <todo name="TODO: Emit &quot;error&quot; messages when watching." pos="9;2140"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\miller-rabin\node_modules\bn.js\lib\bn.js">
+   <todo name="TODO(indutny): it may be reasonable to omit it for users who don't need" pos="3;1045"/>
+   <todo name="TODO(indutny): implement me" pos="5;2003"/>
+   <todo name="TODO(indutny): implement me" pos="5;2069"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\mime-types\index.js">
+   <todo name="TODO: use media-typer" pos="3;53"/>
+   <todo name="TODO: should this even be in this module?" pos="3;77"/>
+   <todo name="TODO: use content-type or other module" pos="3;90"/>
+   <todo name="TODO: use media-typer" pos="3;111"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\mime\src\test.js">
+   <todo name="TODO: Uncomment once #157 is resolved" pos="1;45"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\mimic-fn\index.d.ts">
+   <todo name="TODO: Remove this for the next major release, refactor the whole definition to:" pos="2;40"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\mimic-fn\index.js">
+   <todo name="TODO: Remove this for the next major release" pos="1;11"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\mini-css-extract-plugin\dist\index.js">
+   <todo name="Todo in next major release set default to &quot;false&quot;" pos="17;322"/>
+   <todo name="TODO bug in webpack, remove it after it will be fixed" pos="7;365"/>
+   <todo name="TODO remove this in next major version" pos="7;847"/>
+   <todo name="TODO remove after drop webpack v4" pos="90;859"/>
+   <todo name="TODO improve this and parse the CSS to support multiple medias" pos="11;879"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\mini-css-extract-plugin\dist\loader.js">
+   <todo name="TODO simplify after drop  webpack v4" pos="5;52"/>
+   <todo name="TODO check if this context is used somewhere" pos="13;127"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\minimatch\minimatch.js">
+   <todo name="TODO: It would probably be faster to determine this" pos="11;461"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\neo-async\async.js">
+   <todo name="TODO: size could be changed" pos="9;2902"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\node-forge\lib\aesCipherSuites.js">
+   <todo name="TODO: Expose elsewhere as a utility API." pos="2;259"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\node-forge\lib\asn1.js">
+   <todo name="TODO: copy byte buffer if it's a buffer not a string" pos="5;219"/>
+   <todo name="TODO: add readonly flag to avoid this overhead" pos="5;221"/>
+   <todo name="TODO: copy byte buffer if it's a buffer not a string" pos="5;249"/>
+   <todo name="TODO: copy byte buffer if it's a buffer not a string" pos="5;261"/>
+   <todo name="TODO: move this function and related DER/BER functions to a der.js" pos="3;326"/>
+   <todo name="TODO: move this function and related DER/BER functions to a der.js" pos="3;375"/>
+   <todo name="TODO: do DER to OID conversion and vice-versa in .toDer?" pos="5;598"/>
+   <todo name="TODO: should all leading bytes be stripped vs just one?" pos="7;681"/>
+   <todo name="TODO: validate; currently assumes proper format" pos="3;1000"/>
+   <todo name="TODO: validate; currently assumes proper format" pos="3;1036"/>
+   <todo name="TODO: shift bits as needed to display without padding" pos="7;1371"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\node-forge\lib\cipherModes.js">
+   <todo name="TODO: There are further optimizations that would use only the" pos="3;892"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\node-forge\lib\ed25519.js">
+   <todo name="TODO: RFC8410 specifies a format for encoding the public key bytes along" pos="3;99"/>
+   <todo name="TODO: more rigorous validation that `md` is a MessageDigest" pos="7;232"/>
+   <todo name="TODO: update forge buffer implementation to use `Buffer` or `Uint8Array`," pos="1;286"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\node-forge\lib\http.js">
+   <todo name="TODO: include browser in ID to avoid sharing cookies between" pos="3;37"/>
+   <todo name="TODO: i assume we want this logged somewhere or" pos="7;60"/>
+   <todo name="TODO: i assume we want this logged somewhere or" pos="7;80"/>
+   <todo name="TODO: i assume we want this logged somewhere or" pos="7;104"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\node-forge\lib\kem.js">
+   <todo name="TODO: add forge.kem.kdf.create('KDF1', {md: ..., ...}) API?" pos="1;99"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\node-forge\lib\pkcs1.js">
+   <todo name="TODO: It must be possible to do this in a better/smarter way?" pos="3;236"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\node-forge\lib\pkcs7.js">
+   <todo name="TODO: add json-formatted signer stuff here?" pos="5;128"/>
+   <todo name="TODO: parse crls" pos="7;151"/>
+   <todo name="TODO: implement CRLs" pos="7;166"/>
+   <todo name="TODO: Support [subjectKeyIdentifier] as signer's ID." pos="2;232"/>
+   <todo name="TODO: optimize to just copy message digest state if that" pos="9;422"/>
+   <todo name="TODO: optimize away duplication" pos="11;522"/>
+   <todo name="TODO: convert attributes" pos="3;938"/>
+   <todo name="TODO: generalize to support more attributes" pos="3;1049"/>
+   <todo name="TODO: make these module-level constants" pos="5;1064"/>
+   <todo name="TODO: expose as common API call" pos="3;1093"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\node-forge\lib\prime.js">
+   <todo name="TODO: consider optimizing by starting workers outside getPrime() ..." pos="5;183"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\node-forge\lib\prime.worker.js">
+   <todo name="TODO: abstract based on data.algorithm (PRIMEINC vs. others)" pos="3;32"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\node-forge\lib\prng.js">
+   <todo name="TODO: do we need to remove the event listener when the worker dies?" pos="7;412"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\node-forge\lib\rsa.js">
+   <todo name="TODO: migrate step-based prime generation code to forge.prime" pos="3;595"/>
+   <todo name="TODO: turn off progress indicator here" pos="9;660"/>
+   <todo name="TODO: use the generated key-pair in &quot;state.keys&quot;" pos="9;661"/>
+   <todo name="TODO: turn on progress indicator here" pos="5;664"/>
+   <todo name="TODO: migrate step-based prime generation code to forge.prime" pos="3;679"/>
+   <todo name="TODO: abstract as PRIMEINC algorithm" pos="3;680"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\node-forge\lib\tls.js">
+   <todo name="TODO: make extension support modular" pos="7;831"/>
+   <todo name="TODO: handle compression methods" pos="5;905"/>
+   <todo name="TODO: handle other options from server when more supported" pos="3;929"/>
+   <todo name="TODO: support Diffie-Hellman" pos="5;1443"/>
+   <todo name="TODO: TLS 1.2+ has different format including" pos="3;1491"/>
+   <todo name="TODO: add support for DSA" pos="3;1540"/>
+   <todo name="TODO: determine prf function and verify length for TLS 1.2" pos="3;1822"/>
+   <todo name="TODO: consider using a table?" pos="3;1897"/>
+   <todo name="TODO: TLS 1.2 implementation" pos="3;2360"/>
+   <todo name="TODO: check certificate request to ensure types are supported" pos="3;2864"/>
+   <todo name="TODO: support other certificate types" pos="3;3199"/>
+   <todo name="TODO: TLS 1.2+ has a different format" pos="3;3215"/>
+   <todo name="TODO: determine prf function and verify length for TLS 1.2" pos="3;3299"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\node-forge\lib\util.js">
+   <todo name="TODO: set ByteBuffer to best available backing" pos="1;155"/>
+   <todo name="TODO: update to match DataBuffer API" pos="3;167"/>
+   <todo name="TODO: Use (rval * 0x100) if adding support for 33 to 53 bits." pos="5;543"/>
+   <todo name="TODO: adjust read/write offset based on the type of view" pos="7;765"/>
+   <todo name="TODO: Use (rval * 0x100) if adding support for 33 to 53 bits." pos="5;1206"/>
+   <todo name="TODO: deprecate this method, it is poorly named and" pos="3;1240"/>
+   <todo name="TODO: deprecate this method, it is poorly named, add &quot;getString()&quot;" pos="3;1268"/>
+   <todo name="TODO: deprecate, use new ByteBuffer() instead" pos="3;1422"/>
+   <todo name="TODO: deprecate: &quot;Deprecated. Use util.binary.hex.decode instead.&quot;" pos="3;1492"/>
+   <todo name="TODO: deprecate: &quot;Deprecated. Use util.binary.hex.encode instead.&quot;" pos="3;1515"/>
+   <todo name="TODO: deprecate: &quot;Deprecated. Use util.binary.base64.encode instead.&quot;" pos="3;1580"/>
+   <todo name="TODO: deprecate: &quot;Deprecated. Use util.binary.base64.decode instead.&quot;" pos="3;1617"/>
+   <todo name="TODO: add zlib header and trailer if necessary/possible" pos="3;1971"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\node-forge\lib\x509.js">
+   <todo name="TODO: support arbitrary bit length ids" pos="9;267"/>
+   <todo name="TODO: support arbitrary bit length ids" pos="9;282"/>
+   <todo name="TODO: support arbitrary bit length ids" pos="7;962"/>
+   <todo name="TODO: support arbitrary bit length ids" pos="7;980"/>
+   <todo name="TODO: get signature OID from private key" pos="5;1033"/>
+   <todo name="TODO: get signature OID from private key" pos="5;1813"/>
+   <todo name="TODO: create DRY `OID to md` function" pos="9;1851"/>
+   <todo name="TODO: support arbitrary bit length ids" pos="11;2555"/>
+   <todo name="TODO: support arbitrary bit length ids" pos="11;2567"/>
+   <todo name="TODO: we might want to reconsider renaming 'now' to" pos="11;3142"/>
+   <todo name="TODO: there's may be an extreme degenerate case currently uncovered" pos="9;3165"/>
+   <todo name="TODO: 3. check revoked" pos="5;3203"/>
+   <todo name="TODO: check names with permitted names tree" pos="8;3214"/>
+   <todo name="TODO: check names against excluded names tree" pos="8;3216"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\node-forge\lib\xhr.js">
+   <todo name="TODO: provide optional clean up API for non-default clients" pos="1;83"/>
+   <todo name="TODO: not implemented (not used yet)" pos="5;426"/>
+   <todo name="TODO: other validation steps in algorithm are not implemented" pos="5;451"/>
+   <todo name="TODO: other validation steps in spec aren't implemented" pos="5;495"/>
+   <todo name="TODO: update document.cookie with any cookies where the" pos="7;557"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\node-libs-browser\mock\tls.js">
+   <todo name="todo" pos="1;0"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\npm-run-path\index.d.ts">
+   <todo name="TODO: Remove this for the next major release" pos="2;84"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\npm-run-path\index.js">
+   <todo name="TODO: Remove this for the next major release" pos="1;30"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\onetime\index.d.ts">
+   <todo name="TODO: Remove this for the next major release" pos="2;59"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\onetime\index.js">
+   <todo name="TODO: Remove this for the next major release" pos="1;34"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\p-event\index.d.ts">
+   <todo name="TODO: Remove this for the next major release" pos="2;258"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\p-event\index.js">
+   <todo name="TODO: Remove this for the next major release" pos="1;114"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\p-locate\index.d.ts">
+   <todo name="TODO: Remove this for the next major release, refactor the whole definition to:" pos="2;53"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\p-locate\index.js">
+   <todo name="TODO: Remove this for the next major release" pos="1;50"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\p-retry\index.d.ts">
+   <todo name="TODO: remove this in the next major version" pos="2;101"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\p-retry\index.js">
+   <todo name="TODO: remove this in the next major version" pos="1;81"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\p-timeout\index.d.ts">
+   <todo name="TODO: Remove this for the next major release" pos="2;67"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\p-timeout\index.js">
+   <todo name="TODO: Use native `finally` keyword when targeting Node.js 10" pos="2;42"/>
+   <todo name="TODO: Remove this for the next major release" pos="1;53"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\p-try\index.d.ts">
+   <todo name="TODO: remove this in the next major version, refactor the whole definition to:" pos="2;29"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\p-try\index.js">
+   <todo name="TODO: remove this in the next major version" pos="1;7"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\pako\dist\pako.js">
+   <todo name="TODO: may be {}" pos="3;3720"/>
+   <todo name="TODO: 2 or 1 bytes?" pos="13;4252"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\pako\dist\pako_inflate.js">
+   <todo name="TODO: may be {}" pos="3;1017"/>
+   <todo name="TODO: 2 or 1 bytes?" pos="13;1549"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\pako\lib\zlib\inflate.js">
+   <todo name="TODO: may be {}" pos="3;129"/>
+   <todo name="TODO: 2 or 1 bytes?" pos="13;661"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\path-key\index.d.ts">
+   <todo name="TODO: Remove this for the next major release, refactor the whole definition to:" pos="2;33"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\path-key\index.js">
+   <todo name="TODO: Remove this for the next major release" pos="1;14"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\pkg-dir\index.d.ts">
+   <todo name="TODO: Remove this for the next major release" pos="2;39"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\pkg-dir\index.js">
+   <todo name="TODO: Remove this for the next major release" pos="1;10"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\portfinder\node_modules\debug\src\browser.js">
+   <todo name="TODO: add a `localStorage` variable to explicitly enable/disable colors" pos="2;25"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\postcss-selector-parser\postcss-selector-parser.d.ts">
+   <todo name="TODO: Conditional types in TS 1.8 will really clean this up." pos="1;19"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\public-encrypt\node_modules\bn.js\lib\bn.js">
+   <todo name="TODO(indutny): it may be reasonable to omit it for users who don't need" pos="3;1045"/>
+   <todo name="TODO(indutny): implement me" pos="5;2003"/>
+   <todo name="TODO(indutny): implement me" pos="5;2069"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\readable-stream\lib\_stream_writable.js">
+   <todo name="TODO: defer error events consistently everywhere, not just the cb" pos="3;288"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\regenerate\regenerate.js">
+   <todo name="TODO: Optimize this by writing and using `dataIntersectionData()`." pos="4;1140"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\regenerator-transform\lib\emit.js">
+   <todo name="TODO Consider avoiding this" pos="36;686"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\regenerator-transform\lib\hoist.js">
+   <todo name="TODO assert.equal(vdec.kind, &quot;var&quot;);" pos="40;25"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\regenerator-transform\src\emit.js">
+   <todo name="TODO Consider avoiding this" pos="36;897"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\regenerator-transform\src\hoist.js">
+   <todo name="TODO assert.equal(vdec.kind, &quot;var&quot;);" pos="5;22"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\regexpu-core\rewrite-pattern.js">
+   <todo name="TODO: consider changing this at the regenerate level." pos="5;199"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\relateurl\lib\parse\urlstring.js">
+   <todo name="TODO :: unescape(encodeURIComponent(s)) ? ... http://ecmanaut.blogspot.ca/2006/07/encoding-decoding" pos="3;33"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\schema-utils\dist\validate.js">
+   <todo name="TODO change after resolve https://github.com/microsoft/TypeScript/issues/34994" pos="3;155"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\send\index.js">
+   <todo name="TODO: this is all lame, refactor meeee" pos="3;789"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\send\node_modules\debug\src\browser.js">
+   <todo name="TODO: add a `localStorage` variable to explicitly enable/disable colors" pos="2;35"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\serve-index\node_modules\debug\src\browser.js">
+   <todo name="TODO: add a `localStorage` variable to explicitly enable/disable colors" pos="2;35"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\spdy-transport\lib\spdy-transport\connection.js">
+   <todo name="TODO(indutny): handle it one day" pos="5;330"/>
+   <todo name="TODO(indutny): handle this" pos="5;341"/>
+   <todo name="TODO(indutny) handle stream limit" pos="3;459"/>
+   <todo name="TODO(indutny): handle max_header_list_size" pos="3;511"/>
+   <todo name="TODO(indutny): handle max_concurrent_streams" pos="3;534"/>
+   <todo name="TODO(indutny): deduplicate this logic somehow" pos="3;800"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\spdy-transport\lib\spdy-transport\protocol\base\scheduler.js">
+   <todo name="TODO: handle stream backoff properly" pos="7;123"/>
+   <todo name="TODO(indutny): figure out the way to invoke callback on actual write" pos="5;133"/>
+   <todo name="TODO: handle stream backoff properly" pos="7;169"/>
+   <todo name="TODO(indutny): figure out the way to invoke callback on actual write" pos="5;179"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\spdy-transport\lib\spdy-transport\protocol\http2\parser.js">
+   <todo name="TODO(indutny): eventually support partial padded DATA" pos="3;123"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\spdy-transport\lib\spdy-transport\protocol\spdy\parser.js">
+   <todo name="TODO(indutny): do ProtocolError here and in the rest of errors" pos="5;98"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\spdy-transport\lib\spdy-transport\protocol\spdy\zlib-pool.js">
+   <todo name="TODO(indutny): think about it, why has it always been Z_SYNC_FLUSH here." pos="1;7"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\spdy-transport\lib\spdy-transport\stream.js">
+   <todo name="TODO(indunty): ideally it should just take a stream object as an input" pos="3;511"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\spdy-transport\node_modules\readable-stream\lib\_stream_readable.js">
+   <todo name="TODO(ronag): Throw ERR_VALUE_OUT_OF_RANGE." pos="5;350"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\spdy-transport\node_modules\readable-stream\lib\_stream_transform.js">
+   <todo name="TODO(BridgeAR): Write a test for these two error cases" pos="24;193"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\spdy-transport\node_modules\readable-stream\lib\_stream_writable.js">
+   <todo name="TODO: defer error events consistently everywhere, not just the cb" pos="46;260"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\spdy\lib\spdy\agent.js">
+   <todo name="TODO(indutny): reconnect automatically?" pos="3;105"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\stream-http\lib\response.js">
+   <todo name="TODO: this" pos="28;214"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\stream-http\test\browser\timeout.js">
+   <todo name="TODO: reenable this if there's a way to make it simultaneously" pos="1;23"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\string-width\index.d.ts">
+   <todo name="TODO: remove this in the next major version, refactor the whole definition to:" pos="2;22"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\string-width\index.js">
+   <todo name="TODO: remove this in the next major version" pos="1;45"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\svgo\lib\svgo\jsAPI.js">
+   <todo name="TODO remove after migration" pos="5;59"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\svgo\lib\svgo\svg2js.js">
+   <todo name="TODO parse doctype for name, public and system to match xast" pos="7;37"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\svgo\plugins\_applyTransforms.js">
+   <todo name="TODO implement as separate plugin" pos="1;2"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\svgo\plugins\_collections.js">
+   <todo name="TODO: in - 'If no value is provided and this is the first filter primitive," pos="7;578"/>
+   <todo name="TODO: divisor - 'The default value is the sum of all values in kernelMatrix," pos="7;622"/>
+   <todo name="TODO: targetX - 'By default, the convolution matrix is centered in X over each" pos="7;626"/>
+   <todo name="TODO: kernelUnitLength - 'The first number is the &lt;dx> value. The second number" pos="7;631"/>
+   <todo name="TODO: 'exactly one light source element, in any order'" pos="7;660"/>
+   <todo name="TODO: exactly one 'light source element'" pos="7;793"/>
+   <todo name="TODO: &quot;at most one 'font-face-src' element&quot;" pos="7;940"/>
+   <todo name="TODO: empty content" pos="3;944"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\svgo\plugins\_path.js">
+   <todo name="TODO fix null hack" pos="2;479"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\svgo\plugins\convertPathData.js">
+   <todo name="TODO: get rid of functions returns" pos="11;88"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\svgo\plugins\convertShapeToPath.js">
+   <todo name="TODO: Calculate sizes from % and non-px units if possible." pos="11;50"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\svgo\plugins\minifyStyles.js">
+   <todo name="TODO split cdata -> text optimisation into separate plugin" pos="9;50"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\svgo\plugins\removeUselessDefs.js">
+   <todo name="TODO remove in SVGO 3" pos="11;34"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\svgo\plugins\removeViewBox.js">
+   <todo name="TODO remove width/height for such case instead" pos="11;33"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\terser-webpack-plugin\dist\index.js">
+   <todo name="TODO please add manually `T extends ... = TerserMinimizer`, because typescript is not supported def" pos="1;199"/>
+   <todo name="TODO make `minimizer` option instead `minify` and `terserOptions` in the next major release, also r" pos="13;489"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\terser-webpack-plugin\dist\utils.js">
+   <todo name="TODO workaround for swc because `filename` is not preset as in `swc` signature as for `terser`" pos="35;509"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\terser\dist\bundle.min.js">
+   <todo name="TODO why do we need to crawl this last?" pos="46;4471"/>
+   <todo name="TODO a class might have a scope but it's not a scope" pos="15;4796"/>
+   <todo name="TODO uses_with, uses_eval, etc" pos="5;9727"/>
+   <todo name="TODO string encoding stuff" pos="5;10231"/>
+   <todo name="TODO take propmangle into account" pos="1;10541"/>
+   <todo name="TODO key may throw too" pos="9;11485"/>
+   <todo name="TODO check arguments too!" pos="17;11579"/>
+   <todo name="TODO this only works with AST_Defun, shouldn't it work for other ways of defining functions?" pos="1;16212"/>
+   <todo name="TODO this is sometimes undefined during compression." pos="17;16749"/>
+   <todo name="TODO can we delete? AST_Catch is a block scope." pos="17;16756"/>
+   <todo name="TODO:" pos="13;18632"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\terser\lib\ast.js">
+   <todo name="TODO why do we need to crawl this last?" pos="46;982"/>
+   <todo name="TODO a class might have a scope but it's not a scope" pos="15;1307"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\terser\lib\compress\index.js">
+   <todo name="TODO this only works with AST_Defun, shouldn't it work for other ways of defining functions?" pos="1;1749"/>
+   <todo name="TODO this is sometimes undefined during compression." pos="17;2286"/>
+   <todo name="TODO can we delete? AST_Catch is a block scope." pos="17;2293"/>
+   <todo name="TODO:" pos="13;4169"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\terser\lib\compress\inference.js">
+   <todo name="TODO key may throw too" pos="9;459"/>
+   <todo name="TODO check arguments too!" pos="17;553"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\terser\lib\scope.js">
+   <todo name="TODO uses_with, uses_eval, etc" pos="5;517"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\terser\lib\size.js">
+   <todo name="TODO string encoding stuff" pos="5;113"/>
+   <todo name="TODO take propmangle into account" pos="1;423"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\terser\node_modules\source-map\dist\source-map.js">
+   <todo name="TODO: test if null is correct here.  The original code used" pos="9;2490"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\terser\node_modules\source-map\lib\source-map-consumer.js">
+   <todo name="TODO: test if null is correct here.  The original code used" pos="9;1046"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\type-fest\source\basic.d.ts">
+   <todo name="TODO: This can just be `export type Primitive = not object` when the `not` keyword is out." pos="1;2"/>
+   <todo name="TODO: Remove the `= unknown` sometime  in the future when most users are on TS 3.5 as it's now the" pos="1;15"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\type-fest\source\require-exactly-one.d.ts">
+   <todo name="TODO: Remove this when we target TypeScript >=3.5." pos="1;0"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\uri-js\dist\es5\uri.all.js">
+   <todo name="TODO: normalize IPv6 address as per RFC 5952" pos="9;1012"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\uri-js\dist\esnext\uri.js">
+   <todo name="TODO: normalize IPv6 address as per RFC 5952" pos="13;326"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\url\url.js">
+   <todo name="TODO(isaacs): This is not quite how Chrome does things." pos="11;188"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack-cli\lib\webpack-cli.js">
+   <todo name="TODO Workaround https://github.com/zertosh/v8-compile-cache/issues/30" pos="13;35"/>
+   <todo name="TODO `describe` used by `webpack-dev-server@3`" pos="17;261"/>
+   <todo name="TODO implement this after refactor cli arguments" pos="17;1389"/>
+   <todo name="TODO we should run webpack multiple times when the `--config` options have multiple values with `--" pos="17;1618"/>
+   <todo name="TODO refactor" pos="5;1764"/>
+   <todo name="TODO remove after drop webpack@4" pos="9;1914"/>
+   <todo name="TODO remove after drop webpack@4" pos="13;1974"/>
+   <todo name="TODO webpack@4 return Watching and MultiWatching instead Compiler and MultiCompiler, remove this af" pos="9;2115"/>
+   <todo name="TODO webpack@4 doesn't support `{ children: [{ colors: true }, { colors: true }] }` for stats" pos="13;2158"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack-dev-middleware\dist\index.js">
+   <todo name="TODO: improve that in future" pos="9;80"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack-dev-middleware\dist\utils\setupHooks.js">
+   <todo name="TODO webpack@4 doesn't support `{ children: [{ colors: true }, { colors: true }] }` for stats" pos="9;115"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack-dev-middleware\dist\utils\setupOutputFileSystem.js">
+   <todo name="Todo remove when we drop webpack@4 support" pos="26;20"/>
+   <todo name="Todo remove when we drop webpack@4 support" pos="7;24"/>
+   <todo name="TODO: remove when we drop webpack@4 support" pos="77;33"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack-dev-server\client\index.js">
+   <todo name="TODO: remove in v5 in favor of 'static-changed'" pos="3;109"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack-dev-server\client\modules\sockjs-client\index.js">
+   <todo name="TODO can't get rid of this until all servers do" pos="112;1479"/>
+   <todo name="TODO: This doesn't match the real behavior; per spec, onfoo get" pos="79;1669"/>
+   <todo name="TODO see if we can make this more dynamic" pos="3;1785"/>
+   <todo name="TODO this seems the same as the 'needBody' from transports" pos="6;2026"/>
+   <todo name="TODO this is currently ignoring the list of available transports and the whitelist" pos="39;2089"/>
+   <todo name="TODO look at docs to determine how to set this" pos="5;2330"/>
+   <todo name="TODO this currently turns objects into [object Object]" pos="3;2340"/>
+   <todo name="TODO" pos="7;2810"/>
+   <todo name="TODO" pos="5;2812"/>
+   <todo name="TODO" pos="5;2822"/>
+   <todo name="TODO message" pos="30;2878"/>
+   <todo name="TODO: add a `localStorage` variable to explicitly enable/disable colors" pos="2;5681"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack-dev-server\lib\Server.js">
+   <todo name="TODO: remove this after plugin support is published" pos="5;19"/>
+   <todo name="TODO remove `{}` after drop webpack v4 support" pos="5;180"/>
+   <todo name="TODO remove in the next major release, only accept `Array`" pos="7;494"/>
+   <todo name="TODO remove in the next major in favor `context` and `router` options" pos="9;934"/>
+   <todo name="TODO: we need to replace spdy with http2 which is an internal module" pos="9;1146"/>
+   <todo name="TODO remove in the next major release" pos="3;1845"/>
+   <todo name="TODO remove in the next major release" pos="3;1905"/>
+   <todo name="TODO compatibility with webpack v4, remove it after drop" pos="3;1962"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack-dev-server\lib\utils\DevServerPlugin.js">
+   <todo name="TODO show warning about this" pos="5;107"/>
+   <todo name="TODO maybe empty empty client" pos="5;250"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\Chunk.js">
+   <todo name="TODO remove in webpack 6" pos="2;103"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\ChunkGraph.js">
+   <todo name="TODO refactor by moving blocks list into ChunkGraph" pos="3;1167"/>
+   <todo name="TODO remove in webpack 6" pos="2;1552"/>
+   <todo name="TODO remove in webpack 6" pos="2;1583"/>
+   <todo name="TODO remove in webpack 6" pos="2;1593"/>
+   <todo name="TODO remove in webpack 6" pos="2;1602"/>
+   <todo name="TODO remove in webpack 6" pos="2;1633"/>
+   <todo name="TODO remove in webpack 6" pos="2;1643"/>
+   <todo name="TODO remove in webpack 6" pos="1;1653"/>
+   <todo name="TODO remove in webpack 6" pos="1;1657"/>
+   <todo name="TODO remove in webpack 6" pos="1;1661"/>
+   <todo name="TODO remove in webpack 6" pos="1;1665"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\ChunkTemplate.js">
+   <todo name="TODO webpack 6 remove this class" pos="1;17"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\Compilation.js">
+   <todo name="TODO webpack 6: remove" pos="1;330"/>
+   <todo name="TODO webpack 6: remove" pos="1;339"/>
+   <todo name="TODO webpack 6 remove" pos="4;747"/>
+   <todo name="TODO webpack 6 deprecate" pos="4;756"/>
+   <todo name="TODO webpack 6 remove" pos="4;763"/>
+   <todo name="TODO webpack 6 remove" pos="4;771"/>
+   <todo name="TODO webpack 6 deprecate" pos="4;779"/>
+   <todo name="TODO webpack 6 deprecate" pos="4;782"/>
+   <todo name="TODO webpack 6 remove" pos="3;1015"/>
+   <todo name="TODO webpack 6: remove" pos="6;1752"/>
+   <todo name="TODO webpack 6 remove" pos="3;1865"/>
+   <todo name="TODO webpack 6 make chunkGraph argument non-optional" pos="2;2861"/>
+   <todo name="TODO: good description" pos="42;3067"/>
+   <todo name="TODO If this becomes a performance problem" pos="3;3704"/>
+   <todo name="TODO webpack 5: refactor assetPath hook to receive { path, info } object" pos="3;3987"/>
+   <todo name="TODO webpack 6" pos="6;4153"/>
+   <todo name="TODO webpack 6 remove" pos="1;4416"/>
+   <todo name="TODO webpack 6 remove" pos="1;4428"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\Compiler.js">
+   <todo name="TODO the following hooks are weirdly located here" pos="4;178"/>
+   <todo name="TODO move them for webpack 5" pos="4;179"/>
+   <todo name="TODO webpack 6: solve this in a better way" pos="2;363"/>
+   <todo name="TODO webpack 6: solve this in a better way" pos="2;379"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\ContextModule.js">
+   <todo name="TODO} resolveOptions" pos="13;66"/>
+   <todo name="TODO" pos="19;470"/>
+   <todo name="TODO" pos="19;496"/>
+   <todo name="TODO" pos="30;588"/>
+   <todo name="TODO" pos="20;589"/>
+   <todo name="TODO" pos="30;622"/>
+   <todo name="TODO" pos="20;623"/>
+   <todo name="TODO" pos="30;661"/>
+   <todo name="TODO" pos="20;662"/>
+   <todo name="TODO" pos="30;710"/>
+   <todo name="TODO" pos="20;711"/>
+   <todo name="TODO" pos="23;754"/>
+   <todo name="TODO" pos="30;755"/>
+   <todo name="TODO" pos="20;756"/>
+   <todo name="TODO" pos="24;804"/>
+   <todo name="TODO" pos="20;805"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\ContextModuleFactory.js">
+   <todo name="TODO[], ContextModuleOptions]>}" pos="39;35"/>
+   <todo name="TODO]>}" pos="40;41"/>
+   <todo name="TODO]>}" pos="40;43"/>
+   <todo name="TODO[]]&gt;, &quot;tap&quot; | &quot;tapAsync&quot; | &quot;tapPromise&quot; | &quot;name" pos="54;47"/>
+   <todo name="TODO[]]&gt;[&quot;intercept&quot;]}" pos="42;51"/>
+   <todo name="TODO[]]&gt;[&quot;tap&quot;]}" pos="42;57"/>
+   <todo name="TODO[]]&gt;[&quot;tapAsync&quot;]}" pos="42;61"/>
+   <todo name="TODO[]]&gt;[&quot;tapPromise&quot;]}" pos="42;67"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\Dependency.js">
+   <todo name="TODO check if this can be moved into ModuleDependency" pos="3;91"/>
+   <todo name="TODO check if this can be moved into ModuleDependency" pos="3;94"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\EntryPlugin.js">
+   <todo name="TODO webpack 6 remove string option" pos="3;60"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\EvalSourceMapDevToolPlugin.js">
+   <todo name="TODO; }}" pos="34;106"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\ExportsInfo.js">
+   <todo name="TODO improve this" pos="4;664"/>
+   <todo name="TODO webpack 5 remove" pos="2;852"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\ExternalModuleFactoryPlugin.js">
+   <todo name="TODO webpack 6 remove this" pos="1;17"/>
+   <todo name="TODO webpack 6 remove this" pos="8;167"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\FlagDependencyUsagePlugin.js">
+   <todo name="TODO webpack 6 remove this check" pos="8;146"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\HotModuleReplacementPlugin.js">
+   <todo name="TODO, string[]], void>} hotAcceptCallback" pos="27;46"/>
+   <todo name="TODO, string[]], void>} hotAcceptWithoutCallback" pos="27;47"/>
+   <todo name="TODO force load one of the chunks which contains the module" pos="12;571"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\LibraryTemplatePlugin.js">
+   <todo name="TODO webpack 6 remove" pos="1;16"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\MainTemplate.js">
+   <todo name="TODO webpack 6 remove this class" pos="1;39"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\Module.js">
+   <todo name="TODO refactor this -> options object filled from Factory" pos="3;149"/>
+   <todo name="TODO webpack 6: use an enum" pos="3;150"/>
+   <todo name="TODO remove in webpack 6" pos="2;169"/>
+   <todo name="TODO remove in webpack 6" pos="1;997"/>
+   <todo name="TODO remove in webpack 6" pos="1;1006"/>
+   <todo name="TODO remove in webpack 6" pos="1;1015"/>
+   <todo name="TODO remove in webpack 6" pos="1;1033"/>
+   <todo name="TODO remove in webpack 6" pos="1;1051"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\ModuleFilenameHelpers.js">
+   <todo name="TODO webpack 6: consider removing these" pos="1;12"/>
+   <todo name="TODO webpack 6: consider removing alternatives without dashes" pos="2;155"/>
+   <todo name="TODO webpack 6: consider removing weird double placeholders" pos="2;188"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\ModuleGraph.js">
+   <todo name="TODO remove in webpack 6" pos="2;691"/>
+   <todo name="TODO remove in webpack 6" pos="2;722"/>
+   <todo name="TODO remove in webpack 6" pos="2;732"/>
+   <todo name="TODO remove in webpack 6" pos="1;742"/>
+   <todo name="TODO remove in webpack 6" pos="1;746"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\ModuleGraphConnection.js">
+   <todo name="TODO webpack 5 remove" pos="2;134"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\ModuleNotFoundError.js">
+   <todo name="TODO remove in webpack 6" pos="3;52"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\ModuleTemplate.js">
+   <todo name="TODO webpack 6: remove this class" pos="1;24"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\MultiCompiler.js">
+   <todo name="TODO webpack 6 remove" pos="2;265"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\NormalModule.js">
+   <todo name="TODO reconsider this for webpack 6" pos="3;378"/>
+   <todo name="TODO} sourceMap an optional source map" pos="20;429"/>
+   <todo name="TODO} sourceMap an optional source map" pos="20;663"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\NormalModuleFactory.js">
+   <todo name="TODO webpack 6 remove" pos="1;154"/>
+   <todo name="TODO>}" pos="49;220"/>
+   <todo name="TODO>}" pos="49;230"/>
+   <todo name="TODO>}" pos="49;232"/>
+   <todo name="TODO>}" pos="49;234"/>
+   <todo name="TODO>}" pos="76;236"/>
+   <todo name="TODO>}" pos="82;238"/>
+   <todo name="TODO>>}" pos="41;267"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\NormalModuleReplacementPlugin.js">
+   <todo name="TODO): void} ModuleReplacer" pos="23;10"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\RuntimePlugin.js">
+   <todo name="TODO webpack 6: remove CompatRuntimeModule" pos="4;357"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\RuntimeTemplate.js">
+   <todo name="TODO" pos="3;101"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\asset\AssetGenerator.js">
+   <todo name="TODO webpack 6 For back-compat reasons we also store in on module.buildInfo" pos="7;258"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\async-modules\AwaitDependenciesInitFragment.js">
+   <todo name="TODO check if destructuring is supported" pos="3;59"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\buildChunkGraph.js">
+   <todo name="TODO merge entryOptions" pos="6;378"/>
+   <todo name="TODO check if this really need to be done for each traversal" pos="4;457"/>
+   <todo name="TODO maybe decide this per runtime" pos="3;1203"/>
+   <todo name="TODO is this needed?" pos="4;1205"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\cli.js">
+   <todo name="TODO add originPath to PathItem for better errors" pos="1;10"/>
+   <todo name="TODO support `not` and `if/then/else`" pos="2;213"/>
+   <todo name="TODO support `const`, but we don't use it on our schema" pos="2;214"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\debug\ProfilingPlugin.js">
+   <todo name="TODO improve typing" pos="1;360"/>
+   <todo name="TODO[]) => void | Promise&lt;TODO>} PluginFunction" pos="24;361"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\dependencies\CommonJsExportRequireDependency.js">
+   <todo name="TODO handle deep reexports" pos="6;171"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\dependencies\ContextDependency.js">
+   <todo name="TODO refactor this" pos="3;48"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\dependencies\HarmonyExportImportedSpecifierDependency.js">
+   <todo name="TODO webpack 6 remove" pos="2;185"/>
+   <todo name="TODO webpack 6 remove" pos="2;190"/>
+   <todo name="TODO webpack 6 remove" pos="2;195"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\dependencies\HarmonyImportDependencyParserPlugin.js">
+   <todo name="TODO remove cast when @types/estree has been updated to import assertions" pos="2;43"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\dependencies\HarmonyImportSpecifierDependency.js">
+   <todo name="TODO webpack 6 remove" pos="2;54"/>
+   <todo name="TODO webpack 6 remove" pos="2;59"/>
+   <todo name="TODO webpack 6 remove" pos="2;64"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\dependencies\HarmonyModulesPlugin.js">
+   <todo name="TODO webpack 6: rename harmony to esm or module" pos="6;100"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\hmr\JavascriptHotModuleReplacement.runtime.js">
+   <todo name="TODO}" pos="15;118"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\index.js">
+   <todo name="TODO webpack 6 deprecate" pos="2;308"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\javascript\EnableChunkLoadingPlugin.js">
+   <todo name="TODO implement universal chunk loading" pos="6;104"/>
+   <todo name="TODO support plugin instances here" pos="4;111"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\javascript\JavascriptGenerator.js">
+   <todo name="TODO: clean up this file" pos="1;23"/>
+   <todo name="TODO remove in webpack 6" pos="3;206"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\javascript\JavascriptModulesPlugin.js">
+   <todo name="TODO>}" pos="29;185"/>
+   <todo name="TODO check globals and top-level declarations of other entries and chunk modules" pos="9;817"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\javascript\JavascriptParser.js">
+   <todo name="TODO}" pos="41;1382"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\javascript\StartupHelpers.js">
+   <todo name="TODO move to this file to ../javascript/ChunkHelpers.js" pos="1;21"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\library\EnableLibraryPlugin.js">
+   <todo name="TODO support plugin instances here" pos="4;230"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\node\ReadFileCompileWasmPlugin.js">
+   <todo name="TODO webpack 6 remove" pos="1;13"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\optimize\ConcatenatedModule.js">
+   <todo name="TODO actually this is incorrect since with renaming there could be more" pos="7;816"/>
+   <todo name="TODO> }>}" pos="77;1093"/>
+   <todo name="TODO> }} info" pos="66;1098"/>
+   <todo name="TODO cache codeGeneration results" pos="5;1631"/>
+   <todo name="TODO runtimeCondition" pos="6;1824"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\optimize\ModuleConcatenationPlugin.js">
+   <todo name="TODO reconsider that when it's only used in a different runtime" pos="7;242"/>
+   <todo name="TODO: Allow to reuse existing configuration while trying to add dependencies." pos="6;340"/>
+   <todo name="TODO: remove this when todo above is fixed" pos="8;356"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\optimize\RemoveEmptyChunksPlugin.js">
+   <todo name="TODO do it once" pos="4;38"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\optimize\SideEffectsFlagPlugin.js">
+   <todo name="TODO improve for export *" pos="11;257"/>
+   <todo name="TODO improve for nested imports" pos="11;286"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\prefetch\ChunkPrefetchFunctionRuntimeModule.js">
+   <todo name="TODO" pos="29;13"/>
+   <todo name="TODO" pos="35;14"/>
+   <todo name="TODO" pos="35;15"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\schemes\HttpUriPlugin.js">
+   <todo name="TODO handle merge conflicts" pos="3;110"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\stats\DefaultStatsFactoryPlugin.js">
+   <todo name="TODO webpack 6 disallow strings in the errors/warnings list" pos="3;381"/>
+   <todo name="TODO remove this in webpack 6" pos="5;1272"/>
+   <todo name="TODO remove this in webpack 6" pos="5;1274"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\util\comparators.js">
+   <todo name="TODO this is no longer needed when minimum node.js version is >= 12" pos="1;383"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\util\compileBooleanMatcher.js">
+   <todo name="TODO further optimize regexp, i. e." pos="2;196"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\util\createHash.js">
+   <todo name="TODO add non-cryptographic algorithm here" pos="3;138"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\util\registerExternalSerializer.js">
+   <todo name="TODO}" pos="28;9"/>
+   <todo name="TODO error should be ValidationError, but this fails the type checks" pos="3;312"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\wasm-sync\WasmChunkLoadingRuntimeModule.js">
+   <todo name="TODO webpack 6 remove the whole folder" pos="1;17"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\wasm-sync\WebAssemblyUtils.js">
+   <todo name="TODO add the following 3 lines when removing of ModuleExport is possible" pos="4;41"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\wasm\EnableWasmLoadingPlugin.js">
+   <todo name="TODO webpack 6 remove FetchCompileWasmPlugin" pos="6;74"/>
+   <todo name="TODO webpack 6 remove ReadFileCompileWasmPlugin" pos="6;84"/>
+   <todo name="TODO support plugin instances here" pos="4;111"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\lib\web\FetchCompileWasmPlugin.js">
+   <todo name="TODO webpack 6 remove" pos="1;12"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\webpack\node_modules\webpack-sources\lib\PrefixSource.js">
+   <todo name="TODO efficient buffer() implementation" pos="2;37"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\yaml\browser\dist\Schema-e94716c8.js">
+   <todo name="TODO: deprecate/remove class check" pos="5;523"/>
+   <todo name="TODO: remove in v2" pos="3;633"/>
+   <todo name="TODO: remove in v2" pos="3;634"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\yaml\browser\dist\index.js">
+   <todo name="TODO Set true in v2" pos="3;17"/>
+   <todo name="TODO: deprecate/remove class check" pos="23;147"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\yaml\dist\Document-9b4560a1.js">
+   <todo name="TODO Set true in v2" pos="3;17"/>
+   <todo name="TODO: deprecate/remove class check" pos="23;137"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\yaml\dist\Schema-88e323a7.js">
+   <todo name="TODO: deprecate/remove class check" pos="5;392"/>
+   <todo name="TODO: remove in v2" pos="3;483"/>
+   <todo name="TODO: remove in v2" pos="3;484"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\yargs-parser\browser.js">
+   <todo name="TODO: figure out reasonable web equivalents for &quot;resolve&quot;, &quot;normalize&quot;, etc." pos="1;3"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\yargs-parser\build\lib\index.js">
+   <todo name="TODO: figure  out a  way to combine ESM and CJS coverage, such  that" pos="5;34"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\yargs-parser\build\lib\yargs-parser.js">
+   <todo name="TODO(bcoe): for the first pass at removing object prototype  we didn't" pos="9;163"/>
+   <todo name="TODO(bcoe): in the next major version of yargs, switch to" pos="17;751"/>
+   <todo name="TODO(bcoe): in the next major version of yargs, switch to" pos="13;772"/>
+   <todo name="TODO(bcoe): in the next major version of yargs, switch to" pos="1;1030"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\node_modules\yocto-queue\index.js">
+   <todo name="TODO: Remove this when targeting Node.js 12." pos="3;7"/>
+   <todo name="TODO: Use private class fields when targeting Node.js 12." pos="2;13"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\vendor\dflydev\dot-access-data\src\Data.php">
+   <todo name="TODO: Is this really what we want to do" pos="13;66"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\vendor\facade\ignition\src\Support\ComposerClassMap.php">
+   <todo name="TODO: This is incorrect. Doesnt list all fqcns. Need to parse namespace" pos="9;50"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\vendor\fakerphp\faker\src\Faker\ORM\CakePHP\EntityPopulator.php">
+   <todo name="TODO check if TreeBehavior attached to modify lft/rgt cols" pos="9;121"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\vendor\fakerphp\faker\src\Faker\Provider\Base.php">
+   <todo name="TODO: remove in v2" pos="9;592"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\vendor\fakerphp\faker\src\Faker\Provider\kk_KZ\Address.php">
+   <todo name="TODO list all country names in the world" pos="5;15"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\vendor\filp\whoops\src\Whoops\Exception\Frame.php">
+   <todo name="todo: This can be made more reliable by checking if we've entered" pos="10;54"/>
+   <todo name="@todo: This can be made more reliable by checking if we've entered" pos="9;54"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\vendor\filp\whoops\src\Whoops\Handler\PrettyPageHandler.php">
+   <todo name="todo: Make this more robust" pos="14;186"/>
+   <todo name="@todo: Make this more robust" pos="13;186"/>
+   <todo name="todo: Asset compiler" pos="14;225"/>
+   <todo name="@todo: Asset compiler" pos="13;225"/>
+   <todo name="todo: Consolidate addDataTable and addDataTableCallback" pos="10;282"/>
+   <todo name="@todo: Consolidate addDataTable and addDataTableCallback" pos="9;282"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\vendor\filp\whoops\src\Whoops\Run.php">
+   <todo name="todo Might be able to clean this up a bit better" pos="14;392"/>
+   <todo name="@todo Might be able to clean this up a bit better" pos="13;392"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\vendor\guzzlehttp\guzzle\src\Client.php">
+   <todo name="todo: Do not rely on curl" pos="22;405"/>
+   <todo name="@todo: Do not rely on curl" pos="21;405"/>
+   <todo name="TODO: Add more sink validation" pos="13;430"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\vendor\hamcrest\hamcrest-php\hamcrest\Hamcrest\Arrays\IsArray.php">
+   <todo name="TODO: Allow this to take matchers or values within the array" pos="1;10"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\vendor\mockery\mockery\docs\conf.py">
+   <todo name="todoc) are in another directory," pos="47;17"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\vendor\nesbot\carbon\src\Carbon\Carbon.php">
+   <todo name="todoc generated by `composer phpdoc`>" pos="5;20"/>
+   <todo name="todoc>" pos="6;507"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\vendor\nesbot\carbon\src\Carbon\CarbonImmutable.php">
+   <todo name="todoc generated by `composer phpdoc`>" pos="5;20"/>
+   <todo name="todoc>" pos="6;507"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\vendor\nesbot\carbon\src\Carbon\CarbonInterface.php">
+   <todo name="todoc generated by `composer phpdoc`>" pos="5;34"/>
+   <todo name="todoc>" pos="6;519"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\vendor\nesbot\carbon\src\Carbon\Factory.php">
+   <todo name="todoc generated by `composer phpdoc`>" pos="5;19"/>
+   <todo name="todoc>" pos="6;224"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\vendor\nesbot\carbon\src\Carbon\FactoryImmutable.php">
+   <todo name="todoc generated by `composer phpdoc`>" pos="5;17"/>
+   <todo name="todoc>" pos="6;222"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\vendor\nesbot\carbon\src\Carbon\Lang\ar_Shakl.php">
+   <todo name="TODO add shakl to months" pos="6;19"/>
+   <todo name="@TODO add shakl to months" pos="5;19"/>
+   <todo name="TODO add shakl to translations below" pos="6;54"/>
+   <todo name="@TODO add shakl to translations below" pos="5;54"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\vendor\nesbot\carbon\src\Carbon\Traits\Date.php">
+   <todo name="todoc generated by `composer phpdoc`>" pos="5;40"/>
+   <todo name="todoc>" pos="6;525"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\vendor\nikic\php-parser\lib\PhpParser\Comment.php">
+   <todo name="TODO: Rename these to include &quot;start&quot;." pos="13;229"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\vendor\nikic\php-parser\lib\PhpParser\Internal\TokenStream.php">
+   <todo name="TODO Handle non-space indentation" pos="21;239"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\vendor\nikic\php-parser\lib\PhpParser\Lexer\TokenEmulator\AttributeEmulator.php">
+   <todo name="TODO" pos="9;41"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\vendor\nikic\php-parser\lib\PhpParser\PrettyPrinterAbstract.php">
+   <todo name="TODO Add &lt;" pos="13;496"/>
+   <todo name="TODO: Try to preserve formatting" pos="17;727"/>
+   <todo name="TODO: Preserve formatting." pos="25;778"/>
+   <todo name="TODO: Preserve formatting." pos="25;877"/>
+   <todo name="TODO: Support removing single node." pos="13;900"/>
+   <todo name="TODO: FIXUP_NEW_VARIABLE" pos="52;1164"/>
+   <todo name="TODO: FIXUP_NEW_VARIABLE" pos="69;1175"/>
+   <todo name="TODO: &quot;yield&quot; where both key and value are inserted doesn't work" pos="9;1297"/>
+   <todo name="TODO" pos="86;1325"/>
+   <todo name="TODO These need to be treated more carefully" pos="47;1341"/>
+   <todo name="TODO Insertion into empty statement lists." pos="9;1432"/>
+   <todo name="TODO" pos="14;1470"/>
+   <todo name="TODO" pos="67;1491"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\vendor\nikic\php-parser\lib\PhpParser\PrettyPrinter\Standard.php">
+   <todo name="TODO: This is not fully accurate." pos="9;1062"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\vendor\phpdocumentor\reflection-docblock\src\DocBlock\StandardTagFactory.php">
+   <todo name="TODO: Annotation support is planned for a later stage and as such is disabled for now" pos="13;234"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\vendor\phpunit\php-code-coverage\src\StaticAnalysis\CodeUnitFindingVisitor.php">
+   <todo name="todo Handle default values" pos="15;142"/>
+   <todo name="@todo Handle default values" pos="14;142"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\vendor\psy\psysh\src\CodeCleaner\CalledClassPass.php">
+   <todo name="todo switch this to actually validate args when we get context-aware code cleaner passes." pos="14;50"/>
+   <todo name="@todo switch this to actually validate args when we get context-aware code cleaner passes." pos="13;50"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\vendor\psy\psysh\src\CodeCleaner\PassableByReferencePass.php">
+   <todo name="todo support MethodCall and StaticCall as well." pos="10;38"/>
+   <todo name="@todo support MethodCall and StaticCall as well." pos="9;38"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\vendor\psy\psysh\src\CodeCleaner\RequirePass.php">
+   <todo name="todo Shell::handleError would be better here, because we could" pos="14;80"/>
+   <todo name="@todo Shell::handleError would be better here, because we could" pos="13;80"/>
+   <todo name="todo trigger an error as fallback" pos="14;86"/>
+   <todo name="@todo trigger an error as fallback" pos="13;86"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\vendor\psy\psysh\src\CodeCleaner\ValidFunctionNamePass.php">
+   <todo name="todo add an &quot;else&quot; here which adds a runtime check for instances where we can't tell" pos="14;48"/>
+   <todo name="@todo add an &quot;else&quot; here which adds a runtime check for instances where we can't tell" pos="13;48"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\vendor\psy\psysh\src\Command\DocCommand.php">
+   <todo name="todo this is going to collide with ReflectionMethod ids" pos="18;143"/>
+   <todo name="@todo this is going to collide with ReflectionMethod ids" pos="17;143"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\vendor\psy\psysh\src\Command\ListCommand.php">
+   <todo name="todo something cleaner than this :-/" pos="10;128"/>
+   <todo name="@todo something cleaner than this :-/" pos="9;128"/>
+   <todo name="todo ensure that 'functions', 'classes', 'interfaces', 'traits' only accept namespace target" pos="14;266"/>
+   <todo name="@todo ensure that 'functions', 'classes', 'interfaces', 'traits' only accept namespace target" pos="13;266"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\vendor\psy\psysh\src\Command\ListCommand\ClassConstantEnumerator.php">
+   <todo name="todo handle ReflectionExtension as well" pos="14;33"/>
+   <todo name="@todo handle ReflectionExtension as well" pos="13;33"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\vendor\psy\psysh\src\Configuration.php">
+   <todo name="todo support raw output with interactive input" pos="10;199"/>
+   <todo name="@todo support raw output with interactive input" pos="9;199"/>
+   <todo name="todo mebbe turn this on by default some day" pos="10;857"/>
+   <todo name="@todo mebbe turn this on by default some day" pos="9;857"/>
+   <todo name="todo detect `chsh` != 65001 on Windows and return false" pos="10;970"/>
+   <todo name="@todo detect `chsh` != 65001 on Windows and return false" pos="9;970"/>
+   <todo name="todo Fix capitalization for 0.11.0" pos="14;1456"/>
+   <todo name="@todo Fix capitalization for 0.11.0" pos="13;1456"/>
+   <todo name="todo Fix capitalization for 0.11.0" pos="14;1580"/>
+   <todo name="@todo Fix capitalization for 0.11.0" pos="13;1580"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\vendor\psy\psysh\src\ExecutionLoop\ProcessForker.php">
+   <todo name="todo remove this once we don't support PHP 5.x anymore :)" pos="18;277"/>
+   <todo name="@todo remove this once we don't support PHP 5.x anymore :)" pos="17;277"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\vendor\psy\psysh\src\Formatter\CodeFormatter.php">
+   <todo name="todo something better here" pos="10;71"/>
+   <todo name="@todo something better here" pos="9;71"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\vendor\psy\psysh\src\Formatter\SignatureFormatter.php">
+   <todo name="todo Do we want to include the" pos="14;352"/>
+   <todo name="@todo Do we want to include the" pos="13;352"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\vendor\psy\psysh\src\Shell.php">
+   <todo name="todo should it be possible to have raw output in an interactive run" pos="14;340"/>
+   <todo name="@todo should it be possible to have raw output in an interactive run" pos="13;340"/>
+   <todo name="todo overrides via environment variables (or should these happen in config" pos="10;428"/>
+   <todo name="@todo overrides via environment variables (or should these happen in config" pos="9;428"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\vendor\psy\psysh\src\functions.php">
+   <todo name="todo come up with a better way of doing this which doesn't involve injecting input :-P" pos="10;101"/>
+   <todo name="@todo come up with a better way of doing this which doesn't involve injecting input :-P" pos="9;101"/>
+   <todo name="todo Show Presenter / custom casters." pos="10;317"/>
+   <todo name="@todo Show Presenter / custom casters." pos="9;317"/>
+   <todo name="todo this triggers the &quot;exited unexpectedly&quot; logic in the" pos="18;440"/>
+   <todo name="@todo this triggers the &quot;exited unexpectedly&quot; logic in the" pos="17;440"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\vendor\swiftmailer\swiftmailer\lib\classes\Swift\Mime\Headers\ParameterizedHeader.php">
+   <todo name="TODO: Check caching here" pos="36;126"/>
+   <todo name="TODO: text, or something else" pos="13;186"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\vendor\swiftmailer\swiftmailer\lib\classes\Swift\Mime\SimpleMimeEntity.php">
+   <todo name="TODO: Try to refactor this logic" pos="9;299"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\vendor\swiftmailer\swiftmailer\lib\classes\Swift\Signers\DKIMSigner.php">
+   <todo name="TODO fix return" pos="5;217"/>
+   <todo name="todo handle it but should never happen" pos="25;601"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\vendor\swiftmailer\swiftmailer\lib\classes\Swift\Transport\StreamBuffer.php">
+   <todo name="TODO make tls arguments configurable" pos="10;92"/>
+   <todo name="@TODO make tls arguments configurable" pos="9;92"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\vendor\symfony\css-selector\XPath\Extension\FunctionExtension.php">
+   <todo name="todo: handle an+b, odd, even" pos="9;96"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\vendor\symfony\css-selector\XPath\Extension\HtmlExtension.php">
+   <todo name="todo: in the second half, add &quot;and is not a descendant of that fieldset element's first legend elem" pos="9;102"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\vendor\symfony\http-kernel\HttpCache\Store.php">
+   <todo name="TODO the metaStore referenced an entity that doesn't exist in" pos="9;156"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\vendor\symfony\mime\Header\ParameterizedHeader.php">
+   <todo name="TODO: text, or something else" pos="13;117"/>
+  </todofile>
+  <todofile name="G:\laravel-project\inventory-management\vendor\symfony\translation\Loader\PoFileLoader.php">
+   <todo name="TODO: this fails when comments or contexts are added" pos="17;89"/>
+  </todofile>
+ </todoblock>
+ <dbgurls/>
+ <lasttime value="1663859663"/>
+</project>

@@ -4,7 +4,9 @@
 @section('page_title','See all brand')
 
 @section('content')
+
     @include('sweetalert::alert')
+
     <div class="card mb-4">
         <div class="card-body">
             <div class="row">
@@ -19,12 +21,12 @@
                 </div>
             </div>
             <hr>
-            @if(session('message'))
-                <div  class="alert {{ Session('alert-class', 'alert-success','alert-block') }}">
-                    <button type="button" class="close" data-dismiss="alert">×</button>
-                    <strong>{{ session('message') }}</strong>
-                </div>
-            @endif
+{{--            @if(session('message'))--}}
+{{--                <div  class="alert {{ Session('alert-class', 'alert-success','alert-block') }}">--}}
+{{--                    <button type="button" class="close" data-dismiss="alert">×</button>--}}
+{{--                    <strong>{{ session('message') }}</strong>--}}
+{{--                </div>--}}
+{{--            @endif--}}
             <div class="table-responsive">
                 <table class="table card-table">
                     <thead class="thead-light">
@@ -68,3 +70,4 @@
         </div>
     </div>
 @endsection
+
