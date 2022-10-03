@@ -55,7 +55,7 @@ class CategoryController extends Controller
 
         Category::create($data);
 
-//        toast('Category Create Successfully!','success');
+
         toastr()->success('Have fun storming the castle!');
 
 
@@ -103,7 +103,7 @@ class CategoryController extends Controller
 
         $category->update($data);
 
-        toast('Category Update Successfully!','success');
+        toastr()->success('Have fun storming the castle!');
 
 
         return back();
@@ -119,7 +119,7 @@ class CategoryController extends Controller
     {
         $category->delete();
 
-        toast('Category deleted!','error');
+        toastr()->error('Have fun storming the castle!');
 
         return redirect(route('categories.index'));
     }

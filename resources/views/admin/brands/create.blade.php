@@ -4,6 +4,9 @@
 @section('page_title','Create brand')
 
 @section('content')
+{{--    @push('css')--}}
+{{--        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css" />--}}
+{{--    @endpush--}}
     <div class="card mb-4">
         <div class="card-body">
             <div class="row">
@@ -18,7 +21,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-12">
                         <label class="form-label">Name <span class="text-danger"> *</span></label>
-                        <input type="text" name="name" value="{{ old('name') }}" class="form-control" placeholder="Name" required/>
+                        <input type="text" name="name" value="{{ old('name') }}" class="form-control" placeholder="Name"/>
                         <div class="clearfix"></div>
                         @if($errors->has('name'))
                             <span class="form-text">
@@ -50,6 +53,7 @@
                             </span>
                         @endif
                     </div>
+                    <input type="file" class="form-control dropify"  name="picture">
                 </div>
                 <button type="submit" class="btn btn-primary">Save</button>
                 <a href="{{ url('admin/brands') }}" class="btn btn-primary" title="Back">Back</a>
@@ -57,4 +61,12 @@
         </div>
     </div>
 @endsection
+@push('js')
+{{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" ></script>--}}
+{{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"></script>--}}
+{{--    <script>--}}
+{{--        $('.dropify').dropify();--}}
+{{--    </script>--}}
+@endpush
+
 

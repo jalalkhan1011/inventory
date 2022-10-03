@@ -8,6 +8,7 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('back-end/assets/img/favicon.ico') }}" />
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" />
+    @include('admin.includes.imageUploderCss')
     @include('admin.includes.css')
     @stack('css')
 </head>
@@ -55,7 +56,7 @@
 <!--Logout start-->
     @include('admin.includes.logout')
 <!--Logout end-->
-
+@include('admin.includes.imageUploadJs')
 @include('admin.includes.js')
 @include('admin.includes.commonjs')
 @stack('js')

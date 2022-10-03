@@ -4,7 +4,6 @@
 @section('page_title','Create user')
 
 @section('content')
-    @include('sweetalert::alert')
     <div class="card mb-4">
         <div class="card-body">
             <div class="row">
@@ -22,9 +21,15 @@
             {!! Form::open(array('route' => 'users.store','method'=>'POST')) !!}
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
+                    <div class="form-group col-xs-12 col-sm-12 col-md-12">
                         <strong>{{ __('Name') }}:</strong>
                         {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
+                        <div class="clearfix"></div>
+                        @if($errors->has('name'))
+                            <span class="form-text">
+                                <strong class="text-danger form-control-sm">{{ $errors->first('name') }}</strong>
+                            </span>
+                        @endif
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
@@ -57,3 +62,4 @@
         </div>
     </div>
 @endsection
+

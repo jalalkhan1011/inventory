@@ -20,5 +20,7 @@
                     swal("Your imaginary file is safe!");
                 }
             });
-    }
+    };
 </script>
+
+

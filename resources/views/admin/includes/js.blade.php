@@ -11,6 +11,4 @@
 <script src="{{ asset('back-end/assets/js/demo.js') }}"></script>
 <script src="{{ asset('back-end/assets/js/analytics.js') }}"></script>
 <script src="{{ asset('back-end/assets/js/sweetalert.min.js') }}"></script>
-<script>
 
-</script>
