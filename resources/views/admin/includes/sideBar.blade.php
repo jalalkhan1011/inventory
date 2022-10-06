@@ -90,6 +90,12 @@
                         <div class="ml-1">Category</div>
                     </a>
                 </li>
+                <li class="sidenav-item">
+                    <a href="{{ route('subcategorylist') }}" class="sidenav-link {{ request()->is('product-setting/sub-categories-list*') ? 'active' : '' }}">
+                        <i class="fas fa-th-list"></i>
+                        <div class="ml-1">Sub category</div>
+                    </a>
+                </li>
             @endif
             @if(Auth::user()->hasRole('Admin') || Auth::user()->hasRole('Manager') || Auth::user()->hasRole('Employee'))
                 <li class="sidenav-item">

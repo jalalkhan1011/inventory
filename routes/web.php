@@ -55,6 +55,8 @@ Route::middleware('auth')->group(function (){
 
     //product setting routing start
     Route::group(['prefix' => 'product-setting'],function (){
+        Route::get('sub-categories-list',[CategoryController::class,'subcategorylist'])->name('subcategorylist');
+        Route::get('sub-categories',[CategoryController::class,'subcategory'])->name('subcategories');
         Route::resource('/categories', CategoryController::class);
         Route::resource('/brands', BrandController::class);
         Route::resource('/units', UnitController::class);

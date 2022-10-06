@@ -15,6 +15,7 @@ class Category extends Model
     protected $fillable = [
         'name',
         'description',
+        'parent_id',
         'status',
         'user_id'
     ];
@@ -23,6 +24,10 @@ class Category extends Model
     {
         parent::boot();
         static::addGlobalScope(new CategoryScope);
+    }
+
+    public function subcategory(){
+        return $this->hasMany(Category::class,'parent_id');
     }
 
     public function user(){

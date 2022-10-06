@@ -123,4 +123,14 @@ class CategoryController extends Controller
 
         return redirect(route('categories.index'));
     }
+
+    //sub category
+
+    public function subcategorylist (){
+        return view('admin.categories.subCategories.index');
+    }
+
+    public function subcategory(){
+        return view('admin.categories.subCategories.create');
+    }
 }
