@@ -131,6 +131,25 @@ class CategoryController extends Controller
     }
 
     public function subcategory(){
-        return view('admin.categories.subCategories.create');
+        $categories = Category::where('status','Active')->get();
+
+        return view('admin.categories.subCategories.create',compact('categories'));
+    }
+
+    public function subcategroystore(Request  $request){
+        $request->validate([
+            'name' => 'required|unique:categories,name',
+            'parent_id' => 'required',
+            'status' => 'required'
+        ]);
+
+        $data = $request->all();
+        $data['user_id'] = auth()->user()->id;
+
+        Category::create($data);
+
+        toastr()->success('Sub category create successfully!');
+
+        return redirect(route('subcategorylist'));
     }
 }
