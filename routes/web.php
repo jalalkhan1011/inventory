@@ -58,6 +58,8 @@ Route::middleware('auth')->group(function (){
         Route::get('sub-categories-list',[CategoryController::class,'subcategorylist'])->name('subcategorylist');
         Route::get('sub-categories',[CategoryController::class,'subcategory'])->name('subcategories');
         Route::post('sub-categories-store',[CategoryController::class,'subcategroystore'])->name('subcategorystore');
+        Route::get('sub-categories/{id}/edit',[CategoryController::class,'subcategoryedit'])->name('subcategoryedit');
+        Route::put('sub-categories-update/{id}',[CategoryController::class,'subcategoryupdate'])->name('subcategoryupdate');
         Route::resource('/categories', CategoryController::class);
         Route::resource('/brands', BrandController::class);
         Route::resource('/units', UnitController::class);

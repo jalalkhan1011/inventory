@@ -127,7 +127,9 @@ class CategoryController extends Controller
     //sub category
 
     public function subcategorylist (){
-        return view('admin.categories.subCategories.index');
+        $categories= Category::where('status','Active')->whereNull('parent_id')->get();
+
+        return view('admin.categories.subCategories.index',compact('categories'));
     }
 
     public function subcategory(){
@@ -149,6 +151,31 @@ class CategoryController extends Controller
         Category::create($data);
 
         toastr()->success('Sub category create successfully!');
+
+        return redirect(route('subcategorylist'));
+    }
+
+    public function subcategoryedit($id){
+       $subcategory = Category::findOrFail($id);
+       $categories = Category::where('status','Active')->get();
+
+       return view('admin.categories.subCategories.edit',compact('subcategory','categories'));
+    }
+
+    public function subcategoryupdate(Request $request,$id){
+        $subcategory = Category::findOrFail($id);
+
+        $request->validate([
+            'name' => 'required|unique:categories,name,'.$subcategory->id,
+            'parent_id' => 'required',
+            'status' => 'required'
+        ]);
+
+        $data = $request->all();
+
+        $subcategory->update($data);
+
+        toastr()->info('Sub category update successfully');
 
         return redirect(route('subcategorylist'));
     }
