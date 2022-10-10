@@ -85,19 +85,15 @@
                 </div>
             </div>
             <hr>
-{{--            <div class="row">--}}
-                <div class="col-md-12">
-                    <ul id="tree1">
-                        @foreach($categories as $category)
-                            <li><a href="#">{{ $category->name ? $category->name : 'N/A' }}</a>
-                                @if(count($category->subcategory))
-                                    <li> @include('admin.includes.subcategoryView',['subcategories' => $category->subcategory])   </li>
-                                @endif
-                            </li>
-                        @endforeach
-                    </ul>
-                </div>
-{{--            </div>--}}
+            <ul id="tree1">
+                @foreach($categories as $category)
+                    <li><a href="#">{{ $category->name ? $category->name : 'N/A' }}</a>
+                        @if(count($category->subcategory))
+                            <ul> @include('admin.includes.subcategoryView',['subcategories' => $category->subcategory])   </ul>
+                        @endif
+                    </li>
+                @endforeach
+            </ul>
         </div>
     </div>
 @endsection
