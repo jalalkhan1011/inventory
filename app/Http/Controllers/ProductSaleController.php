@@ -114,15 +114,16 @@ class ProductSaleController extends Controller
         $employeeId = Employee::where('employee_id',auth()->user()->id)->first();
         $productSaleId = ProductSale::findOrFail($id);
 
-        $this->saleProductBatchUpdate($request,$productSaleId);
-        $this->updateProductStock($request,$productSaleId);
+        $this->updateProductStockIncrease($request,$productSaleId->id);
+        $this->saleProductBatchUpdate($request,$productSaleId->id);
+        $this->updateProductStock($request,$productSaleId->id);
 
         $data = $request->all();
         $data['user_id'] = auth()->user()->id;
 
         $productSaleId->update($data);
 
-        $this->updateSaleItem($request,$productSaleId);
+        $this->updateSaleItem($request,$productSaleId->id);
 
 //        $this->saleTransactionUpdate($request,$productSaleId,$employeeId);
 

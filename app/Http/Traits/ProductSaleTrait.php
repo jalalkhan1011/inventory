@@ -72,7 +72,7 @@ trait ProductSaleTrait
 
     private function saleProductItemArray($productSaleId)
     {
-        $saleProducts = ProductSaleItem::where('product_sale_id',$productSaleId->id)->select('product_id')->get()->toArray();
+        $saleProducts = ProductSaleItem::where('product_sale_id',$productSaleId)->select('product_id')->get()->toArray();
         $oldSaleProducts = [];
 
         foreach ($saleProducts as $saleProduct){
@@ -99,7 +99,7 @@ trait ProductSaleTrait
                 'sale_price' => $request->sale_price[$i],
                 'unit_id' => $request->unit_id[$i],
                 'total_item_price' => $request->total_item_price[$i],
-                'product_sale_id' => $productSaleId->id,
+                'product_sale_id' => $productSaleId,
                 'user_id' => auth()->user()->id,
                 'created_at' => now()
             ]);
@@ -112,8 +112,8 @@ trait ProductSaleTrait
 
     private function updateProductStockIncrease($request,$productSaleId)
     {
-        $productSaleItemId = ProductSaleItem::where('product_sale_id',$productSaleId->id)->select('product_id')->get()->toArray();//data get form table array format that why use toArray and update multiple data on by one
-
+        $productSaleItemId = ProductSaleItem::where('product_sale_id',$productSaleId)->select('product_id')->get()->toArray();//data get form table array format that why use toArray and update multiple data on by one
+//        dd($productSaleItemId);
         $usedProductStock = [];
         foreach ($productSaleItemId as $row){
             $usedProductStock[] = $row['product_id'];
@@ -136,8 +136,7 @@ trait ProductSaleTrait
 
     private function updateProductStock($request,$productSaleId)
     {
-        $this->updateProductStockIncrease($request,$productSaleId);
-        $productSaleItemId = ProductSaleItem::where('product_sale_id',$productSaleId->id)->select('product_id')->get()->toArray();//data get form table array format that why use toArray and update multiple data on by one
+        $productSaleItemId = ProductSaleItem::where('product_sale_id',$productSaleId)->select('product_id')->get()->toArray();//data get form table array format that why use toArray and update multiple data on by one
 
         $usedProductStock = [];
         foreach ($productSaleItemId as $row){
@@ -161,7 +160,7 @@ trait ProductSaleTrait
 
     private function updateSaleItem($request,$productSaleId)
     {
-        $productSaleItemIds = ProductSaleItem::where('product_sale_id',$productSaleId->id)->select('id')->get()->toArray();
+        $productSaleItemIds = ProductSaleItem::where('product_sale_id',$productSaleId)->select('id')->get()->toArray();
 
         $saleItems = [];
         foreach ($productSaleItemIds as $row){
@@ -190,7 +189,7 @@ trait ProductSaleTrait
 
     private function saleTransactionUpdate($request,$productSaleId,$employeeId)
     {
-        DB::table('product_transactions')->where('product_sale_id',$productSaleId->id)->delete();
+        DB::table('product_transactions')->where('product_sale_id',$productSaleId)->delete();
 
         if(Role::findByName('Admin')){
             $productId = count($_POST['product_id']);
